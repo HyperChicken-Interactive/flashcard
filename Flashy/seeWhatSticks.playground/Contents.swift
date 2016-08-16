@@ -46,7 +46,11 @@ struct FlashySet {
 }
 
 
+var someNumber = 5
 
+let someArray = ["Array Index 0, Item 1.","Array Index 1, Item 2.","Array Index 2, Item 3.","Array Index 3, Item 4.","Array Index 4, Item 5.","Array Index 5, Item 6.","Array Index 6, Item 7.","Array Index 7, Item 8.","Array Index 8, Item 9.","Array Index 9, Item 10."]
+
+print(someArray[someNumber])
 
 
 

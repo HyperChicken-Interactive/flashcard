@@ -7,8 +7,12 @@ If you have braved the dangers of digging through this nearly unreadable file ne
 
 ---
 
-* Make the app work in portrait/vertical. (Landscape will be added later I think)
-* 
+* Make use of the print function, Crash reports can be genned that way.
+* Harder, Better, Faster, Stronger.
+* Carbon colorset: Background #101010.
+* Generate SolarLight colorset. See Ethan's bit.
+* **Add timestamps to the print log.**
+* Try to move currentlySelectedFlashyCard from the ViewController to the FlashySet struct or just make it a glob var. IDGAF.
 
 ---
 

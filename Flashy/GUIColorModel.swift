@@ -35,6 +35,3 @@ struct SolarizedDark: FullyColored {
     let highlightColor: UIColor = UIColor(red: 220.0, green: 50.0, blue: 47.0, alpha: 1.0)
     let headerColor: UIColor = UIColor(red: 38.0, green: 139.0, blue: 210.0, alpha: 1.0)
 }
-
-
-

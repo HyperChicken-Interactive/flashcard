@@ -21,7 +21,7 @@ struct FlashyCard {
         case sideTwo:
             currentlySelectedSide = sideOne
         default:
-            panic()
+            print("Tried to flip card. Failed?")
         }
     }
     init(sideOne: String, sideTwo: String) {
@@ -33,11 +33,18 @@ struct FlashyCard {
 
 struct FlashySet {
     var name: String?
+    // You did handle the optional asshat.
+    
     var shortName: String = "Blank"
+    // Short name can be used on the button, which doesn't wrap for some unholy reason. I know, It's shitty "magic" code but fuck off this is my first big app. It will be fixed in the beta.
+    //TODO: Fix shortName and button.
+    
     var cardsContained: [FlashyCard]
+    // Cards contained is an array of FlashyCard custom data type. See lines 11-32.
+    
     var cardsInSet: Int{
         return self.cardsContained.count
-    }
+    } // Number of cards in set for the Next and Prev buttons.
     
     init(nameOfFlashcardSet n: String?, shortNameOfSet s: String?){
         self.name = n
@@ -45,12 +52,14 @@ struct FlashySet {
             self.shortName = sn
         }
         cardsContained = []
+        
     }
     
     mutating func generateNewCard(sideOneOfCard s1: String, sideTwoOfCard s2: String) {
         self.cardsContained.append(FlashyCard(sideOne: s1, sideTwo: s2))
         // Will take in card strings provided by user and cast them into FlashyCards.
     }
+    
     func randomizeCardSets() -> [FlashyCard]{
         
         var shuffledSetOfFlashyCards: [FlashyCard] = []
@@ -77,19 +86,7 @@ struct FlashySet {
     }
 }
 
-var set01: FlashySet = FlashySet(nameOfFlashcardSet: nil, shortNameOfSet: nil)
-var set02: FlashySet = FlashySet(nameOfFlashcardSet: nil, shortNameOfSet: nil)
-var set03: FlashySet = FlashySet(nameOfFlashcardSet: nil, shortNameOfSet: nil)
-var set04: FlashySet = FlashySet(nameOfFlashcardSet: nil, shortNameOfSet: nil)
-var set05: FlashySet = FlashySet(nameOfFlashcardSet: nil, shortNameOfSet: nil)
-var set06: FlashySet = FlashySet(nameOfFlashcardSet: nil, shortNameOfSet: nil)
-var set07: FlashySet = FlashySet(nameOfFlashcardSet: nil, shortNameOfSet: nil)
-var set08: FlashySet = FlashySet(nameOfFlashcardSet: nil, shortNameOfSet: nil)
-var set09: FlashySet = FlashySet(nameOfFlashcardSet: nil, shortNameOfSet: nil)
-var set10: FlashySet = FlashySet(nameOfFlashcardSet: nil, shortNameOfSet: nil)
-
-
-
+var set01: FlashySet = FlashySet(nameOfFlashcardSet: "An example of a flashcard set", shortNameOfSet: "Example")
 
 
 

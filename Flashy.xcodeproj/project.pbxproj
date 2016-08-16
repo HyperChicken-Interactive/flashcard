@@ -12,8 +12,8 @@
 		CB8034431D49A0F200CBBC79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8034411D49A0F200CBBC79 /* Main.storyboard */; };
 		CB8034451D49A0F200CBBC79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8034441D49A0F200CBBC79 /* Assets.xcassets */; };
 		CB8034481D49A0F200CBBC79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8034461D49A0F200CBBC79 /* LaunchScreen.storyboard */; };
-		CB8034501D49A54400CBBC79 /* PanicModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80344F1D49A54400CBBC79 /* PanicModel.swift */; };
 		CB93F26D1D5907BB003A4122 /* GUIColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93F26C1D5907BB003A4122 /* GUIColorModel.swift */; };
+		CBA486791D6361FF00DF2147 /* IncoherentBabbling.md in Sources */ = {isa = PBXBuildFile; fileRef = CBA486781D6361FF00DF2147 /* IncoherentBabbling.md */; };
 		CBBD352B1D4FFFDF001F9F16 /* FlashcardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBD352A1D4FFFDF001F9F16 /* FlashcardModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,8 +26,8 @@
 		CB8034441D49A0F200CBBC79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB8034471D49A0F200CBBC79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB8034491D49A0F200CBBC79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CB80344F1D49A54400CBBC79 /* PanicModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanicModel.swift; sourceTree = "<group>"; };
 		CB93F26C1D5907BB003A4122 /* GUIColorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GUIColorModel.swift; sourceTree = "<group>"; };
+		CBA486781D6361FF00DF2147 /* IncoherentBabbling.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = IncoherentBabbling.md; sourceTree = "<group>"; };
 		CBBD352A1D4FFFDF001F9F16 /* FlashcardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashcardModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -65,11 +65,11 @@
 				CB80343F1D49A0F200CBBC79 /* ViewController.swift */,
 				CB8034411D49A0F200CBBC79 /* Main.storyboard */,
 				CB8034441D49A0F200CBBC79 /* Assets.xcassets */,
-				CB80344F1D49A54400CBBC79 /* PanicModel.swift */,
 				CBBD352A1D4FFFDF001F9F16 /* FlashcardModel.swift */,
 				CB93F26C1D5907BB003A4122 /* GUIColorModel.swift */,
 				CB8034461D49A0F200CBBC79 /* LaunchScreen.storyboard */,
 				CB8034491D49A0F200CBBC79 /* Info.plist */,
+				CBA486781D6361FF00DF2147 /* IncoherentBabbling.md */,
 				CB6D95131D5152F8009F504B /* seeWhatSticks.playground */,
 			);
 			path = Flashy;
@@ -149,8 +149,8 @@
 			files = (
 				CB93F26D1D5907BB003A4122 /* GUIColorModel.swift in Sources */,
 				CBBD352B1D4FFFDF001F9F16 /* FlashcardModel.swift in Sources */,
-				CB8034501D49A54400CBBC79 /* PanicModel.swift in Sources */,
 				CB8034401D49A0F200CBBC79 /* ViewController.swift in Sources */,
+				CBA486791D6361FF00DF2147 /* IncoherentBabbling.md in Sources */,
 				CB80343E1D49A0F200CBBC79 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
