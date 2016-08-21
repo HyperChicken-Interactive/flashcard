@@ -36,27 +36,34 @@ struct FlashySet {
     // You did handle the optional asshat.
     
     var shortName: String = "Blank"
-    // Short name can be used on the button, which doesn't wrap for some unholy reason. I know, It's shitty "magic" code but fuck off this is my first big app. It will be fixed in the beta.
+    // Short name can be used on the button, which doesn't wrap for some unholy reason. I know, It's shitty "magic" code but fuck off this is my first big app. It will be fixed in the beta or full.
+    
     //TODO: Fix shortName and button.
     
+    var cardsetArray: [FlashyCard]
+    // cardsetArray is an array of FlashyCard custom data type. See lines 11-32.
+    
     var cardsContained: [FlashyCard]
-    // Cards contained is an array of FlashyCard custom data type. See lines 11-32.
+    // Cards contained is an array of FlashyCard custom data type. It has been modified to be more of a pointer to either a randomized cardset or the original sequential one of cardsetArray.
     
     var cardsInSet: Int{
-        return self.cardsContained.count
+        return self.cardsetArray.count
     } // Number of cards in set for the Next and Prev buttons.
     
     init(nameOfFlashcardSet n: String?, shortNameOfSet s: String?){
-        self.name = n
+        if let name = n {
+            self.name = name
+        }
         if let sn = s {
             self.shortName = sn
         }
-        cardsContained = []
+        cardsetArray = []
+        cardsContained = cardsetArray
         
     }
     
     mutating func generateNewCard(sideOneOfCard s1: String, sideTwoOfCard s2: String) {
-        self.cardsContained.append(FlashyCard(sideOne: s1, sideTwo: s2))
+        self.cardsetArray.append(FlashyCard(sideOne: s1, sideTwo: s2))
         // Will take in card strings provided by user and cast them into FlashyCards.
     }
     
@@ -70,11 +77,12 @@ struct FlashySet {
         
         while shuffledSetOfFlashyCards.count != cardsInSet {
             // Under no circumstances are you to change the above line. It pains me to say this but "It just works don't touch it"
-            let randomNumber = Int(arc4random_uniform(UInt32(cardsInSet+1)))
-            // Gen random number to be used in this level
+            let randomNumber = Int(arc4random_uniform(UInt32(cardsInSet)))
+            // Gen random number to be used in this braket level
+            // https://youtu.be/Z6EuqfanwAM?t=2m11s EDIT: Error was "cardsInSet+1" should have just been "cardsInSet"
             
             if arrayOfAlreadyUsedCards.contains(randomNumber) != true {
-                shuffledSetOfFlashyCards.append(self.cardsContained[randomNumber])
+                shuffledSetOfFlashyCards.append(self.cardsetArray[randomNumber])
                 arrayOfAlreadyUsedCards.append(randomNumber)
                 // If randomNumber is indeed in arrayOfAlreadyUsedCards and hence, in shuffledSetOfFlashyCards, ignore it and try again. There is probably some .shuffle method Apple uses for this particular reson but where's the fun in that?
             }
@@ -82,7 +90,7 @@ struct FlashySet {
         }
         
         return shuffledSetOfFlashyCards
-        //Now that shuffledSetOfFlashyCards has the full contents of self.cardsContained, we can return it.
+        //Now that shuffledSetOfFlashyCards has the full contents of self.cardsetArray, we can return it.
     }
 }
 

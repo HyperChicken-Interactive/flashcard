@@ -59,6 +59,9 @@ class ViewController: UIViewController {
         currentlySelectedFlashyCardset.generateNewCard(sideOneOfCard: "This is card 2, side 1", sideTwoOfCard: "This is card 2, side 2")
         currentlySelectedFlashyCardset.generateNewCard(sideOneOfCard: "This is card 3, side 1", sideTwoOfCard: "This is card 3, side 2")
         
+        currentlySelectedFlashyCardset.cardsContained = currentlySelectedFlashyCardset.cardsetArray
+        // This is shit code and I know it, will be rectified along with other, simmilar problems in Alpha 2.
+        
         print("FlashyCard operation centre view loaded")
         print("Generated 3 cards for default set.")
         
@@ -76,6 +79,12 @@ class ViewController: UIViewController {
     @IBAction func generateRandomized() {
         //The method relating to the "flip" button.
         print("Random button pressed")
+        currentlySelectedFlashyCardset.cardsContained = currentlySelectedFlashyCardset.randomizeCardSets()
+        // Gens a new cardset from .randomizeCardSets()
+        currentlySelectedFlashyCard = 0
+        // Sets the selected card to 0
+        updateValuesInView()
+        // Updates values and frames.
     }
     
     @IBAction func flipFlashyButton() {
