@@ -41,14 +41,14 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
     } // Gives names to the rows
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        HeaderOutlet.text = colorSelectData[row]
+        print("Changed color scheme to \(colorSelectData[row])")
     } // Preforms an action when an items is selected.
     
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         let titleData = colorSelectData[row]
-        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Avenir", size: 15.0)!,NSForegroundColorAttributeName:UIColor.blueColor()])
+        let myTitle = NSAttributedString(string: titleData, attributes: [NSFontAttributeName:UIFont(name: "Avenir", size: 15.0)!,NSForegroundColorAttributeName:currentlySelectedColorScheme.highlightColor])
         return myTitle
-    }
+    } // Colors the text. Avenir won't work but fine.
     
     
     

@@ -89,7 +89,7 @@
                                 <color key="tintColor" red="0.57647058819999997" green="0.63137254899999995" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Settings"/>
                                 <connections>
-                                    <segue destination="ufM-dO-z2Y" kind="presentation" id="Bhi-ry-PiM"/>
+                                    <segue destination="ufM-dO-z2Y" kind="presentation" modalTransitionStyle="crossDissolve" id="Bhi-ry-PiM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -284,15 +284,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Display prefrences (Header)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bQr-dw-Xkb">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Display prefrences (Header)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="bQr-dw-Xkb">
                                 <rect key="frame" x="50" y="75" width="500" height="60.5"/>
                                 <color key="backgroundColor" red="0.93333333330000001" green="0.90980392160000001" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.34509803919999998" green="0.43137254899999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Fop-F3-3Yd"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="43"/>
                                 <color key="textColor" red="0.14901960784313725" green="0.54509803921568623" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9US-w7-a4L">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="9US-w7-a4L">
                                 <rect key="frame" x="50" y="145" width="500" height="45"/>
                                 <color key="backgroundColor" red="0.93333333330000001" green="0.90980392160000001" blue="0.83529411760000005" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.34509803919999998" green="0.43137254899999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -303,7 +306,7 @@
                                 <color key="textColor" red="0.34509803919999998" green="0.43137254899999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Flashcard" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Wpo-gD-4mI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Flashcard" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Wpo-gD-4mI">
                                 <rect key="frame" x="50" y="255" width="500" height="45"/>
                                 <color key="backgroundColor" red="0.027450980392156862" green="0.21176470588235294" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="tintColor" red="0.34509803919999998" green="0.43137254899999999" blue="0.45882352939999999" alpha="1" colorSpace="calibratedRGB"/>
@@ -330,7 +333,7 @@
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYU-F3-T5c">
                                 <rect key="frame" x="20" y="384" width="560" height="216"/>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EE-yT-cQJ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EE-yT-cQJ">
                                 <rect key="frame" x="50" y="200" width="500" height="45"/>
                                 <color key="backgroundColor" red="0.93333333333333335" green="0.90980392156862744" blue="0.83529411764705885" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
