@@ -8,10 +8,7 @@
 
 import UIKit
 
-var currentlySelectedFlashyCardset: FlashySet = set01
-// The currently selected card, Right now it will be static but in ver 1.0 or beta it will be a dynamic function probably.
-
-class ViewController: UIViewController {
+class FlashViewController: UIViewController {
     
     @IBOutlet weak var cardsetLabel: UILabel!
     // The label at the top of the view that has the default text of  "Cardset Name"

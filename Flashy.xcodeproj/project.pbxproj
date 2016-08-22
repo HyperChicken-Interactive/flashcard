@@ -8,20 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		CB80343E1D49A0F200CBBC79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80343D1D49A0F200CBBC79 /* AppDelegate.swift */; };
-		CB8034401D49A0F200CBBC79 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80343F1D49A0F200CBBC79 /* ViewController.swift */; };
+		CB8034401D49A0F200CBBC79 /* FlashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80343F1D49A0F200CBBC79 /* FlashViewController.swift */; };
 		CB8034431D49A0F200CBBC79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8034411D49A0F200CBBC79 /* Main.storyboard */; };
 		CB8034451D49A0F200CBBC79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8034441D49A0F200CBBC79 /* Assets.xcassets */; };
 		CB8034481D49A0F200CBBC79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8034461D49A0F200CBBC79 /* LaunchScreen.storyboard */; };
 		CB93F26D1D5907BB003A4122 /* GUIColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93F26C1D5907BB003A4122 /* GUIColorModel.swift */; };
 		CBA486791D6361FF00DF2147 /* IncoherentBabbling.md in Sources */ = {isa = PBXBuildFile; fileRef = CBA486781D6361FF00DF2147 /* IncoherentBabbling.md */; };
 		CBBD352B1D4FFFDF001F9F16 /* FlashcardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBD352A1D4FFFDF001F9F16 /* FlashcardModel.swift */; };
+		CBFF9B391D6B1EF300975E9F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFF9B381D6B1EF300975E9F /* MenuViewController.swift */; };
+		CBFF9B3B1D6B1F7300975E9F /* GeneralModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFF9B3A1D6B1F7300975E9F /* GeneralModel.swift */; };
+		CBFF9B3D1D6B2A5F00975E9F /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFF9B3C1D6B2A5F00975E9F /* PreferenceViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CB6D95131D5152F8009F504B /* seeWhatSticks.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = seeWhatSticks.playground; sourceTree = "<group>"; };
 		CB80343A1D49A0F200CBBC79 /* Flashy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB80343D1D49A0F200CBBC79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CB80343F1D49A0F200CBBC79 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CB80343F1D49A0F200CBBC79 /* FlashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashViewController.swift; sourceTree = "<group>"; };
 		CB8034421D49A0F200CBBC79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CB8034441D49A0F200CBBC79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB8034471D49A0F200CBBC79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -29,6 +32,9 @@
 		CB93F26C1D5907BB003A4122 /* GUIColorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GUIColorModel.swift; sourceTree = "<group>"; };
 		CBA486781D6361FF00DF2147 /* IncoherentBabbling.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = IncoherentBabbling.md; sourceTree = "<group>"; };
 		CBBD352A1D4FFFDF001F9F16 /* FlashcardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashcardModel.swift; sourceTree = "<group>"; };
+		CBFF9B381D6B1EF300975E9F /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		CBFF9B3A1D6B1F7300975E9F /* GeneralModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralModel.swift; sourceTree = "<group>"; };
+		CBFF9B3C1D6B2A5F00975E9F /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,9 +68,12 @@
 			isa = PBXGroup;
 			children = (
 				CB80343D1D49A0F200CBBC79 /* AppDelegate.swift */,
-				CB80343F1D49A0F200CBBC79 /* ViewController.swift */,
+				CB80343F1D49A0F200CBBC79 /* FlashViewController.swift */,
+				CBFF9B381D6B1EF300975E9F /* MenuViewController.swift */,
+				CBFF9B3C1D6B2A5F00975E9F /* PreferenceViewController.swift */,
 				CB8034411D49A0F200CBBC79 /* Main.storyboard */,
 				CB8034441D49A0F200CBBC79 /* Assets.xcassets */,
+				CBFF9B3A1D6B1F7300975E9F /* GeneralModel.swift */,
 				CBBD352A1D4FFFDF001F9F16 /* FlashcardModel.swift */,
 				CB93F26C1D5907BB003A4122 /* GUIColorModel.swift */,
 				CB8034461D49A0F200CBBC79 /* LaunchScreen.storyboard */,
@@ -148,10 +157,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB93F26D1D5907BB003A4122 /* GUIColorModel.swift in Sources */,
+				CBFF9B391D6B1EF300975E9F /* MenuViewController.swift in Sources */,
 				CBBD352B1D4FFFDF001F9F16 /* FlashcardModel.swift in Sources */,
-				CB8034401D49A0F200CBBC79 /* ViewController.swift in Sources */,
+				CB8034401D49A0F200CBBC79 /* FlashViewController.swift in Sources */,
+				CBFF9B3B1D6B1F7300975E9F /* GeneralModel.swift in Sources */,
 				CBA486791D6361FF00DF2147 /* IncoherentBabbling.md in Sources */,
 				CB80343E1D49A0F200CBBC79 /* AppDelegate.swift in Sources */,
+				CBFF9B3D1D6B2A5F00975E9F /* PreferenceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

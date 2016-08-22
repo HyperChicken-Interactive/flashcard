@@ -8,30 +8,53 @@
 
 import UIKit
 
-protocol FullyColored {
-    var backgroundColor: UIColor { get }
-        // The most explanitory, the color for the background of the app.
-    var flashcardColor: UIColor { get }
-        //Color of flashcards
+struct ColorScheme {
+    let backgroundColor: UIColor
+    // The most explanitory, the color for the background of the app.
     
-    var boxColor: UIColor { get }
-        // Color for label boxes or button boxes.
+    let flashcardColor: UIColor
+    //Color of flashcards.
     
-    var textColor: UIColor { get }
-        // Color for default label text.
+    let boxColor: UIColor
+    // Color for label boxes or button boxes.
     
-    var highlightColor: UIColor { get }
-        // Highlight for buttons and not label items
+    let textColor: UIColor
+    // Color for default label text.
     
-    var headerColor: UIColor { get }
-        // Highlight for labels like headers.
+    let highlightColor: UIColor
+    // Highlight for buttons and not label items.
+    
+    let headerColor: UIColor
+    // Highlight for labels like headers.
+    
+    
+    init(backgroundColor bc: UIColor, flashcardColor fc: UIColor, boxColor bx: UIColor, textColor tc: UIColor, highlightColor hc: UIColor, headerColor hd: UIColor) {
+        self.backgroundColor = bc
+        self.flashcardColor = fc
+        self.boxColor = bx
+        self.textColor = tc
+        self.highlightColor = hc
+        self.headerColor = hd
+    }
 }
 
-struct SolarizedDark: FullyColored {
-    let backgroundColor: UIColor = UIColor(red: 0.0, green: 43.0, blue: 54.0, alpha: 1.0)
-    let flashcardColor: UIColor = UIColor(red: 253.0, green: 246.0, blue: 227.0, alpha: 1.0)
-    let boxColor: UIColor = UIColor(red: 7.0, green: 54.0, blue: 66.0, alpha: 1.0)
-    let textColor: UIColor = UIColor(red: 147.0, green: 161.0, blue: 161.0, alpha: 1.0)
-    let highlightColor: UIColor = UIColor(red: 220.0, green: 50.0, blue: 47.0, alpha: 1.0)
-    let headerColor: UIColor = UIColor(red: 38.0, green: 139.0, blue: 210.0, alpha: 1.0)
-}
+let SolarizedDark: ColorScheme = ColorScheme(
+    backgroundColor: UIColor(red: 0.0, green: 43.0, blue: 54.0, alpha: 1.0),
+    flashcardColor: UIColor(red: 238.0, green: 232.0, blue: 213.0, alpha: 1.0),
+    boxColor: UIColor(red: 7.0, green: 54.0, blue: 66.0, alpha: 1.0),
+    textColor: UIColor(red: 147.0, green: 161.0, blue: 161.0, alpha: 1.0),
+    highlightColor: UIColor(red: 220.0, green: 50.0, blue: 47.0, alpha: 1.0),
+    headerColor: UIColor(red: 38.0, green: 139.0, blue: 210.0, alpha: 1.0))
+
+let solarizedLight: ColorScheme = ColorScheme(
+    backgroundColor: UIColor(red: 253.0, green: 246.0, blue: 227.0, alpha: 1.0),
+    flashcardColor: UIColor(red: 7.0, green: 54.0, blue: 66.0, alpha: 1.0),
+    boxColor: UIColor(red: 238.0, green: 232.0, blue: 213.0, alpha: 1.0),
+    textColor: UIColor(red: 101.0, green: 123.0, blue: 131.0, alpha: 1.0),
+    highlightColor: UIColor(red: 220.0, green: 50.0, blue: 47.0, alpha: 1.0),
+    headerColor: UIColor(red: 38.0, green: 139.0, blue: 210.0, alpha: 1.0))
+
+
+
+
+

@@ -79,7 +79,7 @@ struct FlashySet {
             // Under no circumstances are you to change the above line. It pains me to say this but "It just works don't touch it"
             let randomNumber = Int(arc4random_uniform(UInt32(cardsInSet)))
             // Gen random number to be used in this braket level
-            // https://youtu.be/Z6EuqfanwAM?t=2m11s EDIT: Error was "cardsInSet+1" should have just been "cardsInSet"
+            // Error was "cardsInSet+1" should have just been "cardsInSet"
             
             if arrayOfAlreadyUsedCards.contains(randomNumber) != true {
                 shuffledSetOfFlashyCards.append(self.cardsetArray[randomNumber])
