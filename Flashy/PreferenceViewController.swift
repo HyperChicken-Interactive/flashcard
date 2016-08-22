@@ -19,6 +19,7 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
     @IBOutlet weak var ButtonOutlet: UIButton!
     @IBOutlet weak var FlashcardOutlet: UILabel!
     
+    
     @IBOutlet weak var ColorSelectView: UIPickerView!
     @IBOutlet weak var BackButtonOutlet: UIButton!
     ///////////////////////////////////////////////////////
@@ -42,6 +43,13 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print("Changed color scheme to \(colorSelectData[row])")
+        switch colorSelectData[row]{
+            case "Solarized Dark": currentlySelectedColorScheme = SolarizedDark
+            case "Solarized Light": currentlySelectedColorScheme = solarizedLight
+        default: print("ERROR, failed to change color scheme to \(colorSelectData[row])")
+            // Changes the color scheme to whatever is selected.
+        }
+        updateValuesInView()
     } // Preforms an action when an items is selected.
     
     func pickerView(pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
@@ -50,7 +58,24 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
         return myTitle
     } // Colors the text. Avenir won't work but fine.
     
-    
+    func updateValuesInView(){
+        HeaderOutlet.textColor = currentlySelectedColorScheme.highlightColor
+        HeaderOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
+        
+        TextOutlet.textColor = currentlySelectedColorScheme.textColor
+        TextOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
+        
+        ButtonOutlet.tintColor = currentlySelectedColorScheme.highlightColor
+        ButtonOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
+        
+        FlashcardOutlet.textColor = currentlySelectedColorScheme.textColor
+        FlashcardOutlet.backgroundColor = currentlySelectedColorScheme.flashcardColor
+        
+        BackButtonOutlet.tintColor = currentlySelectedColorScheme.highlightColor
+        BackButtonOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
+        
+        view.backgroundColor = currentlySelectedColorScheme.backgroundColor
+    } // Updates all of the colors in the view. Pretty damn swanky if I do say so myself.
     
     //////////////////////////
     // The viewDidLoad func //
@@ -60,14 +85,14 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
         // Do any additional setup after loading the view, typically from a nib.
         ColorSelectView.dataSource = self
         ColorSelectView.delegate = self
+        updateValuesInView()
     }
     
     /////////////////////////////////////////////////
     // Get your brand new IBAction functions here! //
     /////////////////////////////////////////////////
-    @IBAction func ButtonPress() {
-        
-    }
+    
+    // But nobody came.
     
     
 }

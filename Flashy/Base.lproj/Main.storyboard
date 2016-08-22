@@ -264,8 +264,11 @@
                         <outlet property="cardNumberLabel" destination="pba-vf-Q3E" id="5UQ-dT-i9H"/>
                         <outlet property="cardsetLabel" destination="fgk-AO-GGG" id="83F-XL-ioX"/>
                         <outlet property="flashyCardText" destination="iWc-yg-r6r" id="ziP-YV-JPy"/>
+                        <outlet property="flipOutlet" destination="To7-49-1Gy" id="mG0-ct-Sru"/>
                         <outlet property="nextFlashyOutlet" destination="BzQ-1g-6Yb" id="JWn-0P-YcZ"/>
                         <outlet property="previousFlashyOutlet" destination="bBq-WE-huX" id="dZ1-yW-Dfp"/>
+                        <outlet property="quitOutlet" destination="Flh-fG-UiM" id="ORV-hO-ju8"/>
+                        <outlet property="randomOutlet" destination="Gal-eX-XMq" id="isq-3G-jTh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -327,7 +330,7 @@
                                 <color key="tintColor" red="0.86274509799999999" green="0.1960784314" blue="0.1843137255" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Back"/>
                                 <connections>
-                                    <action selector="ButtonPress" destination="ufM-dO-z2Y" eventType="touchUpInside" id="nvE-0t-HgY"/>
+                                    <segue destination="xfv-tj-feU" kind="presentation" modalTransitionStyle="crossDissolve" id="MLE-09-Uoj"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dYU-F3-T5c">
@@ -375,7 +378,6 @@
                         <outlet property="FlashcardOutlet" destination="Wpo-gD-4mI" id="mV8-N4-N4g"/>
                         <outlet property="HeaderOutlet" destination="bQr-dw-Xkb" id="ZKh-vh-93p"/>
                         <outlet property="TextOutlet" destination="9US-w7-a4L" id="iYN-7P-84e"/>
-                        <segue destination="xfv-tj-feU" kind="presentation" modalTransitionStyle="crossDissolve" id="vWa-QK-qTA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8rG-4y-CXE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -436,6 +438,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="vWa-QK-qTA"/>
+        <segue reference="y2o-8s-FHQ"/>
     </inferredMetricsTieBreakers>
 </document>

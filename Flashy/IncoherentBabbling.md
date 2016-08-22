@@ -12,6 +12,7 @@ If you have braved the dangers of digging through this nearly unreadable file ne
 * Carbon colorset: Background #101010.
 * Generate SolarLight colorset. See Ethan's bit.
 * **Add timestamps to the print log.**
+* Fix bug where both buttons can dissapeer.
 
 ---
 
