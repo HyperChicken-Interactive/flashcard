@@ -12,6 +12,7 @@
 		CB8034431D49A0F200CBBC79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8034411D49A0F200CBBC79 /* Main.storyboard */; };
 		CB8034451D49A0F200CBBC79 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8034441D49A0F200CBBC79 /* Assets.xcassets */; };
 		CB8034481D49A0F200CBBC79 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8034461D49A0F200CBBC79 /* LaunchScreen.storyboard */; };
+		CB876EC81D6C6A2700C31E39 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB876EC71D6C6A2700C31E39 /* EditorViewController.swift */; };
 		CB93F26D1D5907BB003A4122 /* GUIColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93F26C1D5907BB003A4122 /* GUIColorModel.swift */; };
 		CBA486791D6361FF00DF2147 /* IncoherentBabbling.md in Sources */ = {isa = PBXBuildFile; fileRef = CBA486781D6361FF00DF2147 /* IncoherentBabbling.md */; };
 		CBBD352B1D4FFFDF001F9F16 /* FlashcardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBD352A1D4FFFDF001F9F16 /* FlashcardModel.swift */; };
@@ -29,6 +30,7 @@
 		CB8034441D49A0F200CBBC79 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB8034471D49A0F200CBBC79 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB8034491D49A0F200CBBC79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB876EC71D6C6A2700C31E39 /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		CB93F26C1D5907BB003A4122 /* GUIColorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GUIColorModel.swift; sourceTree = "<group>"; };
 		CBA486781D6361FF00DF2147 /* IncoherentBabbling.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = IncoherentBabbling.md; sourceTree = "<group>"; };
 		CBBD352A1D4FFFDF001F9F16 /* FlashcardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashcardModel.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				CB80343F1D49A0F200CBBC79 /* FlashViewController.swift */,
 				CBFF9B381D6B1EF300975E9F /* MenuViewController.swift */,
 				CBFF9B3C1D6B2A5F00975E9F /* PreferenceViewController.swift */,
+				CB876EC71D6C6A2700C31E39 /* EditorViewController.swift */,
 				CB8034411D49A0F200CBBC79 /* Main.storyboard */,
 				CB8034441D49A0F200CBBC79 /* Assets.xcassets */,
 				CBFF9B3A1D6B1F7300975E9F /* GeneralModel.swift */,
@@ -157,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB93F26D1D5907BB003A4122 /* GUIColorModel.swift in Sources */,
+				CB876EC81D6C6A2700C31E39 /* EditorViewController.swift in Sources */,
 				CBFF9B391D6B1EF300975E9F /* MenuViewController.swift in Sources */,
 				CBBD352B1D4FFFDF001F9F16 /* FlashcardModel.swift in Sources */,
 				CB8034401D49A0F200CBBC79 /* FlashViewController.swift in Sources */,
