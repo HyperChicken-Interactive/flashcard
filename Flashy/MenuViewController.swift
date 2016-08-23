@@ -43,6 +43,13 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
             flashOutlet.hidden = false
             editOutlet.hidden = false
         }
+        
+        if currentlySelectedFlashyCardset.cardsetArray.count == 0 {
+            flashOutlet.hidden = true
+        } else {
+            flashOutlet.hidden = false
+        }
+        
         // Coloring the everything
         welcomeOutlet.textColor = currentlySelectedColorScheme.headerColor
         welcomeOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
@@ -64,6 +71,13 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         
         view.backgroundColor = currentlySelectedColorScheme.backgroundColor
         cardsetPickerOutlet.tintColor = currentlySelectedColorScheme.textColor
+        
+        if let title = self.title {
+            print("Updated values for \(title)")
+        } else {
+            print("Updated values for view with nil title (name it!)")
+        } // Prints that is updated values for debugging.
+
         
     }
     

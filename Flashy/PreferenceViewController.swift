@@ -75,6 +75,12 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
         BackButtonOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
         
         view.backgroundColor = currentlySelectedColorScheme.backgroundColor
+        
+        if let title = self.title {
+            print("Updated values for \(title)")
+        } else {
+            print("Updated values for view with nil title (name it!)")
+        } // Prints that is updated values for debugging.
     } // Updates all of the colors in the view. Pretty damn swanky if I do say so myself.
     
     //////////////////////////

@@ -39,13 +39,13 @@ class FlashViewController: UIViewController {
     
     func updateValuesInView(){
         // This function updates all of the values in the view, like making sure the buttons are hidden if they need to be or the text is proper
-        if currentlySelectedFlashyCard == (currentlySelectedFlashyCardset.cardsInSet-1) {
+        if currentlySelectedFlashyCardset.currentlySelectedFlashyCard == (currentlySelectedFlashyCardset.cardsInSet-1) {
             nextFlashyOutlet.hidden = true
             previousFlashyOutlet.hidden = false
-        } else if currentlySelectedFlashyCard == 0 {
+        } else if currentlySelectedFlashyCardset.currentlySelectedFlashyCard == 0 {
             previousFlashyOutlet.hidden = true
             nextFlashyOutlet.hidden = false
-        } else if currentlySelectedFlashyCard == (currentlySelectedFlashyCardset.cardsInSet-1) && currentlySelectedFlashyCard == 0 {
+        } else if currentlySelectedFlashyCardset.currentlySelectedFlashyCard == (currentlySelectedFlashyCardset.cardsInSet-1) && currentlySelectedFlashyCardset.currentlySelectedFlashyCard == 0 {
             nextFlashyOutlet.hidden = true
             previousFlashyOutlet.hidden = true
         } else {
@@ -54,7 +54,7 @@ class FlashViewController: UIViewController {
         }
         // Makes the next or previous buttons hidden if the currentlySelectedFlashyCard is at the highest index value or the lowest index value of currentlySelectedFlashyCardset.
         
-        cardNumberLabel.text = "Card \(currentlySelectedFlashyCard+1)/\(currentlySelectedFlashyCardset.cardsInSet)"
+        cardNumberLabel.text = "Card \(currentlySelectedFlashyCardset.currentlySelectedFlashyCard+1)/\(currentlySelectedFlashyCardset.cardsInSet)"
         if let cardsetName = currentlySelectedFlashyCardset.name {
             cardsetLabel.text = cardsetName
         } else {
@@ -62,7 +62,7 @@ class FlashViewController: UIViewController {
         }
         // Changes the cardsetLabel to the name of the cardset. If that fails, then it changes the label to say "You really should name this set!"
         
-        flashyCardText.text = currentlySelectedFlashyCardset.cardsContained[currentlySelectedFlashyCard].currentlySelectedSide
+        flashyCardText.text = currentlySelectedFlashyCardset.cardsContained[currentlySelectedFlashyCardset.currentlySelectedFlashyCard].currentlySelectedSide
         
         // Now to do massive updates on the color scheme!
         cardsetLabel.textColor = currentlySelectedColorScheme.headerColor
@@ -92,10 +92,13 @@ class FlashViewController: UIViewController {
         
         view.backgroundColor = currentlySelectedColorScheme.backgroundColor
         
+        if let title = self.title {
+            print("Updated values for \(title)")
+        } else {
+            print("Updated values for view with nil title (name it!)")
+        } // Prints that is updated values for debugging.
+
     }
-    
-    
-    var currentlySelectedFlashyCard = 0
     
     ///////////////////
     // viewDidLoad() //
@@ -105,16 +108,10 @@ class FlashViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        currentlySelectedFlashyCardset.generateNewCard(sideOneOfCard: "This is card 1, side 1", sideTwoOfCard: "This is card 1, side 2")
-        currentlySelectedFlashyCardset.generateNewCard(sideOneOfCard: "This is card 2, side 1", sideTwoOfCard: "This is card 2, side 2")
-        currentlySelectedFlashyCardset.generateNewCard(sideOneOfCard: "This is card 3, side 1", sideTwoOfCard: "This is card 3, side 2")
-        
         currentlySelectedFlashyCardset.cardsContained = currentlySelectedFlashyCardset.cardsetArray
         // This is shit code and I know it, will be rectified along with other, simmilar problems in v4.0-alpha.
         
         print("FlashyCard operation centre view loaded")
-        print("Generated 3 cards for default set.")
-        
         updateValuesInView()
     }
     
@@ -132,7 +129,7 @@ class FlashViewController: UIViewController {
         print("Random button pressed")
         currentlySelectedFlashyCardset.cardsContained = currentlySelectedFlashyCardset.randomizeCardSets()
         // Gens a new cardset from .randomizeCardSets()
-        currentlySelectedFlashyCard = 0
+        currentlySelectedFlashyCardset.currentlySelectedFlashyCard = 0
         // Sets the selected card to 0
         updateValuesInView()
         // Updates values and frames.
@@ -141,7 +138,7 @@ class FlashViewController: UIViewController {
     @IBAction func flipFlashyButton() {
         // The method relating to the "flip" button.
         print("Flipped Card!")
-        currentlySelectedFlashyCardset.cardsContained[currentlySelectedFlashyCard].flipCard()
+        currentlySelectedFlashyCardset.cardsContained[currentlySelectedFlashyCardset.currentlySelectedFlashyCard].flipCard()
         // When pressed, this button will preform the flipCard() method on the currently selected card along with printing that this action occured to the log.
         updateValuesInView()
     }
@@ -149,14 +146,14 @@ class FlashViewController: UIViewController {
     @IBAction func nextFlashyButton() {
         // The method relating to the "next" button. See nextFlashyOutlet for the outlet.
         print("Next button pressed")
-        currentlySelectedFlashyCard += 1
+        currentlySelectedFlashyCardset.currentlySelectedFlashyCard += 1
         updateValuesInView()
     }
     
     @IBAction func previousFlashyButton() {
         // The method relating to the "previous" button. See previousFlashyOutlet for the outlet.
         print("Previous button pressed")
-        currentlySelectedFlashyCard -= 1
+        currentlySelectedFlashyCardset.currentlySelectedFlashyCard -= 1
         updateValuesInView()
     }
 }

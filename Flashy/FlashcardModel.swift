@@ -40,6 +40,8 @@ class FlashySet {
     
     let isSuper: Bool
     
+    var currentlySelectedFlashyCard = 0
+    
     var cardsetArray: [FlashyCard]
     // cardsetArray is an array of FlashyCard custom data type. See lines 11-32.
     
@@ -99,6 +101,7 @@ class Set02: FlashySet{}
 class Set03: FlashySet{}
 class Set04: FlashySet{}
 class Set05: FlashySet{}
+class EditSet: FlashySet{}
 // Creating child classes for the actual sets.
 
 var flashySuper: FlashySet = FlashySet(nameOfFlashcardSet: nil, shortNameOfSet: nil, isSuper: true)
@@ -109,7 +112,7 @@ var set03: FlashySet = Set03(nameOfFlashcardSet: "Flashy Set Example #3", shortN
 var set04: FlashySet = Set04(nameOfFlashcardSet: "Flashy Set Example #4", shortNameOfSet: "Example 4", isSuper: false)
 var set05: FlashySet = Set05(nameOfFlashcardSet: "Flashy Set Example #5", shortNameOfSet: "Example 5", isSuper: false)
 
-
+var editSet: FlashySet = EditSet(nameOfFlashcardSet: nil, shortNameOfSet: nil, isSuper: false)
 
 
 
