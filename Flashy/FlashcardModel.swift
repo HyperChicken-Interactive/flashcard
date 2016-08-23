@@ -36,9 +36,9 @@ class FlashySet {
     // You did handle the optional asshat.
     
     var shortName: String = "Blank"
-    // Short name can be used on the button, which doesn't wrap for some unholy reason. I know, It's shitty "magic" code but fuck off this is my first big app. It will be fixed in the beta or full.
+    // Short name to be used on the picker.
     
-    //TODO: Fix shortName and button.
+    let isSuper: Bool
     
     var cardsetArray: [FlashyCard]
     // cardsetArray is an array of FlashyCard custom data type. See lines 11-32.
@@ -50,7 +50,7 @@ class FlashySet {
         return self.cardsetArray.count
     } // Number of cards in set for the Next and Prev buttons.
     
-    init(nameOfFlashcardSet n: String?, shortNameOfSet s: String?){
+    init(nameOfFlashcardSet n: String?, shortNameOfSet s: String?, isSuper su: Bool){
         if let name = n {
             self.name = name
         }
@@ -59,7 +59,7 @@ class FlashySet {
         }
         cardsetArray = []
         cardsContained = cardsetArray
-        
+        self.isSuper = su
     }
     
     func generateNewCard(sideOneOfCard s1: String, sideTwoOfCard s2: String) {
@@ -101,13 +101,13 @@ class Set04: FlashySet{}
 class Set05: FlashySet{}
 // Creating child classes for the actual sets.
 
-var flashySuper: FlashySet = FlashySet(nameOfFlashcardSet: nil, shortNameOfSet: nil)
+var flashySuper: FlashySet = FlashySet(nameOfFlashcardSet: nil, shortNameOfSet: nil, isSuper: true)
 
-var set01: FlashySet = Set01(nameOfFlashcardSet: "Flashy Set Example #1", shortNameOfSet: "Example 1")
-var set02: FlashySet = Set02(nameOfFlashcardSet: "Flashy Set Example #2", shortNameOfSet: "Example 2")
-var set03: FlashySet = Set03(nameOfFlashcardSet: "Flashy Set Example #3", shortNameOfSet: "Example 3")
-var set04: FlashySet = Set04(nameOfFlashcardSet: "Flashy Set Example #4", shortNameOfSet: "Example 4")
-var set05: FlashySet = Set05(nameOfFlashcardSet: "Flashy Set Example #5", shortNameOfSet: "Example 5")
+var set01: FlashySet = Set01(nameOfFlashcardSet: "Flashy Set Example #1", shortNameOfSet: "Example 1", isSuper: false)
+var set02: FlashySet = Set02(nameOfFlashcardSet: "Flashy Set Example #2", shortNameOfSet: "Example 2", isSuper: false)
+var set03: FlashySet = Set03(nameOfFlashcardSet: "Flashy Set Example #3", shortNameOfSet: "Example 3", isSuper: false)
+var set04: FlashySet = Set04(nameOfFlashcardSet: "Flashy Set Example #4", shortNameOfSet: "Example 4", isSuper: false)
+var set05: FlashySet = Set05(nameOfFlashcardSet: "Flashy Set Example #5", shortNameOfSet: "Example 5", isSuper: false)
 
 
 

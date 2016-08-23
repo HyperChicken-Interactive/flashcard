@@ -68,16 +68,6 @@
                                     <segue destination="BYZ-38-t0r" kind="presentation" modalTransitionStyle="crossDissolve" id="Qgi-eQ-aTH"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vsh-va-eff">
-                                <rect key="frame" x="40" y="231" width="520" height="40"/>
-                                <color key="backgroundColor" red="0.027450980390000001" green="0.21176470589999999" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="TN2-1L-izv"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="25"/>
-                                <color key="tintColor" red="0.57647058819999997" green="0.63137254899999995" blue="0.63137254899999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="An introduction to Swift 2.0"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8O-HZ-0ZK">
                                 <rect key="frame" x="40" y="540" width="100" height="40"/>
                                 <color key="backgroundColor" red="0.027450980390000001" green="0.21176470589999999" blue="0.25882352939999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -92,6 +82,9 @@
                                     <segue destination="ufM-dO-z2Y" kind="presentation" modalTransitionStyle="crossDissolve" id="Bhi-ry-PiM"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nat-aj-xXL">
+                                <rect key="frame" x="30" y="221" width="540" height="309"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.16862745098039217" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="tintColor" red="0.86274509803921573" green="0.19607843137254902" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
@@ -101,23 +94,33 @@
                             <constraint firstItem="4z4-fG-7vF" firstAttribute="top" secondItem="Ded-9q-kV5" secondAttribute="bottom" constant="10" id="CHF-qC-EGE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hZg-LL-fR6" secondAttribute="trailing" constant="20" id="D83-aB-G60"/>
                             <constraint firstItem="aOf-DO-aN0" firstAttribute="leading" secondItem="9KL-HX-Yfk" secondAttribute="leadingMargin" constant="20" id="DrE-Ol-I9f"/>
-                            <constraint firstItem="Vsh-va-eff" firstAttribute="leading" secondItem="9KL-HX-Yfk" secondAttribute="leadingMargin" constant="20" id="JzT-32-zZH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nat-aj-xXL" secondAttribute="trailing" constant="10" id="JSX-g2-uhn"/>
                             <constraint firstItem="Ded-9q-kV5" firstAttribute="top" secondItem="hZg-LL-fR6" secondAttribute="bottom" constant="20" id="N5h-IU-aRI"/>
-                            <constraint firstItem="Vsh-va-eff" firstAttribute="top" secondItem="PAY-pf-peO" secondAttribute="bottom" constant="20" id="OHs-Xt-i3h"/>
                             <constraint firstItem="hZg-LL-fR6" firstAttribute="top" secondItem="ZEb-ZM-sbB" secondAttribute="bottom" constant="20" id="S2M-yX-4c5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="PAY-pf-peO" secondAttribute="trailing" constant="20" id="TNd-Py-feA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Vsh-va-eff" secondAttribute="trailing" constant="20" id="gMs-fi-wFR"/>
+                            <constraint firstItem="u8O-HZ-0ZK" firstAttribute="top" secondItem="nat-aj-xXL" secondAttribute="bottom" constant="10" id="aBS-do-zAN"/>
                             <constraint firstItem="u8O-HZ-0ZK" firstAttribute="leading" secondItem="9KL-HX-Yfk" secondAttribute="leadingMargin" constant="20" id="hbB-DK-TET"/>
+                            <constraint firstItem="nat-aj-xXL" firstAttribute="leading" secondItem="9KL-HX-Yfk" secondAttribute="leadingMargin" constant="10" id="mc0-ol-eqX"/>
                             <constraint firstItem="CcA-Zg-alb" firstAttribute="top" secondItem="u8O-HZ-0ZK" secondAttribute="bottom" constant="20" id="mkB-cV-90A"/>
                             <constraint firstItem="Ded-9q-kV5" firstAttribute="leading" secondItem="9KL-HX-Yfk" secondAttribute="leadingMargin" constant="20" id="nu8-FB-iDx"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Ded-9q-kV5" secondAttribute="trailing" constant="20" id="olG-XG-D4z"/>
                             <constraint firstItem="PAY-pf-peO" firstAttribute="leading" secondItem="4z4-fG-7vF" secondAttribute="trailing" constant="10" id="pHZ-F1-Mtn"/>
                             <constraint firstItem="hZg-LL-fR6" firstAttribute="leading" secondItem="9KL-HX-Yfk" secondAttribute="leadingMargin" constant="20" id="pmS-m8-Hwa"/>
                             <constraint firstItem="PAY-pf-peO" firstAttribute="top" secondItem="Ded-9q-kV5" secondAttribute="bottom" constant="10" id="sRf-pR-26o"/>
+                            <constraint firstItem="nat-aj-xXL" firstAttribute="top" secondItem="PAY-pf-peO" secondAttribute="bottom" constant="10" id="sw1-g5-Wmd"/>
                             <constraint firstItem="4z4-fG-7vF" firstAttribute="leading" secondItem="aOf-DO-aN0" secondAttribute="trailing" constant="10" id="tXM-QS-myk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="PwF-GW-Zwc"/>
+                    <connections>
+                        <outlet property="cardsetNameOutlet" destination="Ded-9q-kV5" id="WQO-fY-r54"/>
+                        <outlet property="cardsetPickerOutlet" destination="nat-aj-xXL" id="GY1-N2-ULx"/>
+                        <outlet property="editOutlet" destination="aOf-DO-aN0" id="XDY-OJ-ROh"/>
+                        <outlet property="flashOutlet" destination="PAY-pf-peO" id="dmo-XE-dTa"/>
+                        <outlet property="numberOfCardsOutlet" destination="4z4-fG-7vF" id="BHK-UJ-g6P"/>
+                        <outlet property="settingsOutlet" destination="u8O-HZ-0ZK" id="HUp-Yt-9EO"/>
+                        <outlet property="welcomeOutlet" destination="hZg-LL-fR6" id="xrw-6U-kdo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WOB-yA-ktd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -438,6 +441,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="y2o-8s-FHQ"/>
+        <segue reference="MLE-09-Uoj"/>
     </inferredMetricsTieBreakers>
 </document>

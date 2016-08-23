@@ -8,7 +8,7 @@
 
 import Foundation
 
-var currentlySelectedFlashyCardset: FlashySet = set01
+var currentlySelectedFlashyCardset: FlashySet = flashySuper
 // The currently selected card, Right now it will be static but in ver 1.0 or beta it will be a dynamic function probably.
 
 var currentlySelectedColorScheme: ColorScheme = SolarizedDark

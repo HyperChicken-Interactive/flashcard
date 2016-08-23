@@ -25,7 +25,7 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
     ///////////////////////////////////////////////////////
     // Fresh home-made functions and variables! By hand! //
     ///////////////////////////////////////////////////////
-    let colorSelectData = ["Solarized Dark", "Solarized Light"]
+    let colorSelectData = ["Select one", "Solarized Dark", "Solarized Light"]
     // The data for the picker.
     
     // Data Sources
