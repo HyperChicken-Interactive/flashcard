@@ -80,7 +80,8 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
             print("Updated values for \(title)")
         } else {
             print("Updated values for view with nil title (name it!)")
-        } // Prints that is updated values for debugging.
+        } // Print updated values for debugging.
+        
     } // Updates all of the colors in the view. Pretty damn swanky if I do say so myself.
     
     //////////////////////////
