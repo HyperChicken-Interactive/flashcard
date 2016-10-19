@@ -16,6 +16,7 @@
 		CB93F26D1D5907BB003A4122 /* GUIColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93F26C1D5907BB003A4122 /* GUIColorModel.swift */; };
 		CBA486791D6361FF00DF2147 /* IncoherentBabbling.md in Sources */ = {isa = PBXBuildFile; fileRef = CBA486781D6361FF00DF2147 /* IncoherentBabbling.md */; };
 		CBBD352B1D4FFFDF001F9F16 /* FlashcardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBD352A1D4FFFDF001F9F16 /* FlashcardModel.swift */; };
+		CBBFA8591D7EEC560070CDB5 /* SaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBFA8581D7EEC560070CDB5 /* SaveModel.swift */; };
 		CBFF9B391D6B1EF300975E9F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFF9B381D6B1EF300975E9F /* MenuViewController.swift */; };
 		CBFF9B3B1D6B1F7300975E9F /* GeneralModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFF9B3A1D6B1F7300975E9F /* GeneralModel.swift */; };
 		CBFF9B3D1D6B2A5F00975E9F /* PreferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFF9B3C1D6B2A5F00975E9F /* PreferenceViewController.swift */; };
@@ -34,6 +35,7 @@
 		CB93F26C1D5907BB003A4122 /* GUIColorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GUIColorModel.swift; sourceTree = "<group>"; };
 		CBA486781D6361FF00DF2147 /* IncoherentBabbling.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = IncoherentBabbling.md; sourceTree = "<group>"; };
 		CBBD352A1D4FFFDF001F9F16 /* FlashcardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashcardModel.swift; sourceTree = "<group>"; };
+		CBBFA8581D7EEC560070CDB5 /* SaveModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveModel.swift; sourceTree = "<group>"; };
 		CBFF9B381D6B1EF300975E9F /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		CBFF9B3A1D6B1F7300975E9F /* GeneralModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralModel.swift; sourceTree = "<group>"; };
 		CBFF9B3C1D6B2A5F00975E9F /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 				CB876EC71D6C6A2700C31E39 /* EditorViewController.swift */,
 				CB8034411D49A0F200CBBC79 /* Main.storyboard */,
 				CB8034441D49A0F200CBBC79 /* Assets.xcassets */,
+				CBBFA8581D7EEC560070CDB5 /* SaveModel.swift */,
 				CBFF9B3A1D6B1F7300975E9F /* GeneralModel.swift */,
 				CBBD352A1D4FFFDF001F9F16 /* FlashcardModel.swift */,
 				CB93F26C1D5907BB003A4122 /* GUIColorModel.swift */,
@@ -120,6 +123,7 @@
 					CB8034391D49A0F200CBBC79 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = 7MHSVY828A;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -163,6 +167,7 @@
 				CB876EC81D6C6A2700C31E39 /* EditorViewController.swift in Sources */,
 				CBFF9B391D6B1EF300975E9F /* MenuViewController.swift in Sources */,
 				CBBD352B1D4FFFDF001F9F16 /* FlashcardModel.swift in Sources */,
+				CBBFA8591D7EEC560070CDB5 /* SaveModel.swift in Sources */,
 				CB8034401D49A0F200CBBC79 /* FlashViewController.swift in Sources */,
 				CBFF9B3B1D6B1F7300975E9F /* GeneralModel.swift in Sources */,
 				CBA486791D6361FF00DF2147 /* IncoherentBabbling.md in Sources */,
@@ -284,6 +289,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.hyperchicken.Flashy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -295,6 +301,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = co.hyperchicken.Flashy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

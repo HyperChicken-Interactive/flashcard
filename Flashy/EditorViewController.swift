@@ -50,18 +50,51 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         // Updating text and visability //
         //////////////////////////////////
         
-        /*
-         
-         TODO:
-         - Hide next, previous and done buttons if it is the first card being made (one time only)
-         - Hide next button if the selected card = the amount of items in index (starts at one)
-         - Hide previous button if selected card is 0.
-         - Hide the done button if there is no short name, or a new card has one field blank.
-         
-        */
+        editSet.shortName = cardsetShortOutlet.text!
+        editSet.name = cardsetNameOutlet.text!
         
+        // The following if statment handles the next and previous buttons as according to the currently selected card
         if editSet.cardsInSet == 0 /* Handle if unmade cardset */{
             
+            previousOutlet.isHidden = true
+            nextOutlet.isHidden = true
+        } else if editSet.cardsInSet == editSet.currentlySelectedFlashyCard /*If the currently selected card is out of range of the count*/ {
+            previousOutlet.isHidden = false
+            nextOutlet.isHidden = true
+        } else if editSet.currentlySelectedFlashyCard == 0 /*If the selected card is #0. If it's a new set, this will be ignored because the first option has been fufilled.*/ {
+            previousOutlet.isHidden = true
+            nextOutlet.isHidden = false
+        } else /*If no other clause has been met, show the outlets*/ {
+            previousOutlet.isHidden = false
+            nextOutlet.isHidden = false
+        }
+        
+        // The following if statment handles if the card's edits should be saved and if the next, previous, and done buttons should be visable as according to the text the fields contain.
+        if sideOneOutlet.text!.isEmpty == false && sideTwoOutlet.text!.isEmpty == false && editSet.currentlySelectedFlashyCard < editSet.cardsInSet {
+            
+            editSet.cardsetArray[editSet.currentlySelectedFlashyCard].sideOne = sideOneOutlet.text!
+            editSet.cardsetArray[editSet.currentlySelectedFlashyCard].sideTwo = sideTwoOutlet.text!
+            
+            print("Modified card #\(editSet.currentlySelectedFlashyCard)")
+            
+        } else if sideOneOutlet.text!.isEmpty == false && sideTwoOutlet.text!.isEmpty == false && editSet.currentlySelectedFlashyCard == editSet.cardsInSet {
+            editSet.generateNewCard(sideOneOfCard: sideOneOutlet.text!, sideTwoOfCard: sideTwoOutlet.text!)
+            
+            print("Created new card for \"\(editSet.name)\".")
+        }
+        
+        if editSet.shortName.isEmpty == true {
+            doneOutlet.isHidden = true
+        } else {
+            doneOutlet.isHidden = false
+        }
+        
+        //
+        
+        // The following if statment handles pre-made card text to be put in the UITextFields.
+        if editSet.cardsInSet > 0 && editSet.currentlySelectedFlashyCard < editSet.cardsInSet /*Makes sure that the card selected is not new and has already been made before but is just here for editing*/ {
+            sideOneOutlet.text = editSet.cardsetArray[editSet.currentlySelectedFlashyCard].sideOne
+            sideTwoOutlet.text = editSet.cardsetArray[editSet.currentlySelectedFlashyCard].sideTwo
         }
         
         cardNumberOutlet.text = "Card #\(editSet.currentlySelectedFlashyCard+1)"
@@ -71,21 +104,21 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         // Updating color scheme //
         ///////////////////////////
         
-        cardsetNameOutlet.attributedPlaceholder = NSAttributedString(string: "Name the cardset!",attributes: [NSForegroundColorAttributeName: currentlySelectedColorScheme.headerColor])
+        cardsetNameOutlet.attributedPlaceholder = NSAttributedString(string: "Cardset Name",attributes: [NSForegroundColorAttributeName: currentlySelectedColorScheme.headerColor])
         //
         cardsetNameOutlet.textColor = currentlySelectedColorScheme.headerColor
         cardsetNameOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
         // delt with the cardset name
         
-        cardsetShortOutlet.attributedPlaceholder = NSAttributedString(string: "Short name", attributes: [NSForegroundColorAttributeName: currentlySelectedColorScheme.highlightColor])
+        cardsetShortOutlet.attributedPlaceholder = NSAttributedString(string: "Enter shortname", attributes: [NSForegroundColorAttributeName: currentlySelectedColorScheme.highlightColor])
         cardsetShortOutlet.textColor = currentlySelectedColorScheme.highlightColor
         cardsetShortOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
         // Sets the shortname to whatever the currently selected set's sn is (non optional)
             
-        sideOneOutlet.attributedPlaceholder = NSAttributedString(string: "Enter side one of the card!", attributes: [NSForegroundColorAttributeName: currentlySelectedColorScheme.textColor])
+        sideOneOutlet.attributedPlaceholder = NSAttributedString(string: "Side 1", attributes: [NSForegroundColorAttributeName: currentlySelectedColorScheme.textColor])
         // Updating side one to say "Enter side one"
             
-        sideTwoOutlet.attributedPlaceholder = NSAttributedString(string: "Enter side two of the card!", attributes: [NSForegroundColorAttributeName: currentlySelectedColorScheme.textColor])
+        sideTwoOutlet.attributedPlaceholder = NSAttributedString(string: "Side 2", attributes: [NSForegroundColorAttributeName: currentlySelectedColorScheme.textColor])
         // see above
         
         // Set all placeholders.
@@ -131,6 +164,10 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         cardsetShortOutlet.delegate = self
         sideOneOutlet.delegate = self
         sideTwoOutlet.delegate = self
+        
+        // Set the shortname.
+        cardsetShortOutlet.text = editSet.shortName
+        
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
@@ -141,8 +178,9 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
     // Get your brand new IBAction functions here! (and the like) //
     ////////////////////////////////////////////////////////////////
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {   //delegate method
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
         self.view.endEditing(true)
+        updateValuesInView()
         updateValuesInView()
         return false
     }
@@ -151,6 +189,7 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
+        updateValuesInView()
         updateValuesInView()
     }
     
@@ -164,33 +203,41 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
      
     */
     @IBAction func doneAction() {
-        let alert = UIAlertController(title: "Hold on!", message: "Would you like to save and quit the flashcard set? This will override what is currently in \(currentlySelectedFlashyCardset.name!)", preferredStyle: UIAlertControllerStyle.Alert)
+        let alert = UIAlertController(title: "Hold on!", message: "Would you like to save and quit the flashcard set? This will override what is currently in \(currentlySelectedFlashyCardset.name!)", preferredStyle: UIAlertControllerStyle.alert)
             // Makes the body for an alert.
         
         // add the actions (buttons)
         // The "go" button
-        alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.Default, handler: { action in
+        alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.default, handler: { action in
             
             forceEquivilency(setToBeWritten: currentlySelectedFlashyCardset, setToBeRead: editSet)
-            self.performSegueWithIdentifier("editorToMainSegue", sender: nil)
+            self.performSegue(withIdentifier: "editorToMainSegue", sender: nil)
         }))
         
         // The cancel button
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
         
         // show the alert
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
        
     }
     
     @IBAction func previousAction() {
         editSet.currentlySelectedFlashyCard -= 1
+        
+        sideOneOutlet.text = ""
+        sideTwoOutlet.text = ""
+        
         print("Previous button pressed")
         updateValuesInView()
     }
     
     @IBAction func nextAction() {
         editSet.currentlySelectedFlashyCard += 1
+        
+        sideOneOutlet.text = ""
+        sideTwoOutlet.text = ""
+        
         print("Next button pressed")
         updateValuesInView()
     }

@@ -40,17 +40,17 @@ class FlashViewController: UIViewController {
     func updateValuesInView(){
         // This function updates all of the values in the view, like making sure the buttons are hidden if they need to be or the text is proper
         if currentlySelectedFlashyCardset.currentlySelectedFlashyCard == (currentlySelectedFlashyCardset.cardsInSet-1) {
-            nextFlashyOutlet.hidden = true
-            previousFlashyOutlet.hidden = false
+            nextFlashyOutlet.isHidden = true
+            previousFlashyOutlet.isHidden = false
         } else if currentlySelectedFlashyCardset.currentlySelectedFlashyCard == 0 {
-            previousFlashyOutlet.hidden = true
-            nextFlashyOutlet.hidden = false
+            previousFlashyOutlet.isHidden = true
+            nextFlashyOutlet.isHidden = false
         } else if currentlySelectedFlashyCardset.currentlySelectedFlashyCard == (currentlySelectedFlashyCardset.cardsInSet-1) && currentlySelectedFlashyCardset.currentlySelectedFlashyCard == 0 {
-            nextFlashyOutlet.hidden = true
-            previousFlashyOutlet.hidden = true
+            nextFlashyOutlet.isHidden = true
+            previousFlashyOutlet.isHidden = true
         } else {
-            nextFlashyOutlet.hidden = false
-            previousFlashyOutlet.hidden = false
+            nextFlashyOutlet.isHidden = false
+            previousFlashyOutlet.isHidden = false
         }
         // Makes the next or previous buttons hidden if the currentlySelectedFlashyCard is at the highest index value or the lowest index value of currentlySelectedFlashyCardset.
         

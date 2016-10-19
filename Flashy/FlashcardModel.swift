@@ -42,11 +42,11 @@ class FlashySet {
     
     var currentlySelectedFlashyCard = 0
     
+    /// cardsetArray is an array of FlashyCard custom data type. It is the sequential list of cards in the set.
     var cardsetArray: [FlashyCard]
-    // cardsetArray is an array of FlashyCard custom data type. See lines 11-32.
     
+    /// Cards contained is an array of FlashyCard custom data type. It has been modified to be more of a pointer to either a randomized cardset or the original sequential one of cardsetArray.
     var cardsContained: [FlashyCard]
-    // Cards contained is an array of FlashyCard custom data type. It has been modified to be more of a pointer to either a randomized cardset or the original sequential one of cardsetArray.
     
     var cardsInSet: Int{
         return self.cardsetArray.count
