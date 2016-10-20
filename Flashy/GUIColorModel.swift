@@ -40,7 +40,7 @@ struct ColorScheme {
 
 let SolarizedDark: ColorScheme = ColorScheme(
     backgroundColor: UIColor(red: 0.0/255.0, green: 43.0/255.0, blue: 54.0/255.0, alpha: 1.0),
-    flashcardColor: UIColor(red: 238.0/255.0, green: 232.0/255.0, blue: 213.0/255.0, alpha: 1.0),
+    flashcardColor: UIColor(red: 7.0/255.0, green: 54.0/255.0, blue: 66.0/255.0, alpha: 1.0),
     boxColor: UIColor(red: 7.0/255.0, green: 54.0/255.0, blue: 66.0/255.0, alpha: 1.0),
     textColor: UIColor(red: 147.0/255.0, green: 161.0/255.0, blue: 161.0/255.0, alpha: 1.0),
     highlightColor: UIColor(red: 220.0/255.0, green: 50.0/255.0, blue: 47.0/255.0, alpha: 1.0),
@@ -48,7 +48,7 @@ let SolarizedDark: ColorScheme = ColorScheme(
 
 let solarizedLight: ColorScheme = ColorScheme(
     backgroundColor: UIColor(red: 253.0/255.0, green: 246.0/255.0, blue: 227.0/255.0, alpha: 1.0),
-    flashcardColor: UIColor(red: 7.0/255.0, green: 54.0/255.0, blue: 66.0/255.0, alpha: 1.0),
+    flashcardColor: UIColor(red: 238.0/255.0, green: 232.0/255.0, blue: 213.0/255.0, alpha: 1.0),
     boxColor: UIColor(red: 238.0/255.0, green: 232.0/255.0, blue: 213.0/255.0, alpha: 1.0),
     textColor: UIColor(red: 101.0/255.0, green: 123.0/255.0, blue: 131.0/255.0, alpha: 1.0),
     highlightColor: UIColor(red: 220.0/255.0, green: 50.0/255.0, blue: 47.0/255.0, alpha: 1.0),
