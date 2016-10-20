@@ -20,6 +20,7 @@ With flashy, you will be able to:
    - Change the color scheme
       - Create your own color scheme
    - Change fonts
+   
 ---
 ## Backround goals
 
