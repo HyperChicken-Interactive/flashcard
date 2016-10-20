@@ -1,36 +1,42 @@
-# flashcards
-A Swift 3.0 Flashcards App for iOS, by [Whitman Huntley]() and [Donovan Keohane]().
+# Flashy
+
+A flashcard application for iOS in Swift 3.0
+
+---
+## Canary Branch
+The über development branch where new features are added then quickly removed.
 
 ---
 
 ## TL;DR
 
-Flashy is a flashcard app for iOS made in Swift 3.0. With it, you will be able to:
+With flashy, you will be able to:
+- Create cardsets on the device
+   - Text, images, audio, and video can be displayed on the cards
+   - A way of sharing cardsets with others.
+- View the sets
+   - Randomize the order in which their viewed
+- Customize the app as you please
+   - Change the color scheme
+      - Create your own color scheme
+   - Change fonts
+   
+---
+## Backround goals
 
-* Create your own flashcard sets.
-* Save those flashcard sets to your library.
-* View those sets of flashcards with only one hand on your iPhone or iPod Touch.
-* Customize the app's color scheme.
-* I will attempt to publish it to the Apple App Store.
+1. Keep updated with latest instance of Swift until end of development
+2. Make use of 3DTouch
+3. Document things. Like. Everything.
+4. Keep on top of bugs, I spent a whole day fixing bugs in Flashy Alpha 2.0 and I would rather that not be a common theme.
+5. Use good Swift techniques for efficent, legibale code.
+6. Have some degree of knowlege of what's in the project, learn from what is copied and pasted from StackOverflow.
 
 ---
+## Credits:
 
-## Technical goals
-
-I have made several technical goals to make sure that this app looks, feels, and acts professionally made such as:
-
-* Use of transitions and animations for swiping the cards, going to the next card, etc.
-* Save cards to the memory.
-* Be able to make the app work on all iOS devices (excluding the iPad series of course) regardless of size (the app looks the same on iPhone SE, and iPhone 6S+)
-* Possibly being able to point to a web address and yank a cardset from it.
-
----
-
-## Plans for the future
-
-1. Do the things above.
-2. Wow did I get to this step? uhh....
-3. `panic()`
+Programming:
+- [Whitman C Huntley](https://github.com/whitman-colm)
+- [Donovan Keohane](https://github.com/donovank)
 
 ---
 
