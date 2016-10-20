@@ -1,11 +1,11 @@
 # flashcards
-My Swift 2.0 Flashcards App in iOS for SkilStak® Pro Summer 2016 Semester.
+A Swift 3.0 Flashcards App for iOS, by [Whitman Huntley]() and [Donovan Keohane]().
 
 ---
 
 ## TL;DR
 
-Flashy is a flashcard app for iOS made in Swift 2.0. With it, you will be able to:
+Flashy is a flashcard app for iOS made in Swift 3.0. With it, you will be able to:
 
 * Create your own flashcard sets.
 * Save those flashcard sets to your library.
