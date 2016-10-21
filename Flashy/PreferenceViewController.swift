@@ -25,7 +25,7 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
     ///////////////////////////////////////////////////////
     // Fresh home-made functions and variables! By hand! //
     ///////////////////////////////////////////////////////
-    let colorSelectData = ["Select one", "Solarized Dark", "Solarized Light"]
+    let colorSelectData = ["Select one", "Solarized Dark", "Solarized Light", "Carbon"]
     // The data for the picker.
     
     // Data Sources
@@ -46,6 +46,7 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
         switch colorSelectData[row]{
             case "Solarized Dark": currentlySelectedColorScheme = SolarizedDark
             case "Solarized Light": currentlySelectedColorScheme = solarizedLight
+            case "Carbon":currentlySelectedColorScheme = carbonColors
         default: print("ERROR, failed to change color scheme to \(colorSelectData[row])")
             // Changes the color scheme to whatever is selected.
         }
