@@ -54,6 +54,13 @@ let solarizedLight: ColorScheme = ColorScheme(
     highlightColor: UIColor(red: 220.0/255.0, green: 50.0/255.0, blue: 47.0/255.0, alpha: 1.0),
     headerColor: UIColor(red: 38.0/255.0, green: 139.0/255.0, blue: 210.0/255.0, alpha: 1.0))
 
+let carbonColors: ColorScheme = ColorScheme(
+    backgroundColor: UIColor(red: 20.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 1.0),
+    flashcardColor: UIColor(red: 28.0/255.0, green: 28.0/255.0, blue: 28.0/255.0, alpha: 1.0),
+    boxColor: UIColor(red: 28.0/255.0, green: 28.0/255.0, blue: 28.0/255.0, alpha: 1.0),
+    textColor: UIColor(red: 194.0/255.0, green: 194.0/255.0, blue: 194.0/255.0, alpha: 1.0),
+    highlightColor: UIColor(red: 42.0/255.0, green: 161.0/255.0, blue: 152.0/255.0, alpha: 1.0),
+    headerColor: UIColor(red: 212.0/255.0, green: 157.0/255.0, blue: 221.0/255.0, alpha: 1.0))
 
 
 
