@@ -21,6 +21,7 @@ struct FlashyCard {
         case sideTwo:
             currentlySelectedSide = sideOne
         default:
+            print("welcome to the 4th dimention, i'll be your guide.")
             print("Tried to flip card. Failed?")
         }
     }
@@ -111,6 +112,8 @@ var set02: FlashySet = Set02(nameOfFlashcardSet: "Flashy Set Example #2", shortN
 var set03: FlashySet = Set03(nameOfFlashcardSet: "Flashy Set Example #3", shortNameOfSet: "Example 3", isSuper: false)
 var set04: FlashySet = Set04(nameOfFlashcardSet: "Flashy Set Example #4", shortNameOfSet: "Example 4", isSuper: false)
 var set05: FlashySet = Set05(nameOfFlashcardSet: "Flashy Set Example #5", shortNameOfSet: "Example 5", isSuper: false)
+
+let flashCards = [set01, set02, set03, set04, set05]
 
 var editSet: FlashySet = EditSet(nameOfFlashcardSet: nil, shortNameOfSet: nil, isSuper: false)
 
