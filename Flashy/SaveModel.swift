@@ -12,5 +12,5 @@ let file = "saveData.json"
 let flashCards = [set01, set02, set03, set04, set05] // Dynamically get a list of all flashcard sets, eventually.
 
 func saveCards() {
-    print("do i work?")
+    print("Initiated Save")
 }

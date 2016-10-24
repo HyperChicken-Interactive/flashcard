@@ -21,8 +21,10 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     @IBOutlet weak var settingsOutlet: UIButton!
     @IBOutlet weak var cardsetPickerOutlet: UIPickerView!
     
+    @IBOutlet weak var saveButton: UIButton!
     @IBAction func saved(_ sender: UIButton) {
-        saveCards()
+        saveButton.setTitle("Saved", for: UIControlState.normal) // Changes "Save" to "Saved" for fun.
+        saveCards() // SaveModel.swift
     }
     
     ///////////////////////////////////////////////////////

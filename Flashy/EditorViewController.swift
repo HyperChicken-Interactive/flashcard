@@ -39,10 +39,6 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
     /// an outlet for the "NEXT" button to control the color scheme and if it is hidden or not.
     @IBOutlet weak var nextOutlet: UIButton!
     
-    // an outlet for the "SAVE" button to save flashcards for later use.
-    
-    
-    
     
     ///////////////////////////////////////////////////////
     // Fresh home-made functions and variables! By hand! //
