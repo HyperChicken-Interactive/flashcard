@@ -113,8 +113,6 @@ var set03: FlashySet = Set03(nameOfFlashcardSet: "Flashy Set Example #3", shortN
 var set04: FlashySet = Set04(nameOfFlashcardSet: "Flashy Set Example #4", shortNameOfSet: "Example 4", isSuper: false)
 var set05: FlashySet = Set05(nameOfFlashcardSet: "Flashy Set Example #5", shortNameOfSet: "Example 5", isSuper: false)
 
-let flashCards = [set01, set02, set03, set04, set05]
-
 var editSet: FlashySet = EditSet(nameOfFlashcardSet: nil, shortNameOfSet: nil, isSuper: false)
 
 

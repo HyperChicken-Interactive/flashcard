@@ -19,8 +19,11 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     @IBOutlet weak var flashOutlet: UIButton!
     @IBOutlet weak var editOutlet: UIButton!
     @IBOutlet weak var settingsOutlet: UIButton!
-    
     @IBOutlet weak var cardsetPickerOutlet: UIPickerView!
+    
+    @IBAction func saved(_ sender: UIButton) {
+        saveCards()
+    }
     
     ///////////////////////////////////////////////////////
     // Fresh home-made functions and variables! By hand! //

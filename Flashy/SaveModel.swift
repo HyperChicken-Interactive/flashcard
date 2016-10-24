@@ -6,16 +6,11 @@
 //  Copyright © 2016 HyperChicken Interactive. All rights reserved.
 //
 
-// WIP By Donovan
-
 import Foundation
 
-let file = "savedFlashcards.json"
+let file = "saveData.json"
+let flashCards = [set01, set02, set03, set04, set05] // Dynamically get a list of all flashcard sets, eventually.
 
-class SaveModel {
-    func printData() {
-        print(flashCards[1].shortName)
-    }
+func saveCards() {
+    print("do i work?")
 }
-
-var flashcardData = SaveModel()
