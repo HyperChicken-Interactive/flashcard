@@ -20,6 +20,8 @@ With flashy, you will be able to:
    - Change the color scheme
       - Create your own color scheme
    - Change fonts
+- Save cardsets to local device storage
+  - Load from said saves.
    
 ---
 ## Backround goals
