@@ -24,7 +24,6 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     @IBOutlet weak var saveButton: UIButton!
     @IBAction func saved(_ sender: UIButton) {
         saveButton.setTitle("Saved", for: UIControlState.normal) // Changes "Save" to "Saved" for fun.
-        saveCards() // SaveModel.swift
     }
     
     ///////////////////////////////////////////////////////
@@ -41,7 +40,7 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         
         numberOfCardsOutlet.text = "\(currentlySelectedFlashyCardset.cardsInSet) cards"
         
-        if currentlySelectedFlashyCardset.isSuper == true {
+        if currentlySelectedFlashyCardset.isIgnored == true {
             flashOutlet.isHidden = true
             editOutlet.isHidden = true
         } else {
