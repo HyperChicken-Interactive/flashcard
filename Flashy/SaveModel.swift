@@ -12,10 +12,21 @@ import CoreData
 /**
  ## Unarcives general settings and cardset unique IDs
 
- The function that **MUST** be run when the app is opened.
+ The function that **MUST** be run when the app is to become active.
  This function unarchives the currently selected color scheme and the highest version of the unique identifier
  */
 func firstUnarchive() {
+    let generalFile = "generalSaved.txt"
+    let cardsetFile = "uniqueID.txt"
+}
+
+/**
+ ## Arcives general settings and cardset unique IDs
+ 
+ The function that **MUST** be run when the app is to resign activities.
+ This function archives the currently selected color scheme and the highest version of all cardsets unique identifier
+*/
+func firstArchive(){
     let generalFile = "generalSaved.txt"
     let cardsetFile = "uniqueID.txt"
 }
@@ -30,6 +41,8 @@ All cardsets will run this when the app is being put in the background or when i
 - parameter fcs: The cardset that is acted apon.
  */
 func archiveCards(FlashyCardset fcs: FlashySet) {
+    
+    /// The unique variable that points to the file where it's assosiated flashyset is stored.
     let file = "flashyset@\(fcs.uniqueID).txt"
     
 }
