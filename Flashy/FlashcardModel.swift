@@ -32,14 +32,18 @@ struct FlashyCard {
     }
 } // a card object with two sides, and a selected side. The flip function switches what side of the card will be visable.
 
-class FlashySet {
+struct FlashySet {
     var name: String?
     // You did handle the optional asshat.
     
     var shortName: String = "Blank"
     // Short name to be used on the picker.
     
-    let isSuper: Bool
+    ///Checks to see if this is either the default set or an edit set. Those are two special sets that are ignored when saving to a file.
+    let isIgnored: Bool
+    
+    /// A unique identifying integer, used primarily in saving the files.
+    let uniqueID: Int?
     
     var currentlySelectedFlashyCard = 0
     
@@ -53,7 +57,7 @@ class FlashySet {
         return self.cardsetArray.count
     } // Number of cards in set for the Next and Prev buttons.
     
-    init(nameOfFlashcardSet n: String?, shortNameOfSet s: String?, isSuper su: Bool){
+    init(nameOfFlashcardSet n: String?, shortNameOfSet s: String?, isIgnored su: Bool){
         if let name = n {
             self.name = name
         }
@@ -62,14 +66,31 @@ class FlashySet {
         }
         cardsetArray = []
         cardsContained = cardsetArray
-        self.isSuper = su
+        self.isIgnored = su
+        
+        if su == false {
+            self.uniqueID = idMarker
+            idMarker += 1
+        } else {
+            self.uniqueID = nil
+        }
     }
     
-    func generateNewCard(sideOneOfCard s1: String, sideTwoOfCard s2: String) {
+    mutating func generateNewCard(sideOneOfCard s1: String, sideTwoOfCard s2: String) {
         self.cardsetArray.append(FlashyCard(sideOne: s1, sideTwo: s2))
         // Will take in card strings provided by user and cast them into FlashyCards.
     }
     
+    /// Forces equivilency between "tbr", which is the set to be cloned, and self. Used when "saving" edit set.
+    mutating func forceEquivilency(setToBeRead tbr: FlashySet) {
+        
+        self.name = tbr.name
+        self.shortName = tbr.shortName
+        self.cardsetArray = tbr.cardsetArray
+        self.cardsContained = tbr.cardsContained
+        print("Forced equivilency between \(self) and \(tbr) where \(self) was written to.")
+    }
+
     func randomizeCardSets() -> [FlashyCard]{
         
         var shuffledSetOfFlashyCards: [FlashyCard] = []
@@ -97,23 +118,17 @@ class FlashySet {
     }
 }
 
-class Set01: FlashySet{}
-class Set02: FlashySet{}
-class Set03: FlashySet{}
-class Set04: FlashySet{}
-class Set05: FlashySet{}
-class EditSet: FlashySet{}
 // Creating child classes for the actual sets.
 
-var flashySuper: FlashySet = FlashySet(nameOfFlashcardSet: nil, shortNameOfSet: nil, isSuper: true)
+var flashySuper: FlashySet = FlashySet(nameOfFlashcardSet: nil, shortNameOfSet: nil, isIgnored: true)
 
-var set01: FlashySet = Set01(nameOfFlashcardSet: "Flashy Set Example #1", shortNameOfSet: "Example 1", isSuper: false)
-var set02: FlashySet = Set02(nameOfFlashcardSet: "Flashy Set Example #2", shortNameOfSet: "Example 2", isSuper: false)
-var set03: FlashySet = Set03(nameOfFlashcardSet: "Flashy Set Example #3", shortNameOfSet: "Example 3", isSuper: false)
-var set04: FlashySet = Set04(nameOfFlashcardSet: "Flashy Set Example #4", shortNameOfSet: "Example 4", isSuper: false)
-var set05: FlashySet = Set05(nameOfFlashcardSet: "Flashy Set Example #5", shortNameOfSet: "Example 5", isSuper: false)
+var set01: FlashySet = FlashySet(nameOfFlashcardSet: "Flashy Set Example #1", shortNameOfSet: "Example 1", isIgnored: false)
+var set02: FlashySet = FlashySet(nameOfFlashcardSet: "Flashy Set Example #2", shortNameOfSet: "Example 2", isIgnored: false)
+var set03: FlashySet = FlashySet(nameOfFlashcardSet: "Flashy Set Example #3", shortNameOfSet: "Example 3", isIgnored: false)
+var set04: FlashySet = FlashySet(nameOfFlashcardSet: "Flashy Set Example #4", shortNameOfSet: "Example 4", isIgnored: false)
+var set05: FlashySet = FlashySet(nameOfFlashcardSet: "Flashy Set Example #5", shortNameOfSet: "Example 5", isIgnored: false)
 
-var editSet: FlashySet = EditSet(nameOfFlashcardSet: nil, shortNameOfSet: nil, isSuper: false)
+var editSet: FlashySet = FlashySet(nameOfFlashcardSet: nil, shortNameOfSet: nil, isIgnored: true)
 
 
 

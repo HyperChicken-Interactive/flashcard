@@ -161,7 +161,7 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         // Do any additional setup after loading the view, typically from a nib.
-        forceEquivilency(setToBeWritten: editSet, setToBeRead: currentlySelectedFlashyCardset)
+        editSet.forceEquivilency(setToBeRead: currentlySelectedFlashyCardset)
         cardsetNameOutlet.delegate = self
         cardsetShortOutlet.delegate = self
         sideOneOutlet.delegate = self
@@ -212,7 +212,7 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         // The "go" button
         alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.default, handler: { action in
             
-            forceEquivilency(setToBeWritten: currentlySelectedFlashyCardset, setToBeRead: editSet)
+            currentlySelectedFlashyCardset.forceEquivilency(setToBeRead: editSet)
             self.performSegue(withIdentifier: "editorToMainSegue", sender: nil)
         }))
         

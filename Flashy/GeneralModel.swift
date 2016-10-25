@@ -13,10 +13,5 @@ var currentlySelectedFlashyCardset: FlashySet = flashySuper
 
 var currentlySelectedColorScheme: ColorScheme = SolarizedDark
 
-func forceEquivilency(setToBeWritten set1: FlashySet, setToBeRead set2: FlashySet) {
-    set1.name = set2.name
-    set1.shortName = set2.shortName
-    set1.cardsetArray = set2.cardsetArray
-    set1.cardsContained = set2.cardsContained
-    print("Forced equivilency between \(set1) and \(set2) where \(set1) was written to.")
-}
+/// A unique identifier for FlashySets.
+var idMarker: Int = 1
