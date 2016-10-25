@@ -53,8 +53,19 @@ func archiveCards(FlashyCardset fcs: FlashySet) {
  
  FirstUnarchive() will fetch the unique identifiers and should ALWAYS WITH NO EXEPTIONS BE RUN **BEFORE** this function is run which is why it won't fail miserably when run.
  
- - parameter fcs: The cardset that is acted apon.
+ - parameter gid: The largest unieque identifier.
 */
-func unarchiveCards(FlashyCardset fcs: FlashySet){
-    let file = "flashyset@\(fcs.uniqueID).txt"
+func unarchiveCards(LargestUniqueID gid: Int){
+    for id in 1...gid {
+        let file = "flashyset@\(id).txt"
+        /*
+         Dear Donnie{
+            Please use this code block to get data from file, than assign it to a temporary constant of type FlashySet called "UnarchivedSet".
+         } With regards ; Whitman.
+        */
+        
+        // Appends the temporary constant "UnarchivedSet" to our big 'ol list.
+        // flashySetArray.append[UnarchivedSet]
+        
+    }
 }

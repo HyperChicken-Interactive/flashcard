@@ -130,8 +130,7 @@ var set05: FlashySet = FlashySet(nameOfFlashcardSet: "Flashy Set Example #5", sh
 
 var editSet: FlashySet = FlashySet(nameOfFlashcardSet: nil, shortNameOfSet: nil, isIgnored: true)
 
-
-
+var flashySetArray: [FlashySet] = []
 
 
 
