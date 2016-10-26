@@ -23,6 +23,7 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     
     @IBOutlet weak var saveButton: UIButton!
     @IBAction func saved(_ sender: UIButton) {
+        print("save button clicked")
         saveButton.setTitle("Saved", for: UIControlState.normal) // Changes "Save" to "Saved" for fun.
     }
     
