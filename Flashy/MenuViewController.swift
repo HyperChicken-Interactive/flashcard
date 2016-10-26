@@ -13,6 +13,7 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     ////////////////////////////////////////
     // And now, some wonderful IBOutlets: //
     ////////////////////////////////////////
+    
     @IBOutlet weak var welcomeOutlet: UILabel!
     @IBOutlet weak var cardsetNameOutlet: UILabel!
     @IBOutlet weak var numberOfCardsOutlet: UILabel!
@@ -20,12 +21,6 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     @IBOutlet weak var editOutlet: UIButton!
     @IBOutlet weak var settingsOutlet: UIButton!
     @IBOutlet weak var cardsetPickerOutlet: UIPickerView!
-    
-    @IBOutlet weak var saveButton: UIButton!
-    @IBAction func saved(_ sender: UIButton) {
-        print("save button clicked")
-        saveButton.setTitle("Saved", for: UIControlState.normal) // Changes "Save" to "Saved" for fun.
-    }
     
     ///////////////////////////////////////////////////////
     // Fresh home-made functions and variables! By hand! //
