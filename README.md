@@ -3,10 +3,6 @@
 A flashcard application for iOS in Swift 3.0
 
 ---
-## Canary Branch
-The über development branch where new features are added then quickly removed.
-
----
 
 ## TL;DR
 
