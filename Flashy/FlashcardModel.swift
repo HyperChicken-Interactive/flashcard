@@ -32,7 +32,7 @@ struct FlashyCard {
     }
 } // a card object with two sides, and a selected side. The flip function switches what side of the card will be visable.
 
-struct FlashySet {
+class FlashySet {
     var name: String?
     // You did handle the optional asshat.
     
@@ -76,13 +76,13 @@ struct FlashySet {
         }
     }
     
-    mutating func generateNewCard(sideOneOfCard s1: String, sideTwoOfCard s2: String) {
+    func generateNewCard(sideOneOfCard s1: String, sideTwoOfCard s2: String) {
         self.cardsetArray.append(FlashyCard(sideOne: s1, sideTwo: s2))
         // Will take in card strings provided by user and cast them into FlashyCards.
     }
     
     /// Forces equivilency between "tbr", which is the set to be cloned, and self. Used when "saving" edit set.
-    mutating func forceEquivilency(setToBeRead tbr: FlashySet) {
+    func forceEquivilency(setToBeRead tbr: FlashySet) {
         
         self.name = tbr.name
         self.shortName = tbr.shortName

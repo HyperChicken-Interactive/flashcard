@@ -26,13 +26,14 @@ func grabName(cset: inout FlashySet) -> (String, String) {
 }
 
 /**
- WIP, currently saves names to a json file.
+ ## Save to JSON
+ 
+ Saves the
 */
 func saveToJson(_ names: Array<String>, count index: Int) {
     //let name = names[index]
-    let flashCardData: [String: Int] = [
-        "id": 1,
-        //"name": name
-    ]
+    if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
+        // do whatever with jsonResult
+    }
     
 }
