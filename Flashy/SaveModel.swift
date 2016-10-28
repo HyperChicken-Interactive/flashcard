@@ -33,7 +33,7 @@ func saveToJson(_ names: Array<String>, count index: Int) {
     //let name = names[index]
     
     let flashCardData: [String: Int] = [
-        "id": 1
+        "id": 1,
         //"name": name
     ]
     
