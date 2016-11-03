@@ -83,7 +83,7 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     
     // Now we deal with the picker
     
-    let flashcardList = ["Select one", set01.shortName, set02.shortName, set03.shortName,set04.shortName, set05.shortName]
+    let flashcardList = iterateCardsetShortnames()
     // The data for the picker.
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -105,16 +105,11 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print("Selected cardset \"\(flashcardList[row])\"")
-        switch flashcardList[row]{
-        case flashcardList[0]: currentlySelectedFlashyCardset = flashySuper
-        case flashcardList[1]: currentlySelectedFlashyCardset = set01
-        case flashcardList[2]: currentlySelectedFlashyCardset = set02
-        case flashcardList[3]: currentlySelectedFlashyCardset = set03
-        case flashcardList[4]: currentlySelectedFlashyCardset = set04
-        case flashcardList[5]: currentlySelectedFlashyCardset = set05
-        default: print("ERROR, failed to select \(flashcardList[row])")
+        
+        currentlySelectedFlashyCardset = flashySetArray[row]
+        
+        print("ERROR, failed to select \(flashcardList[row])")
             // Changes the color scheme to whatever is selected.
-        }
         updateValuesInView()
     } // Preforms an action when an items is selected.
     

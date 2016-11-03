@@ -12,8 +12,10 @@
 import Foundation
 
 
+
+/*
+
 let file = "flashyData.json"
-let flashySets = [set01, set02, set03, set04, set05] // Yes Whitman, I understand it needs to be dynamic. I'll add that later.
 
 /**
  Grabs *name* and *shortName* of a FlashySet, returns two variables.
@@ -37,3 +39,4 @@ func saveToJson(_ names: Array<String>, count index: Int) {
     }
     
 }
+*/

@@ -21,7 +21,7 @@ struct FlashyCard {
         case sideTwo:
             currentlySelectedSide = sideOne
         default:
-            print("welcome to the 4th dimention, i'll be your guide.")
+            print("Welcome to the 4th dimention, I'll be your guide.")
             print("Tried to flip card. Failed?")
         }
     }
@@ -32,7 +32,8 @@ struct FlashyCard {
     }
 } // a card object with two sides, and a selected side. The flip function switches what side of the card will be visable.
 
-class FlashySet {
+class FlashySet: NSObject, NSCoding {
+    
     var name: String?
     // You did handle the optional asshat.
     
@@ -57,22 +58,31 @@ class FlashySet {
         return self.cardsetArray.count
     } // Number of cards in set for the Next and Prev buttons.
     
-    init(nameOfFlashcardSet n: String?, shortNameOfSet s: String?, isIgnored su: Bool){
+    init(isInitializedViaEncoder ive: Bool, nameOfFlashcardSet n: String?, shortNameOfSet s: String?, isIgnored su: Bool, cardsInSet csa: [FlashyCard]?, uniqueIdentifier uid: Int?){
         if let name = n {
             self.name = name
         }
         if let sn = s {
             self.shortName = sn
         }
-        cardsetArray = []
-        cardsContained = cardsetArray
+        
         self.isIgnored = su
         
-        if su == false {
-            self.uniqueID = idMarker
-            idMarker += 1
+        if ive == false {
+            
+            cardsetArray = []
+            cardsContained = cardsetArray
+            
+            if su == false {
+                self.uniqueID = idMarker
+                idMarker += 1
+            } else {
+                self.uniqueID = nil
+            }
         } else {
-            self.uniqueID = nil
+            self.cardsetArray = csa!
+            cardsContained = cardsetArray
+            self.uniqueID = uid
         }
     }
     
@@ -116,22 +126,61 @@ class FlashySet {
         return shuffledSetOfFlashyCards
         //Now that shuffledSetOfFlashyCards has the full contents of self.cardsetArray, we can return it.
     }
+    
+    // Below is code directly copied and pasted from NSHipter, I have no shame.
+    
+    // MARK: NSCoding
+    
+    required convenience init?(coder decoder: NSCoder) {
+        guard let name = decoder.decodeObject(forKey: "name") as? String,
+            let shortName = decoder.decodeObject(forKey: "shortName") as? String,
+            let cardsetArray = decoder.decodeObject(forKey: "cardsetArray") as? [FlashyCard],
+            let uid = decoder.decodeObject(forKey: "uniqueID") as? Int!
+            else { return nil }
+        
+        self.init(
+            isInitializedViaEncoder: true,
+            nameOfFlashcardSet: name,
+            shortNameOfSet: shortName,
+            isIgnored: decoder.decodeBool(forKey: "isIgnored"),
+            cardsInSet: cardsetArray,
+            uniqueIdentifier: uid
+        )
+    }
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(self.name, forKey: "name")
+        coder.encode(true, forKey: "isInitializedViaEncoder")
+        coder.encode(self.shortName, forKey: "shortname")
+        coder.encodeCInt(Int32(self.uniqueID!), forKey: "uniqueID")
+        coder.encode(self.cardsetArray, forKey: "cardsetArray")
+        coder.encode(self.isIgnored, forKey: "isIgnored")
+    }
+}
+
+/**
+ ## Iterates Values in Flashcard array
+ 
+ I'll be honest, I haven't the faintest on how to make this generic. I should, but I'm trash.
+ */
+func iterateCardsetShortnames() -> [String] {
+    var returnedArray: [String] = []
+    for card in flashySetArray{
+        returnedArray.append(card.shortName)
+    }
+    return returnedArray
 }
 
 // Creating child classes for the actual sets.
 
-var flashySuper: FlashySet = FlashySet(nameOfFlashcardSet: nil, shortNameOfSet: nil, isIgnored: true)
+var flashySuper: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: "Click edit to create a new set", shortNameOfSet: "New set", isIgnored: true, cardsInSet: [], uniqueIdentifier: nil)
 
-var set01: FlashySet = FlashySet(nameOfFlashcardSet: "Flashy Set Example #1", shortNameOfSet: "Example 1", isIgnored: false)
-var set02: FlashySet = FlashySet(nameOfFlashcardSet: "Flashy Set Example #2", shortNameOfSet: "Example 2", isIgnored: false)
-var set03: FlashySet = FlashySet(nameOfFlashcardSet: "Flashy Set Example #3", shortNameOfSet: "Example 3", isIgnored: false)
-var set04: FlashySet = FlashySet(nameOfFlashcardSet: "Flashy Set Example #4", shortNameOfSet: "Example 4", isIgnored: false)
-var set05: FlashySet = FlashySet(nameOfFlashcardSet: "Flashy Set Example #5", shortNameOfSet: "Example 5", isIgnored: false)
+var set01: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: "I'M MR MEMES", shortNameOfSet: "LOOK AT MEMES", isIgnored: false, cardsInSet: [], uniqueIdentifier: nil)
 
-var editSet: FlashySet = FlashySet(nameOfFlashcardSet: nil, shortNameOfSet: nil, isIgnored: true)
+var editSet: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: nil, shortNameOfSet: nil, isIgnored: true, cardsInSet: [], uniqueIdentifier: nil)
 
+/// The array of ALL flashysets. Set01 will be removed, for now, it is here because unit testing is for stupid people
 var flashySetArray: [FlashySet] = []
-
 
 
 

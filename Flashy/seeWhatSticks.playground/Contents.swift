@@ -10,6 +10,16 @@
 
 import Foundation
 
+func iterateArrayValues(arrayToBeIteratedOver ar: [Any]) {
+    
+}
+
+let array1 = ["foo", "bar"]
+var array2 = ["baz", "qux"]
+array2 += array1
+
+/*-------------
+
 var idMarker = 1
 
 struct FlashyCard {
@@ -203,4 +213,4 @@ func unarchiveCards(LargestUniqueID gid: Int){
         
     }
 }
-
+*/
