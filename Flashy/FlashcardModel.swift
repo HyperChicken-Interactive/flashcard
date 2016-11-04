@@ -21,7 +21,6 @@ struct FlashyCard {
         case sideTwo:
             currentlySelectedSide = sideOne
         default:
-            print("Welcome to the 4th dimention, I'll be your guide.")
             print("Tried to flip card. Failed?")
         }
     }
@@ -33,19 +32,20 @@ struct FlashyCard {
 } // a card object with two sides, and a selected side. The flip function switches what side of the card will be visable.
 
 class FlashySet: NSObject, NSCoding {
-    
+        
+    /// Name of Flashy set.
     var name: String?
-    // You did handle the optional asshat.
     
+    /// Short name to be used on the picker.
     var shortName: String = "Blank"
-    // Short name to be used on the picker.
-    
+     
     ///Checks to see if this is either the default set or an edit set. Those are two special sets that are ignored when saving to a file.
     let isIgnored: Bool
     
     /// A unique identifying integer, used primarily in saving the files.
     let uniqueID: Int?
     
+    /// The variable name explains this quite well.
     var currentlySelectedFlashyCard = 0
     
     /// cardsetArray is an array of FlashyCard custom data type. It is the sequential list of cards in the set.
@@ -56,7 +56,8 @@ class FlashySet: NSObject, NSCoding {
     
     var cardsInSet: Int{
         return self.cardsetArray.count
-    } // Number of cards in set for the Next and Prev buttons.
+    }
+    /// Number of cards in set for the Next and Prev buttons.
     
     init(isInitializedViaEncoder ive: Bool, nameOfFlashcardSet n: String?, shortNameOfSet s: String?, isIgnored su: Bool, cardsInSet csa: [FlashyCard]?, uniqueIdentifier uid: Int?){
         if let name = n {
@@ -93,7 +94,6 @@ class FlashySet: NSObject, NSCoding {
     
     /// Forces equivilency between "tbr", which is the set to be cloned, and self. Used when "saving" edit set.
     func forceEquivilency(setToBeRead tbr: FlashySet) {
-        
         self.name = tbr.name
         self.shortName = tbr.shortName
         self.cardsetArray = tbr.cardsetArray
@@ -163,6 +163,7 @@ class FlashySet: NSObject, NSCoding {
  
  I'll be honest, I haven't the faintest on how to make this generic. I should, but I'm trash.
  */
+
 func iterateCardsetShortnames() -> [String] {
     var returnedArray: [String] = []
     for card in flashySetArray{
@@ -181,7 +182,5 @@ var editSet: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashca
 
 /// The array of ALL flashysets. Set01 will be removed, for now, it is here because unit testing is for stupid people
 var flashySetArray: [FlashySet] = []
-
-
 
 
