@@ -82,11 +82,7 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         view.backgroundColor = currentlySelectedColorScheme.backgroundColor
         cardsetPickerOutlet.tintColor = currentlySelectedColorScheme.textColor
         
-        if let title = self.title {
-            print("Updated values for \(title)")
-        } else {
-            print("Updated values for view with nil title (name it!)")
-        } // Prints that is updated values for debugging.
+        loginfo(infoText: "Updated values in view", fileOccured: "MenuViewController.swift", objectRunIn: title, otherInfo: ["There are currently \(flashcardList.count) cards."])
 
         
     }
@@ -117,6 +113,7 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         print("Selected cardset \"\(flashcardList[row])\"")
         
         currentlySelectedFlashyCardset = flashySetArray[row]
+        
         
         print("ERROR, failed to select \(flashcardList[row])")
         updateValuesInView()

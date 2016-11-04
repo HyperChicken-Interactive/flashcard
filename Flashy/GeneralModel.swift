@@ -35,7 +35,7 @@ var idMarker: Int = 1
  - parameter r: An optional to show what object or function this occured in.
  - parameter o: An optional that appends any needed information, like values that are important to the function it is run in.
  */
-func logdata(infoText t: String, fileOccured f: String?, objectRunIn r: String?, otherInfo o: [String]?){
+func loginfo(infoText t: String, fileOccured f: String?, objectRunIn r: String?, otherInfo o: [String]?){
     // I did this the quickest way I can. This should be refactored at all costs before beta or release.
     
     // Getting and formatting the date:
@@ -71,12 +71,10 @@ func logdata(infoText t: String, fileOccured f: String?, objectRunIn r: String?,
     if let other = o {
         toBePrinted += "Also:\n"
         for time in other {
-            toBePrinted += "  - \(time).\n"
+            toBePrinted += "  - \(time)\n"
         }
     }
     
     print(toBePrinted)
 }
-
-
 

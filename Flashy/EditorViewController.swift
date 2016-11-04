@@ -148,11 +148,7 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         
         print(editSet.cardsInSet)
         
-        if let title = self.title {
-            print("Updated values for \(title)")
-        } else {
-            print("Updated values for view with nil title (name it!)")
-        } // Print updated values for debugging.
+        loginfo(infoText: "Updated view values", fileOccured: "EditorViewController.swift", objectRunIn: title, otherInfo: ["Remember this could be a cause of Issue Git:2"])
     }
     
     //////////////////////////
