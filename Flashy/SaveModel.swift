@@ -11,27 +11,20 @@
 
 import Foundation
 
-
-
 /*
 
 let file = "flashyData.json"
 
-/**
- Grabs *name* and *shortName* of a FlashySet, returns two variables.
-
- _let name, shortname = grabName(set01)_
-*/
-
-func grabName(cset: inout FlashySet) -> (String, String) {
-    return (cset.name!, cset.shortName)
+func grabNameData(flashySets: Array<AnyObject>) -> (String, String) {
+    var nameData: Array = [String]   
+ 
+    for item in flashyNames {
+       nameData.append(item.name!, item.shortName)
+    }
+ 
+    return 
 }
 
-/**
- ## Save to JSON
- 
- Saves the
-*/
 func saveToJson(_ names: Array<String>, count index: Int) {
     //let name = names[index]
     if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
@@ -39,4 +32,5 @@ func saveToJson(_ names: Array<String>, count index: Int) {
     }
     
 }
+
 */
