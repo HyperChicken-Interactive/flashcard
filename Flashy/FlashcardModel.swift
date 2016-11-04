@@ -169,7 +169,7 @@ Don't worry, the optional is handeled properly.
 
 func iterateCardsetShortnames() -> [String] {
     var returnedArray: [String] = []
-    for card in flashySetArray{
+    for card in allFlashySetArrays{
         returnedArray.append(card.shortName)
     }
     return returnedArray
@@ -186,6 +186,6 @@ var editSet: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashca
 var flashySetArray: [FlashySet] = []
 
 /// The array of ALL flashysets. Set01 will be removed, for now, it is here because unit testing is for stupid people
-var AllFlashySetArray: [FlashySet] = [flashySuper] 
+let allFlashySetArrays: [FlashySet] = [flashySuper] + flashySetArray
 
 
