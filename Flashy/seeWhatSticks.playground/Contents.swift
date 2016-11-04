@@ -10,6 +10,15 @@
 
 import Foundation
 
+let date = NSDate()
+let calendar = NSCalendar.current
+let year = calendar.component(.day, from: date as Date)
+let hour = calendar.component(.hour, from: date as Date)
+let minutes = calendar.component(.minute, from: date as Date)
+print("\(hour):\(minutes)")
+
+/*
+
 func iterateArrayValues(arrayToBeIteratedOver ar: [Any]) {
     
 }
@@ -18,7 +27,7 @@ let array1 = ["foo", "bar"]
 var array2 = ["baz", "qux"]
 array2 += array1
 
-/*-------------
+-------------
 
 var idMarker = 1
 

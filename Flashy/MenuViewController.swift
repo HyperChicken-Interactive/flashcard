@@ -25,6 +25,16 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     ///////////////////////////////////////////////////////
     // Fresh home-made functions and variables! By hand! //
     ///////////////////////////////////////////////////////
+    
+    /** 
+ #  Updates view with most recent values
+     
+ Run often. This will update all values in view with the most recent data in the viewcontroller.
+     
+ KNOWN BUGS:
+     - Possible cause for git issue #2 [Tags: bug, enhancment]
+ 
+ */
     func updateValuesInView() {
         // Any changes that need to be made to the text
         if let cardsetName = currentlySelectedFlashyCardset.name {
@@ -109,7 +119,6 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         currentlySelectedFlashyCardset = flashySetArray[row]
         
         print("ERROR, failed to select \(flashcardList[row])")
-            // Changes the color scheme to whatever is selected.
         updateValuesInView()
     } // Preforms an action when an items is selected.
     
