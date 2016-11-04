@@ -62,7 +62,6 @@ let carbonColors: ColorScheme = ColorScheme(
     highlightColor: UIColor(red: 42.0/255.0, green: 161.0/255.0, blue: 152.0/255.0, alpha: 1.0),
     headerColor: UIColor(red: 212.0/255.0, green: 157.0/255.0, blue: 221.0/255.0, alpha: 1.0))
 
-
 let blindModeColors: ColorScheme = ColorScheme(
     backgroundColor: UIColor(red: 20.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 0),
     flashcardColor: UIColor(red: 28.0/255.0, green: 28.0/255.0, blue: 28.0/255.0, alpha: 0),
