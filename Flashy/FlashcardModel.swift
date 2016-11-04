@@ -183,7 +183,9 @@ var set01: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashcard
 
 var editSet: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: nil, shortNameOfSet: nil, isIgnored: true, cardsInSet: [], uniqueIdentifier: nil)
 
+var flashySetArray: [FlashySet] = []
+
 /// The array of ALL flashysets. Set01 will be removed, for now, it is here because unit testing is for stupid people
-var flashySetArray: [FlashySet] = [flashySuper]
+var AllFlashySetArray: [FlashySet] = [flashySuper] 
 
 
