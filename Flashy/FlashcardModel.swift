@@ -33,7 +33,10 @@ struct FlashyCard {
 
 class FlashySet: NSObject, NSCoding {
         
-    /// Name of Flashy set.
+    /** Name of Flashy set.
+     
+Don't worry, the optional is handeled properly.
+     */
     var name: String?
     
     /// Short name to be used on the picker.
