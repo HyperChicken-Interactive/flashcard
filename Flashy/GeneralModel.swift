@@ -25,7 +25,7 @@ var idMarker: Int = 1
  
  If all fields are filled out, a report will look like this:
  
-      2016.11.13@13:50:51.9 : Updated values for file "ViewController.swift", in function "UpdateValuesInView". Also:
+      2016.11.13@13:50:51.9 : Updated values. File "ViewController.swift". Function: "UpdateValuesInView". Also:
         - Currently selected set is set01
         - A line of importance is line 12
         - Currently selected color scheme is carbon
@@ -35,9 +35,47 @@ var idMarker: Int = 1
  - parameter r: An optional to show what object or function this occured in.
  - parameter o: An optional that appends any needed information, like values that are important to the function it is run in.
  */
-func log(infoText t: String, fileOccured f: String?, objectRunIn r: String?, otherInfo o: [String]?){
+func logdata(infoText t: String, fileOccured f: String?, objectRunIn r: String?, otherInfo o: [String]?){
     // I did this the quickest way I can. This should be refactored at all costs before beta or release.
     
+    // Getting and formatting the date:
+    let date = NSDate()
+    let calendar = NSCalendar.current
+    
+    let year = calendar.component(.year, from: date as Date)
+    let month = calendar.component(.month, from: date as Date)
+    let day = calendar.component(.day, from: date as Date)
+    let hour = calendar.component(.hour, from: date as Date)
+    let minutes = calendar.component(.minute, from: date as Date)
+    let seconds = calendar.component(.second, from: date as Date)
+    
+    let nanoInt = calendar.component(.nanosecond, from: date as Date)
+    var nanoStr = String(nanoInt)
+    for _ in 1...((nanoStr.characters.count)-2) {
+        nanoStr = nanoStr.substring(to: nanoStr.index(before: nanoStr.endIndex))
+    }
+    let nanoseconds = nanoStr
+    
+    /// The item that will inevitably be printed.
+    var toBePrinted: String = ("\(year).\(month).\(day)@\(hour):\(minutes):\(seconds).\(nanoseconds)")
+    
+    // Adding the info text
+    toBePrinted += ": \(t). "
+    
+    if let file = f {
+        toBePrinted += "File: \"\(file)\". "
+    }
+    if let object = r {
+        toBePrinted += "In object: \"\(object)\". "
+    }
+    if let other = o {
+        toBePrinted += "Also:\n"
+        for time in other {
+            toBePrinted += "  - \(time).\n"
+        }
+    }
+    
+    print(toBePrinted)
 }
 
 

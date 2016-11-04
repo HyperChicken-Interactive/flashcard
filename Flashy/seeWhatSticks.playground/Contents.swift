@@ -10,12 +10,50 @@
 
 import Foundation
 
-let date = NSDate()
-let calendar = NSCalendar.current
-let year = calendar.component(.day, from: date as Date)
-let hour = calendar.component(.hour, from: date as Date)
-let minutes = calendar.component(.minute, from: date as Date)
-print("\(hour):\(minutes)")
+func logdata(infoText t: String, fileOccured f: String?, objectRunIn r: String?, otherInfo o: [String]?){
+    // I did this the quickest way I can. This should be refactored at all costs before beta or release.
+    
+    // Getting and formatting the date:
+    let date = NSDate()
+    let calendar = NSCalendar.current
+    
+    let year = calendar.component(.year, from: date as Date)
+    let month = calendar.component(.month, from: date as Date)
+    let day = calendar.component(.day, from: date as Date)
+    let hour = calendar.component(.hour, from: date as Date)
+    let minutes = calendar.component(.minute, from: date as Date)
+    let seconds = calendar.component(.second, from: date as Date)
+    
+    let nanoInt = calendar.component(.nanosecond, from: date as Date)
+    var nanoStr = String(nanoInt)
+    for _ in 1...((nanoStr.characters.count)-2) {
+        nanoStr = nanoStr.substring(to: nanoStr.index(before: nanoStr.endIndex))
+    }
+    let nanoseconds = nanoStr
+    
+    /// The item that will inevitably be printed.
+    var toBePrinted: String = ("\(year).\(month).\(day)@\(hour):\(minutes):\(seconds).\(nanoseconds)")
+    
+    // Adding the info text
+    toBePrinted += ": \(t). "
+    
+    if let file = f {
+        toBePrinted += "File: \"\(file)\". "
+    }
+    if let object = r {
+        toBePrinted += "In object: \"\(object)\". "
+    }
+    if let other = o {
+        toBePrinted += "Also:\n"
+        for time in other {
+            toBePrinted += "  - \(time).\n"
+        }
+    }
+    
+    print(toBePrinted)
+}
+
+logdata(infoText: "Tested function", fileOccured: "seeWhatSticks.playground", objectRunIn: nil, otherInfo: ["I like trains", "Foo"])
 
 /*
 
