@@ -6,6 +6,11 @@
 //  Copyright © 2016 HyperChicken Interactive. All rights reserved.
 //
 
+
+/*
+ Donovan flipped a coin and it came out heads at 10:00 PM EST, 4.NOV.2016.
+*/
+
 import UIKit
 
 @UIApplicationMain
