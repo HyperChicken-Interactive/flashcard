@@ -110,9 +110,9 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     } // Colors the text. Avenir won't work but fine.
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        loginfo(infoText: "Attemtpting to select flashcard.", fileOccured: "MenuViewController.swift", objectRunIn: "pickerView (Line 112)", otherInfo: ["Title of selected card: \(flashySetArray[row].shortName)", "synonyis with \(flashcardList[row])", "Index I.D. is \(row)"])
+        loginfo(infoText: "Attemtpting to select flashcard.", fileOccured: "MenuViewController.swift", objectRunIn: "pickerView (Line 112)", otherInfo: ["Title of selected card: \(allFlashySetArrays[row].shortName)", "synonyis with \(flashcardList[row])", "Index I.D. is \(row)"])
         
-        currentlySelectedFlashyCardset = flashySetArray[(row)]
+        currentlySelectedFlashyCardset = allFlashySetArrays[(row)]
         
         
         print("ERROR, failed to select \(flashcardList[(row)])")
@@ -128,6 +128,8 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         cardsetPickerOutlet.dataSource = self
         cardsetPickerOutlet.delegate = self
         updateValuesInView()
+        
+        loginfo(infoText: "View loaded successfully", fileOccured: "MenuViewController.swift", objectRunIn: title, otherInfo: nil)
     }
     
     /////////////////////////////////////////////////

@@ -66,7 +66,7 @@ func loginfo(infoText t: String, fileOccured f: String?, objectRunIn r: String?,
         toBePrinted += "File: \"\(file)\". "
     }
     if let object = r {
-        toBePrinted += "In object: \"\(object)\". "
+        toBePrinted += "In object: \"\(object)\".\n"
     }
     if let other = o {
         toBePrinted += "Also:\n"

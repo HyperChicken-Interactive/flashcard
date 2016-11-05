@@ -55,6 +55,9 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         editSet.shortName = cardsetShortOutlet.text!
         editSet.name = cardsetNameOutlet.text!
         
+        cardsetNameOutlet.text = editSet.name
+        cardsetShortOutlet.text = editSet.shortName
+        
         // The following if statment handles the next and previous buttons as according to the currently selected card
         if editSet.cardsInSet == 0 /* Handle if unmade cardset */{
             
@@ -146,9 +149,7 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         
         view.backgroundColor = currentlySelectedColorScheme.backgroundColor
         
-        print(editSet.cardsInSet)
-        
-        loginfo(infoText: "Updated view values", fileOccured: "EditorViewController.swift", objectRunIn: title, otherInfo: ["Remember this could be a cause of Issue Git:2"])
+        loginfo(infoText: "Updated view values", fileOccured: "EditorViewController.swift", objectRunIn: title, otherInfo: ["Remember this could be a cause of Issue Git:2", "There are currently \(editSet.cardsInSet) cards."])
     }
     
     //////////////////////////
@@ -157,7 +158,8 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         // Do any additional setup after loading the view, typically from a nib.
-        editSet.forceEquivilency(setToBeRead: currentlySelectedFlashyCardset)
+        
+        editSet.forceEquivilency(setToBeRead: currentlySelectedFlashyCardset, fileRunFrom: "EditorViewController.swift")
         cardsetNameOutlet.delegate = self
         cardsetShortOutlet.delegate = self
         sideOneOutlet.delegate = self
@@ -166,10 +168,15 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         // Set the shortname.
         cardsetShortOutlet.text = editSet.shortName
         
+        // Set the Long-name
+        cardsetNameOutlet.text = editSet.name
+        
         //Looks for single or multiple taps.
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
         updateValuesInView()
+        
+        loginfo(infoText: "View loaded successfully", fileOccured: "EditorViewController.swift", objectRunIn: title, otherInfo: nil)
     }
     
     ////////////////////////////////////////////////////////////////
@@ -208,7 +215,7 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         // The "go" button
         alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.default, handler: { action in
             
-            currentlySelectedFlashyCardset.forceEquivilency(setToBeRead: editSet)
+            currentlySelectedFlashyCardset.forceEquivilency(setToBeRead: editSet, fileRunFrom: "editorViewController.swift")
             self.performSegue(withIdentifier: "editorToMainSegue", sender: nil)
         }))
         

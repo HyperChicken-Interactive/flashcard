@@ -39,28 +39,41 @@ class FlashViewController: UIViewController {
     
     func updateValuesInView(){
         // This function updates all of the values in the view, like making sure the buttons are hidden if they need to be or the text is proper
-        if currentlySelectedFlashyCardset.currentlySelectedFlashyCard == (currentlySelectedFlashyCardset.cardsInSet-1) {
+        if currentlySelectedFlashyCardset.currentlySelectedFlashyCard == (currentlySelectedFlashyCardset.cardsInSet-1) && currentlySelectedFlashyCardset.currentlySelectedFlashyCard == 0 {
+            // Check if new set (Card selected is both card 0 and the highest card.)
             nextFlashyOutlet.isHidden = true
-            previousFlashyOutlet.isHidden = false
+            previousFlashyOutlet.isHidden = true
+            loginfo(infoText: "There are currently 0 cards in the set. Hiding next and previous buttons.", fileOccured: "FlashViewController.swift", objectRunIn: "UpdateValuesInView()", otherInfo: ["There are actually \(currentlySelectedFlashyCardset.cardsInSet) card(s).", "When calculated, it shows there are \(currentlySelectedFlashyCardset.cardsInSet-1) cards."])
+        
         } else if currentlySelectedFlashyCardset.currentlySelectedFlashyCard == 0 {
+            // Evaluates if at card #0, but there are other cards in the set.
             previousFlashyOutlet.isHidden = true
             nextFlashyOutlet.isHidden = false
-        } else if currentlySelectedFlashyCardset.currentlySelectedFlashyCard == (currentlySelectedFlashyCardset.cardsInSet-1) && currentlySelectedFlashyCardset.currentlySelectedFlashyCard == 0 {
+            loginfo(infoText: "The currently selected card is #0. Hiding the previous button.", fileOccured: "FlashViewController.swift", objectRunIn: "UpdateValuesInView()",
+                    otherInfo: ["There are actually \(currentlySelectedFlashyCardset.cardsInSet) card(s).",
+                "When calculated, it shows there are \(currentlySelectedFlashyCardset.cardsInSet-1) cards.",
+                "The currently selected card is \(currentlySelectedFlashyCardset.currentlySelectedFlashyCard)."])
+            
+        } else if currentlySelectedFlashyCardset.currentlySelectedFlashyCard == (currentlySelectedFlashyCardset.cardsInSet-1) {
             nextFlashyOutlet.isHidden = true
-            previousFlashyOutlet.isHidden = true
+            previousFlashyOutlet.isHidden = false
+            loginfo(infoText: "Maximum cards reached. Hiding the next button", fileOccured: "FlashViewController.swift", objectRunIn: "UpdateValuesInView()", otherInfo: ["There are actually \(currentlySelectedFlashyCardset.cardsInSet) card(s).", "When calculated, it shows there are \(currentlySelectedFlashyCardset.cardsInSet-1) cards.", "The currently selected card is \(currentlySelectedFlashyCardset.currentlySelectedFlashyCard)."])
         } else {
             nextFlashyOutlet.isHidden = false
             previousFlashyOutlet.isHidden = false
+            loginfo(infoText: "Currently selected card is neither 0 or the last card in set. Showing all buttons.", fileOccured: "FlashViewController.swift", objectRunIn: "UpdateValuesInView()", otherInfo: ["There are actually \(currentlySelectedFlashyCardset.cardsInSet) card(s).",
+                "When calculated, it shows there are \(currentlySelectedFlashyCardset.cardsInSet-1) cards.",
+                "The currently selected card is \(currentlySelectedFlashyCardset.currentlySelectedFlashyCard)."])
         }
         // Makes the next or previous buttons hidden if the currentlySelectedFlashyCard is at the highest index value or the lowest index value of currentlySelectedFlashyCardset.
         
         cardNumberLabel.text = "Card \(currentlySelectedFlashyCardset.currentlySelectedFlashyCard+1)/\(currentlySelectedFlashyCardset.cardsInSet)"
+        
         if let cardsetName = currentlySelectedFlashyCardset.name {
             cardsetLabel.text = cardsetName
         } else {
             cardsetLabel.text = "You really should name this set!"
         }
-        // Changes the cardsetLabel to the name of the cardset. If that fails, then it changes the label to say "You really should name this set!"
         
         flashyCardText.text = currentlySelectedFlashyCardset.cardsContained[currentlySelectedFlashyCardset.currentlySelectedFlashyCard].currentlySelectedSide
         
@@ -92,11 +105,7 @@ class FlashViewController: UIViewController {
         
         view.backgroundColor = currentlySelectedColorScheme.backgroundColor
         
-        if let title = self.title {
-            print("Updated values for \(title)")
-        } else {
-            print("Updated values for view with nil title (name it!)")
-        } // Prints that is updated values for debugging.
+        loginfo(infoText: "Updated values in view", fileOccured: "FlashyViewController.swift", objectRunIn: "updateValuesInView()", otherInfo: nil)
 
     }
     
@@ -109,10 +118,10 @@ class FlashViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         currentlySelectedFlashyCardset.cardsContained = currentlySelectedFlashyCardset.cardsetArray
-        // This is shit code and I know it, will be rectified along with other, simmilar problems in v4.0-alpha.
+        // This is poor code and I know it, will be rectified along with other, simmilar problems during the mass refactoring.
         
-        print("FlashyCard operation centre view loaded")
         updateValuesInView()
+        loginfo(infoText: "View loaded successfully", fileOccured: "FlashViewController.swift", objectRunIn: title, otherInfo: nil)
     }
     
     ////////////////
@@ -137,7 +146,7 @@ class FlashViewController: UIViewController {
     
     @IBAction func flipFlashyButton() {
         // The method relating to the "flip" button.
-        print("Flipped Card!")
+        loginfo(infoText: "Flip Card button pressed", fileOccured: "FlashViewController.swift", objectRunIn: title, otherInfo: nil)
         currentlySelectedFlashyCardset.cardsContained[currentlySelectedFlashyCardset.currentlySelectedFlashyCard].flipCard()
         // When pressed, this button will preform the flipCard() method on the currently selected card along with printing that this action occured to the log.
         updateValuesInView()
@@ -145,15 +154,25 @@ class FlashViewController: UIViewController {
     
     @IBAction func nextFlashyButton() {
         // The method relating to the "next" button. See nextFlashyOutlet for the outlet.
-        print("Next button pressed")
+        loginfo(infoText: "Previous Card button pressed", fileOccured: "FlashViewController.swift", objectRunIn: title, otherInfo: ["The currently selected card *IS* \(currentlySelectedFlashyCardset.currentlySelectedFlashyCard)",
+            "The currently selected card *WILL BE* \(currentlySelectedFlashyCardset.currentlySelectedFlashyCard+1)"])
+        
         currentlySelectedFlashyCardset.currentlySelectedFlashyCard += 1
+        
+        loginfo(infoText: "Successfully transitioned to next card", fileOccured: "FlashViewController.swift", objectRunIn: title, otherInfo: nil)
+        
         updateValuesInView()
     }
     
     @IBAction func previousFlashyButton() {
         // The method relating to the "previous" button. See previousFlashyOutlet for the outlet.
-        print("Previous button pressed")
+        loginfo(infoText: "Previous Card button pressed", fileOccured: "FlashViewController.swift", objectRunIn: title, otherInfo: ["The currently selected card *IS* \(currentlySelectedFlashyCardset.currentlySelectedFlashyCard)",
+            "The currently selected card *WILL BE* \(currentlySelectedFlashyCardset.currentlySelectedFlashyCard-1)"])
+        
         currentlySelectedFlashyCardset.currentlySelectedFlashyCard -= 1
+        
+        loginfo(infoText: "Successfully transitioned to previous card", fileOccured: "FlashViewController.swift", objectRunIn: title, otherInfo: nil)
+        
         updateValuesInView()
     }
 }

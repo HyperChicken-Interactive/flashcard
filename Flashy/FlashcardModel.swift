@@ -57,6 +57,7 @@ Don't worry, the optional is handeled properly.
     /// Cards contained is an array of FlashyCard custom data type. It has been modified to be more of a pointer to either a randomized cardset or the original sequential one of cardsetArray.
     var cardsContained: [FlashyCard]
     
+    /// A pseudonym for the "count" of .cardsetArray
     var cardsInSet: Int{
         return self.cardsetArray.count
     }
@@ -65,6 +66,9 @@ Don't worry, the optional is handeled properly.
     init(isInitializedViaEncoder ive: Bool, nameOfFlashcardSet n: String?, shortNameOfSet s: String?, isIgnored su: Bool, cardsInSet csa: [FlashyCard]?, uniqueIdentifier uid: Int?){
         if let name = n {
             self.name = name
+            loginfo(infoText: "NAME property initialized", fileOccured: nil, objectRunIn: "FlashySet.init()", otherInfo: ["Given property: \(name)"])
+        } else {
+            loginfo(infoText: "NAME property failed to initialize", fileOccured: nil, objectRunIn: "FlashySet.init()", otherInfo: nil)
         }
         if let sn = s {
             self.shortName = sn
@@ -96,12 +100,12 @@ Don't worry, the optional is handeled properly.
     }
     
     /// Forces equivilency between "tbr", which is the set to be cloned, and self. Used when "saving" edit set.
-    func forceEquivilency(setToBeRead tbr: FlashySet) {
+    func forceEquivilency(setToBeRead tbr: FlashySet, fileRunFrom frf: String?) {
         self.name = tbr.name
         self.shortName = tbr.shortName
         self.cardsetArray = tbr.cardsetArray
         self.cardsContained = tbr.cardsContained
-        print("Forced equivilency between \(self) and \(tbr) where \(self) was written to.")
+        loginfo(infoText: "Forced equivilency between \(tbr.shortName) and \(self.shortName)", fileOccured: frf, objectRunIn: "forceEquivilency", otherInfo: nil)
     }
 
     func randomizeCardSets() -> [FlashyCard]{
@@ -186,6 +190,6 @@ var editSet: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashca
 var flashySetArray: [FlashySet] = []
 
 /// The array of ALL flashysets. Set01 will be removed, for now, it is here because unit testing is for stupid people
-let allFlashySetArrays: [FlashySet] = [flashySuper] + flashySetArray
+let allFlashySetArrays: [FlashySet] = [flashySuper, set01] + flashySetArray
 
 
