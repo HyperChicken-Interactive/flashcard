@@ -23,12 +23,14 @@ import Foundation
  1 (one) currentlySelectedSide of type string. It "points" to either sideOne or sideTwo.
  1 (one) mutating flipCard function. Sets the value of currentlySelectedSide to sideTwo if it's sideOne or sideOne if it's sideTwo
  1 (one) custom init method.
+ 
+ 2 (two) NSCoding/NSKeyed​Archiver methods that I shamelessly stole from NSHipster.
  */
-struct FlashyCard {
+class FlashyCard: NSObject, NSCoding {
     var sideOne: String
     var sideTwo: String
     var currentlySelectedSide: String
-    mutating func flipCard() {
+    func flipCard() {
         switch currentlySelectedSide {
         case sideOne:
             currentlySelectedSide = sideTwo
@@ -44,6 +46,24 @@ struct FlashyCard {
         self.sideOne = sideOne
         self.sideTwo = sideTwo
         self.currentlySelectedSide = sideOne
+    }
+    
+    /////
+    
+    required convenience init?(coder decoder: NSCoder) {
+        guard let sideOne = decoder.decodeObject(forKey: "sideOne") as? String,
+            let sideTwo = decoder.decodeObject(forKey: "sideTwo") as? String
+            else { return nil }
+        
+        self.init(
+            sideOne: sideOne,
+            sideTwo: sideTwo
+        )
+    }
+    
+    func encode(with coder: NSCoder) {
+        coder.encode(self.sideOne, forKey: "sideOne")
+        coder.encode(self.sideTwo, forKey: "sideTwo")
     }
 }
 
@@ -99,8 +119,8 @@ Don't worry, the optional is handeled properly.
             self.shortName = sn
             loginfo(infoText: "ShortName property initialized", fileOccured: nil, objectRunIn: "FlashySet.init()", otherInfo: ["Given property: \(shortName)"])
         } else {
-            loginfo(infoText: "CRITICAL: ShortName property failed to initialize", fileOccured: nil, objectRunIn: "FlashySet.init()", otherInfo: ["For safty precautions, the shortname has been temporarily changed to \"CRIT_ERR\""])
-            self.shortName = "CRIT_ERR"
+            loginfo(infoText: "CRITICAL: ShortName property failed to initialize", fileOccured: nil, objectRunIn: "FlashySet.init()", otherInfo: ["For safty precautions, the shortname has been changed to an empty string."])
+            self.shortName = ""
         }
         
         self.isIgnored = su
