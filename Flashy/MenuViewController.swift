@@ -84,7 +84,7 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         view.backgroundColor = currentlySelectedColorScheme.backgroundColor
         cardsetPickerOutlet.tintColor = currentlySelectedColorScheme.textColor
         
-        loginfo(infoText: "Updated values in view", fileOccured: "MenuViewController.swift", objectRunIn: title, otherInfo: ["There are currently \(flashcardList.count) cards.", "Meaning, there are currently \(flashySetArray.count) cards", "and \(allFlashySetArrays.count) cards."])
+        loginfo(infoText: "Updated values in view", fileOccured: "MenuViewController.swift", objectRunIn: title, otherInfo: ["There are currently \(flashcardList.count) cards. (flashcardList.count)", "Meaning, there are currently \(flashySetArray.count) cards. (flashySetArray.count)", "and \(allFlashySetArrays.count) cards. (allFlashySetArrays.count)"])
 
         
     }
@@ -112,7 +112,7 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     } // Colors the text. Avenir won't work but fine.
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        loginfo(infoText: "Attemtpting to select flashcard.", fileOccured: "MenuViewController.swift", objectRunIn: "pickerView (Line 112)", otherInfo: ["Title of selected card: \(allFlashySetArrays[row].shortName)", "synonymas with \(flashcardList[row])", "Index I.D. is \(row)"])
+        loginfo(infoText: "Attemtpting to select flashcard.", fileOccured: "MenuViewController.swift", objectRunIn: "pickerView (Line 112)", otherInfo: ["Title of selected card: \(allFlashySetArrays[row].shortName)", "synonymis with \(flashcardList[row])", "Index I.D. is \(row)"])
         
         currentlySelectedFlashyCardset = allFlashySetArrays[(row)]
         

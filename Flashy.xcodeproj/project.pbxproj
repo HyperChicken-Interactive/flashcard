@@ -15,6 +15,7 @@
 		CB876EC81D6C6A2700C31E39 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB876EC71D6C6A2700C31E39 /* EditorViewController.swift */; };
 		CB93F26D1D5907BB003A4122 /* GUIColorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93F26C1D5907BB003A4122 /* GUIColorModel.swift */; };
 		CBA486791D6361FF00DF2147 /* IncoherentBabbling.md in Sources */ = {isa = PBXBuildFile; fileRef = CBA486781D6361FF00DF2147 /* IncoherentBabbling.md */; };
+		CBA56CA51DCFF3DD004E6406 /* flashycards.plist in Resources */ = {isa = PBXBuildFile; fileRef = CBA56CA41DCFF3DD004E6406 /* flashycards.plist */; };
 		CBBD352B1D4FFFDF001F9F16 /* FlashcardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBD352A1D4FFFDF001F9F16 /* FlashcardModel.swift */; };
 		CBBFA8591D7EEC560070CDB5 /* SaveModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBBFA8581D7EEC560070CDB5 /* SaveModel.swift */; };
 		CBFF9B391D6B1EF300975E9F /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBFF9B381D6B1EF300975E9F /* MenuViewController.swift */; };
@@ -34,6 +35,7 @@
 		CB876EC71D6C6A2700C31E39 /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		CB93F26C1D5907BB003A4122 /* GUIColorModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GUIColorModel.swift; sourceTree = "<group>"; };
 		CBA486781D6361FF00DF2147 /* IncoherentBabbling.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = IncoherentBabbling.md; sourceTree = "<group>"; };
+		CBA56CA41DCFF3DD004E6406 /* flashycards.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = flashycards.plist; sourceTree = "<group>"; };
 		CBBD352A1D4FFFDF001F9F16 /* FlashcardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashcardModel.swift; sourceTree = "<group>"; };
 		CBBFA8581D7EEC560070CDB5 /* SaveModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveModel.swift; sourceTree = "<group>"; };
 		CBFF9B381D6B1EF300975E9F /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 		CB80343C1D49A0F200CBBC79 /* Flashy */ = {
 			isa = PBXGroup;
 			children = (
+				CBA56CA41DCFF3DD004E6406 /* flashycards.plist */,
 				CB80343D1D49A0F200CBBC79 /* AppDelegate.swift */,
 				CB80343F1D49A0F200CBBC79 /* FlashViewController.swift */,
 				CBFF9B3C1D6B2A5F00975E9F /* PreferenceViewController.swift */,
@@ -153,6 +156,7 @@
 				CB8034481D49A0F200CBBC79 /* LaunchScreen.storyboard in Resources */,
 				CB8034451D49A0F200CBBC79 /* Assets.xcassets in Resources */,
 				CB8034431D49A0F200CBBC79 /* Main.storyboard in Resources */,
+				CBA56CA51DCFF3DD004E6406 /* flashycards.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

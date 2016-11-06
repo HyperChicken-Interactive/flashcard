@@ -28,19 +28,23 @@ func saveFlashySets(NeedsToBePrimed tbp: Bool){
         loginfo(infoText: "Primed flashySetArray for saving.", fileOccured: nil, objectRunIn: nil, otherInfo: nil)
     }
     
-    NSKeyedArchiver.archiveRootObject(flashySetArray, toFile: "/flashyArchives")
+    let result = NSKeyedArchiver.archiveRootObject(flashySetArray, toFile: "/Flashy/flashycards.plist")
     
-    loginfo(infoText: "Archived data for FlashySet array", fileOccured: nil, objectRunIn: nil, otherInfo: ["There are \(flashySetArray.count) items."])
+    if result == true{
+        loginfo(infoText: "Archived data for FlashySet array", fileOccured: nil, objectRunIn: nil, otherInfo: ["There are \(flashySetArray.count) items."])
+    } else {
+        loginfo(infoText: "CRITICAL: Failed to archive data for FlashySet array", fileOccured: nil, objectRunIn: nil, otherInfo: ["There are \(flashySetArray.count) items."])
+    }
 }
 
 
-func unarchiveFlashySets(_ c: inout [FlashySet]) {
-    if let flashyTemp = NSKeyedUnarchiver.unarchiveObject(withFile: "flashyArchives") as? [FlashySet] {
-        c = flashyTemp
+func unarchiveFlashySets() -> ([FlashySet]) {
+    if let flashyTemp = NSKeyedUnarchiver.unarchiveObject(withFile: "/Flashy/flashycards.plist") as? [FlashySet] {
         loginfo(infoText: "Unarchived data for FlashySet array", fileOccured: nil, objectRunIn: nil, otherInfo: ["File was found. Restoring from archive."])
+        return flashyTemp
     } else {
-        c = []
         loginfo(infoText: "Unarchived data for FlashySet array", fileOccured: nil, objectRunIn: nil, otherInfo: ["There was no archive availible. Creating empty array."])
+        return []
     }
 }
 
