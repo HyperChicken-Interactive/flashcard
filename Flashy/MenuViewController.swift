@@ -84,7 +84,7 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         view.backgroundColor = currentlySelectedColorScheme.backgroundColor
         cardsetPickerOutlet.tintColor = currentlySelectedColorScheme.textColor
         
-        loginfo(infoText: "Updated values in view", fileOccured: "MenuViewController.swift", objectRunIn: title, otherInfo: ["There are currently \(flashcardList.count) cards."])
+        loginfo(infoText: "Updated values in view", fileOccured: "MenuViewController.swift", objectRunIn: title, otherInfo: ["There are currently \(flashcardList.count) cards.", "Meaning, there are currently \(flashySetArray.count) cards", "and \(allFlashySetArrays.count) cards."])
 
         
     }

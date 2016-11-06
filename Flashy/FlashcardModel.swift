@@ -150,11 +150,12 @@ Don't worry, the optional is handeled properly.
     
     /// Forces equivilency between "tbr", which is the set to be cloned, and self. Used when "saving" edit set.
     func forceEquivilency(setToBeRead tbr: FlashySet, fileRunFrom frf: String?) {
+        loginfo(infoText: "Attempting to force equivilency between \(tbr.shortName) and \(self.shortName)", fileOccured: frf, objectRunIn: "forceEquivilency", otherInfo: nil)
         self.name = tbr.name
         self.shortName = tbr.shortName
         self.cardsetArray = tbr.cardsetArray
         self.cardsContained = tbr.cardsContained
-        loginfo(infoText: "Forced equivilency between \(tbr.shortName) and \(self.shortName)", fileOccured: frf, objectRunIn: "forceEquivilency", otherInfo: nil)
+        loginfo(infoText: "Forced equivilency succeded.", fileOccured: frf, objectRunIn: "forceEquivilency", otherInfo: nil)
     }
 
     func randomizeCardSets() -> [FlashyCard]{

@@ -51,13 +51,13 @@ func loginfo(infoText t: String, fileOccured f: String?, objectRunIn r: String?,
     
     let nanoInt = calendar.component(.nanosecond, from: date as Date)
     var nanoStr = String(nanoInt)
-    for _ in 1...((nanoStr.characters.count)-2) {
+    for _ in 1...((nanoStr.characters.count)-5) {
         nanoStr = nanoStr.substring(to: nanoStr.index(before: nanoStr.endIndex))
     }
     let nanoseconds = nanoStr
     
     /// The item that will inevitably be printed.
-    var toBePrinted: String = ("\(year).\(month).\(day)@\(hour):\(minutes):\(seconds).\(nanoseconds)")
+    var toBePrinted: String = ("\(year)-\(month)-\(day)@\(hour):\(minutes):\(seconds).\(nanoseconds)")
     
     // Adding the info text
     if t.hasSuffix(".") || t.hasSuffix("!") || t.hasSuffix("?") {

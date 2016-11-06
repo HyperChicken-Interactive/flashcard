@@ -167,7 +167,7 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         if currentlySelectedFlashyCardset == flashySuper {
             flashySetArray.append(FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: nil, shortNameOfSet: nil, isIgnored: false, cardsInSet: nil, uniqueIdentifier: nil))
             currentlySelectedFlashyCardset = flashySetArray[((flashySetArray.count)-1)]
-            loginfo(infoText: "Changed currently selected cardset.", fileOccured: "EditorViewController.swift", objectRunIn: "viewDidLoad()", otherInfo: ["Appended one cardset to the flashySetArray."])
+            loginfo(infoText: "Changed currently selected cardset.", fileOccured: "EditorViewController.swift", objectRunIn: "viewDidLoad()", otherInfo: ["Appended one cardset to the flashySetArray.", "Meaning there are \(flashySetArray.count) cardsets."])
         }
         
         editSet.forceEquivilency(setToBeRead: currentlySelectedFlashyCardset, fileRunFrom: "EditorViewController.swift")
