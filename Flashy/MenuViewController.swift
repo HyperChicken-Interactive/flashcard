@@ -112,12 +112,10 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     } // Colors the text. Avenir won't work but fine.
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        loginfo(infoText: "Attemtpting to select flashcard.", fileOccured: "MenuViewController.swift", objectRunIn: "pickerView (Line 112)", otherInfo: ["Title of selected card: \(allFlashySetArrays[row].shortName)", "synonyis with \(flashcardList[row])", "Index I.D. is \(row)"])
+        loginfo(infoText: "Attemtpting to select flashcard.", fileOccured: "MenuViewController.swift", objectRunIn: "pickerView (Line 112)", otherInfo: ["Title of selected card: \(allFlashySetArrays[row].shortName)", "synonymas with \(flashcardList[row])", "Index I.D. is \(row)"])
         
         currentlySelectedFlashyCardset = allFlashySetArrays[(row)]
         
-        
-        print("ERROR, failed to select \(flashcardList[(row)])")
         updateValuesInView()
     } // Preforms an action when an items is selected.
     
@@ -127,6 +125,17 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // This is here purely because this will be the most visited view. I need to think of a more-clever way to do this (mass refactor)
+        
+        /*
+        for time in allFlashySetArrays{
+            if time.isIgnored == false {
+                
+            }
+        }
+        */
+        
         cardsetPickerOutlet.dataSource = self
         cardsetPickerOutlet.delegate = self
         currentlySelectedFlashyCardset = flashySuper

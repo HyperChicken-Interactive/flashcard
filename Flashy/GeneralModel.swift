@@ -60,7 +60,7 @@ func loginfo(infoText t: String, fileOccured f: String?, objectRunIn r: String?,
     var toBePrinted: String = ("\(year).\(month).\(day)@\(hour):\(minutes):\(seconds).\(nanoseconds)")
     
     // Adding the info text
-    if t.hasSuffix("."){
+    if t.hasSuffix(".") || t.hasSuffix("!") || t.hasSuffix("?") {
         toBePrinted += ": \(t) "
     } else {
         toBePrinted += ": \(t). "

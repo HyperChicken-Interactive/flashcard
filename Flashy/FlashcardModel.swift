@@ -241,6 +241,7 @@ var editSet: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashca
  */
 var flashySetArray: [FlashySet] = []
 
+ 
 /// The array of ALL flashysets. 
 var allFlashySetArrays: [FlashySet]{
     return [flashySuper] + flashySetArray

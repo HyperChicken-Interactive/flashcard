@@ -27,38 +27,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-        for time in flashySetArray {
-            NSKeyedArchiver.archiveRootObject(time, toFile: "/flashyArchives")
-            
-        }
-        
-        loginfo(infoText: "Archived data for FlashySet array", fileOccured: "AppDelegate.swift", objectRunIn: "applicationWillResignActive()", otherInfo: ["There are \(flashySetArray.count) items."])
+        saveFlashySets(NeedsToBePrimed: true)
 
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        
+            saveFlashySets(NeedsToBePrimed: true)
         }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+        unarchiveFlashySets(&flashySetArray)
+        loginfo(infoText: "ALERT 1!", fileOccured: nil, objectRunIn: nil, otherInfo: nil)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-        if let flashyTemp = NSKeyedUnarchiver.unarchiveObject(withFile: "flashyArchives") as? [FlashySet] {
-            flashySetArray = flashyTemp
-            loginfo(infoText: "Unarchived data for FlashySet array", fileOccured: "AppDelegate.swift", objectRunIn: "applicationDidBecomeActive()", otherInfo: ["File was found. Restoring from archive."])
-        } else {
-            flashySetArray = []
-            loginfo(infoText: "Unarchived data for FlashySet array", fileOccured: "AppDelegate.swift", objectRunIn: "applicationDidBecomeActive()", otherInfo: ["There was no archive availible. Creating empty array."])
-        }
+        unarchiveFlashySets(&flashySetArray)
+        loginfo(infoText: "ALERT 2!", fileOccured: nil, objectRunIn: nil, otherInfo: nil)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:
+        saveFlashySets(NeedsToBePrimed: true)
     }
 
 
