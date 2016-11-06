@@ -6,7 +6,6 @@
 //  Copyright © 2016 HyperChicken Interactive. All rights reserved.
 //
 
-// WIP by @donovank
 // *Now with documentation!!!* //
 
 import Foundation
@@ -20,6 +19,7 @@ import Foundation
  
  - parameter tbp: Sees if flashyCardArray needs to be primed to be saved. As of v4.0-alpha, build 10, this is a bug-fix instrument.
  */
+
 func saveFlashySets(NeedsToBePrimed tbp: Bool){
     
     if tbp == true {
@@ -44,26 +44,3 @@ func unarchiveFlashySets(_ c: inout [FlashySet]) {
     }
 }
 
-/*
-
-let file = "flashyData.json"
-
-func grabNameData(flashySets: Array<AnyObject>) -> (String, String) {
-    var nameData: Array = [String]   
- 
-    for item in flashyNames {
-       nameData.append(item.name!, item.shortName)
-    }
- 
-    return 
-}
-
-func saveToJson(_ names: Array<String>, count index: Int) {
-    //let name = names[index]
-    if let jsonResult = responseObject as? Dictionary<String, AnyObject> {
-        // do whatever with jsonResult
-    }
-    
-}
-
-*/
