@@ -10,6 +10,20 @@
 
 import Foundation
 
+
+/** 
+ # Flashcards!
+ 
+ The one-and-only flashcard! It's cool, hip, magical, and a massive pain-in-the-arse!
+ 
+ ## Contents:
+ 
+ 1 (one) sideOne of type string. When the user "flashes" their cardset, this is the first side of the card that will show.
+ 1 (one) sideTwo of type string. This is the opposite side to sideOne.
+ 1 (one) currentlySelectedSide of type string. It "points" to either sideOne or sideTwo.
+ 1 (one) mutating flipCard function. Sets the value of currentlySelectedSide to sideTwo if it's sideOne or sideOne if it's sideTwo
+ 1 (one) custom init method.
+ */
 struct FlashyCard {
     var sideOne: String
     var sideTwo: String
@@ -18,10 +32,12 @@ struct FlashyCard {
         switch currentlySelectedSide {
         case sideOne:
             currentlySelectedSide = sideTwo
+            loginfo(infoText: "Flipped flashycard", fileOccured: nil, objectRunIn: "mutating func flipCard()", otherInfo: ["Flipped from card \(sideOne) to \(sideTwo).", "The currently selected card is \(self.currentlySelectedSide).", "Side one is: \" \(sideOne) \".", "Side two is: \" \(sideTwo) \"."])
         case sideTwo:
             currentlySelectedSide = sideOne
+            loginfo(infoText: "Flipped flashycard", fileOccured: nil, objectRunIn: "mutating func flipCard()", otherInfo: ["Flipped from card \(sideTwo) to \(sideOne).", "The currently selected card is \(self.currentlySelectedSide).", "Side one is: \" \(sideOne) \".", "Side two is: \" \(sideTwo) \"."])
         default:
-            print("Tried to flip card. Failed?")
+            loginfo(infoText: "Flipped flashycard. Failed.", fileOccured: nil, objectRunIn: "mutating func flipCard()", otherInfo: ["Tried to flip from card \(self.currentlySelectedSide).", "The currently selected card is \(self.currentlySelectedSide).", "Side one is: \" \(sideOne) \".", "Side two is: \" \(sideTwo) \"."])
         }
     }
     init(sideOne: String, sideTwo: String) {
@@ -29,8 +45,13 @@ struct FlashyCard {
         self.sideTwo = sideTwo
         self.currentlySelectedSide = sideOne
     }
-} // a card object with two sides, and a selected side. The flip function switches what side of the card will be visable.
+}
 
+/**
+ # The meaning of life, the universe, and everything.
+ 
+ This was in theory, meant to be an array of [FlashyCard], but we can't have nice things so I've made it into an absurd, structy, thing. I've tried to document all of the important bits, but please open an issue on Git if you don't understand something.
+ */
 class FlashySet: NSObject, NSCoding {
         
     /** Name of Flashy set.
@@ -42,7 +63,11 @@ Don't worry, the optional is handeled properly.
     /// Short name to be used on the picker.
     var shortName: String = "Blank"
      
-    ///Checks to see if this is either the default set or an edit set. Those are two special sets that are ignored when saving to a file.
+    /** I can't think of a better name for this.
+     This is a value to indicate wether the set this vale is a member of is either the edit set or the superset.
+     
+     Usage: This instance is used in the menu to see if the selected set is the default superset. When the default set is selected and an attempt to move to the preference view is made, a new cardset is appended to
+    */
     let isIgnored: Bool
     
     /// A unique identifying integer, used primarily in saving the files.
@@ -72,6 +97,10 @@ Don't worry, the optional is handeled properly.
         }
         if let sn = s {
             self.shortName = sn
+            loginfo(infoText: "ShortName property initialized", fileOccured: nil, objectRunIn: "FlashySet.init()", otherInfo: ["Given property: \(shortName)"])
+        } else {
+            loginfo(infoText: "CRITICAL: ShortName property failed to initialize", fileOccured: nil, objectRunIn: "FlashySet.init()", otherInfo: ["For safty precautions, the shortname has been temporarily changed to \"CRIT_ERR\""])
+            self.shortName = "CRIT_ERR"
         }
         
         self.isIgnored = su
@@ -89,7 +118,7 @@ Don't worry, the optional is handeled properly.
             }
         } else {
             self.cardsetArray = csa!
-            cardsContained = cardsetArray
+            self.cardsContained = cardsetArray
             self.uniqueID = uid
         }
     }
@@ -134,7 +163,7 @@ Don't worry, the optional is handeled properly.
         //Now that shuffledSetOfFlashyCards has the full contents of self.cardsetArray, we can return it.
     }
     
-    // Below is code directly copied and pasted from NSHipter, I have no shame.
+    // Below is code directly copied and pasted from NSHipter with some name changes in terms of variables. I have no shame.
     
     // MARK: NSCoding
     
@@ -183,13 +212,18 @@ func iterateCardsetShortnames() -> [String] {
 
 var flashySuper: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: "Click edit to create a new set", shortNameOfSet: "New set", isIgnored: true, cardsInSet: [], uniqueIdentifier: nil)
 
-var set01: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: "I'M MR MEMES", shortNameOfSet: "LOOK AT MEMES", isIgnored: false, cardsInSet: [], uniqueIdentifier: nil)
+var editSet: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: nil, shortNameOfSet: nil, isIgnored: true, cardsInSet: nil, uniqueIdentifier: nil)
 
-var editSet: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: nil, shortNameOfSet: nil, isIgnored: true, cardsInSet: [], uniqueIdentifier: nil)
-
+/**
+ ## The array of ALL custom-made flashysets.
+ 
+ This is the array of all **custom-made** cardsets. Meaning the editset and original cardset are not included. This cardset will be what is stored when the app closes.
+ */
 var flashySetArray: [FlashySet] = []
 
-/// The array of ALL flashysets. Set01 will be removed, for now, it is here because unit testing is for stupid people
-let allFlashySetArrays: [FlashySet] = [flashySuper, set01] + flashySetArray
+/// The array of ALL flashysets. 
+var allFlashySetArrays: [FlashySet]{
+    return [flashySuper] + flashySetArray
+}
 
 

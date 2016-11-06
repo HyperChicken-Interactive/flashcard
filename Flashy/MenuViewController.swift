@@ -48,10 +48,12 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         
         if currentlySelectedFlashyCardset.isIgnored == true {
             flashOutlet.isHidden = true
-            editOutlet.isHidden = true
+            editOutlet.isHidden = false
+            editOutlet.setTitle("New", for: UIControlState.normal)
         } else {
             flashOutlet.isHidden = false
             editOutlet.isHidden = false
+            editOutlet.setTitle("Edit", for: UIControlState.normal)
         }
         
         if currentlySelectedFlashyCardset.cardsetArray.count == 0 {
@@ -127,6 +129,7 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         // Do any additional setup after loading the view, typically from a nib.
         cardsetPickerOutlet.dataSource = self
         cardsetPickerOutlet.delegate = self
+        currentlySelectedFlashyCardset = flashySuper
         updateValuesInView()
         
         loginfo(infoText: "View loaded successfully", fileOccured: "MenuViewController.swift", objectRunIn: title, otherInfo: nil)

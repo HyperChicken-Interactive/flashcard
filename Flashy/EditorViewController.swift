@@ -75,26 +75,27 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         }
         
         // The following if statment handles if the card's edits should be saved and if the next, previous, and done buttons should be visable as according to the text the fields contain.
-        if sideOneOutlet.text!.isEmpty == false && sideTwoOutlet.text!.isEmpty == false && editSet.currentlySelectedFlashyCard < editSet.cardsInSet {
+        
+        if sideOneOutlet.text!.isEmpty == false /*If side 1 is not empty*/ && sideTwoOutlet.text!.isEmpty == false /*If side 2 is not empty*/ && editSet.currentlySelectedFlashyCard < editSet.cardsInSet /*If the currently selected card is less than the number of cards in set. Remember that cardsInSet counts from 1.*/ {
             
             editSet.cardsetArray[editSet.currentlySelectedFlashyCard].sideOne = sideOneOutlet.text!
             editSet.cardsetArray[editSet.currentlySelectedFlashyCard].sideTwo = sideTwoOutlet.text!
             
-            print("Modified card #\(editSet.currentlySelectedFlashyCard)")
+            logdata(infoText: "Modified card #\(editSet.currentlySelectedFlashyCard)", fileOccured: "EditorViewController.swift", objectRunIn: "updateValuesInView()", otherInfo: ["Side one is now: \(editSet.cardsetArray[editSet.currentlySelectedFlashyCard].sideOne)", "Side two is now: \(editSet.cardsetArray[editSet.currentlySelectedFlashyCard].sideTwo)"])
             
         } else if sideOneOutlet.text!.isEmpty == false && sideTwoOutlet.text!.isEmpty == false && editSet.currentlySelectedFlashyCard == editSet.cardsInSet {
             editSet.generateNewCard(sideOneOfCard: sideOneOutlet.text!, sideTwoOfCard: sideTwoOutlet.text!)
             
-            print("Created new card for \"\(editSet.name)\".")
+            logdata(infoText: "Created new card for \"\(editSet.name)\".", fileOccured: "EditorViewController.swift", objectRunIn: "UpdateValuesInView", otherInfo: nil)
         }
         
         if editSet.shortName.isEmpty == true {
             doneOutlet.isHidden = true
+            logdata(infoText: "Hid the done button", fileOccured: "EditorViewController.swift", objectRunIn: "updateValuesInView()", otherInfo: ["The done button was hidden because there is no shortname."])
         } else {
             doneOutlet.isHidden = false
+            logdata(infoText: "Showing the done button", fileOccured: "EditorViewController.swift", objectRunIn: "updateValuesInView()", otherInfo: ["The done button is shown because there is a shortname.", "The value of the shortname is \(editSet.shortName)"])
         }
-        
-        //
         
         // The following if statment handles pre-made card text to be put in the UITextFields.
         if editSet.cardsInSet > 0 && editSet.currentlySelectedFlashyCard < editSet.cardsInSet /*Makes sure that the card selected is not new and has already been made before but is just here for editing*/ {
@@ -159,6 +160,16 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         // Do any additional setup after loading the view, typically from a nib.
         
+        // Handle if a "new" cardset is being "created"
+        /*
+         If this view loads when the superset (flashySuper) is selected, make a new cardset and set the value of currentlySel...Cardset to the new member. It will be appended to flashySetArray
+         */
+        if currentlySelectedFlashyCardset == flashySuper {
+            flashySetArray.append(FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: nil, shortNameOfSet: nil, isIgnored: false, cardsInSet: nil, uniqueIdentifier: nil))
+            currentlySelectedFlashyCardset = flashySetArray[((flashySetArray.count)-1)]
+            loginfo(infoText: "Changed currently selected cardset.", fileOccured: "EditorViewController.swift", objectRunIn: "viewDidLoad()", otherInfo: ["Appended one cardset to the flashySetArray."])
+        }
+        
         editSet.forceEquivilency(setToBeRead: currentlySelectedFlashyCardset, fileRunFrom: "EditorViewController.swift")
         cardsetNameOutlet.delegate = self
         cardsetShortOutlet.delegate = self
@@ -177,6 +188,12 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         updateValuesInView()
         
         loginfo(infoText: "View loaded successfully", fileOccured: "EditorViewController.swift", objectRunIn: title, otherInfo: nil)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+        loginfo(infoText: "A memory warning was recived", fileOccured: "FlashViewController.swift", objectRunIn: nil, otherInfo: nil)
     }
     
     ////////////////////////////////////////////////////////////////
@@ -208,23 +225,42 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
      
     */
     @IBAction func doneAction() {
-        let alert = UIAlertController(title: "Hold on!", message: "Would you like to save and quit the flashcard set? This will override what is currently in \(currentlySelectedFlashyCardset.name!)", preferredStyle: UIAlertControllerStyle.alert)
+        
+        if let titleUnwrapped = currentlySelectedFlashyCardset.name {
+            let alert = UIAlertController(title: "Hold on!", message: "Would you like to save and quit the flashcard set? This will override what is currently in \(titleUnwrapped)", preferredStyle: UIAlertControllerStyle.alert)
             // Makes the body for an alert.
         
-        // add the actions (buttons)
-        // The "go" button
-        alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.default, handler: { action in
+            // add the actions (buttons)
+            // The "go" button
+            alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.default, handler: { action in
             
-            currentlySelectedFlashyCardset.forceEquivilency(setToBeRead: editSet, fileRunFrom: "editorViewController.swift")
-            self.performSegue(withIdentifier: "editorToMainSegue", sender: nil)
-        }))
+                currentlySelectedFlashyCardset.forceEquivilency(setToBeRead: editSet, fileRunFrom: "editorViewController.swift")
+                self.performSegue(withIdentifier: "editorToMainSegue", sender: nil)
+            }))
         
-        // The cancel button
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+            // The cancel button
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
         
-        // show the alert
-        self.present(alert, animated: true, completion: nil)
-       
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            let alert = UIAlertController(title: "Hold on!", message: "Would you like to save and quit the flashcard set? This will override what is currently in this set.", preferredStyle: UIAlertControllerStyle.alert)
+            // Makes the body for an alert.
+            
+            // add the actions (buttons)
+            // The "go" button
+            alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.default, handler: { action in
+                
+                currentlySelectedFlashyCardset.forceEquivilency(setToBeRead: editSet, fileRunFrom: "editorViewController.swift")
+                self.performSegue(withIdentifier: "editorToMainSegue", sender: nil)
+            }))
+            
+            // The cancel button
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+            
+            // show the alert
+            self.present(alert, animated: true, completion: nil)
+        }
     }
     
     @IBAction func previousAction() {
@@ -235,6 +271,7 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         
         print("Previous button pressed")
         updateValuesInView()
+        logdata(infoText: "Next Button Pressed", fileOccured: "EditorViewController.swift", objectRunIn: "previousAction()", otherInfo: ["Moving from \(editSet.currentlySelectedFlashyCard+1) to \(editSet.currentlySelectedFlashyCard)."])
     }
     
     @IBAction func nextAction() {
@@ -243,7 +280,7 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         sideOneOutlet.text = ""
         sideTwoOutlet.text = ""
         
-        print("Next button pressed")
+        logdata(infoText: "Next Button Pressed", fileOccured: "EditorViewController.swift", objectRunIn: "nextAction()", otherInfo: ["Moving from \(editSet.currentlySelectedFlashyCard-1) to \(editSet.currentlySelectedFlashyCard)."])
         updateValuesInView()
     }
     

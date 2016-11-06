@@ -28,13 +28,22 @@ struct ColorScheme {
     // Highlight for labels like headers.
     
     
-    init(backgroundColor bc: UIColor, flashcardColor fc: UIColor, boxColor bx: UIColor, textColor tc: UIColor, highlightColor hc: UIColor, headerColor hd: UIColor) {
+    init(backgroundColor bc: UIColor, flashcardColor fc: UIColor, boxColor bx: UIColor?, textColor tc: UIColor, highlightColor hc: UIColor, headerColor hd: UIColor?) {
         self.backgroundColor = bc
         self.flashcardColor = fc
-        self.boxColor = bx
         self.textColor = tc
         self.highlightColor = hc
-        self.headerColor = hd
+        
+        if let box = bx {
+            self.boxColor = box
+        } else {
+            self.boxColor = fc
+        }
+        if let header = hd {
+            self.headerColor = header
+        } else {
+            self.headerColor = hc
+        }
     }
 }
 
@@ -62,11 +71,13 @@ let carbonColors: ColorScheme = ColorScheme(
     highlightColor: UIColor(red: 42.0/255.0, green: 161.0/255.0, blue: 152.0/255.0, alpha: 1.0),
     headerColor: UIColor(red: 212.0/255.0, green: 157.0/255.0, blue: 221.0/255.0, alpha: 1.0))
 
-let blindModeColors: ColorScheme = ColorScheme(
-    backgroundColor: UIColor(red: 20.0/255.0, green: 20.0/255.0, blue: 20.0/255.0, alpha: 0),
-    flashcardColor: UIColor(red: 28.0/255.0, green: 28.0/255.0, blue: 28.0/255.0, alpha: 0),
-    boxColor: UIColor(red: 28.0/255.0, green: 28.0/255.0, blue: 28.0/255.0, alpha: 0),
-    textColor: UIColor(red: 194.0/255.0, green: 194.0/255.0, blue: 194.0/255.0, alpha: 0),
-    highlightColor: UIColor(red: 42.0/255.0, green: 161.0/255.0, blue: 152.0/255.0, alpha: 0),
-    headerColor: UIColor(red: 212.0/255.0, green: 157.0/255.0, blue: 221.0/255.0, alpha: 0))
+// 242, 242, 245.
+
+let showroomColors: ColorScheme = ColorScheme(
+    backgroundColor: UIColor(red: 242.0/255.0, green: 242.0/255.0, blue: 245.0/255.0, alpha: 1.0),
+    flashcardColor:  UIColor(red: 128.0/255.0, green: 135.0/255.0, blue: 133.0/255.0, alpha: 0.5),
+    boxColor:  UIColor(red: 128.0/255.0, green: 135.0/255.0, blue: 133.0/255.0, alpha: 0.25),
+    textColor: UIColor(red: 166.0/255.0, green: 23.0/255.0, blue: 2.0/255.0, alpha: 1.0),
+    highlightColor: UIColor(red: 83.0/255.0, green: 83.0/255.0, blue: 83.0/255.0, alpha: 1.0),
+    headerColor: nil)
 

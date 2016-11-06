@@ -60,8 +60,12 @@ func loginfo(infoText t: String, fileOccured f: String?, objectRunIn r: String?,
     var toBePrinted: String = ("\(year).\(month).\(day)@\(hour):\(minutes):\(seconds).\(nanoseconds)")
     
     // Adding the info text
-    toBePrinted += ": \(t). "
-    
+    if t.hasSuffix("."){
+        toBePrinted += ": \(t) "
+    } else {
+        toBePrinted += ": \(t). "
+    }
+        
     if let file = f {
         toBePrinted += "File: \"\(file)\". "
     }
@@ -78,3 +82,7 @@ func loginfo(infoText t: String, fileOccured f: String?, objectRunIn r: String?,
     print(toBePrinted)
 }
 
+/// A synonym to loginfo()
+func logdata(infoText t: String, fileOccured f: String?, objectRunIn r: String?, otherInfo o: [String]?){
+    loginfo(infoText: t, fileOccured: f, objectRunIn: r, otherInfo: o)
+}

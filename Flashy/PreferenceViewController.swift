@@ -25,7 +25,7 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
     ///////////////////////////////////////////////////////
     // Fresh home-made functions and variables! By hand! //
     ///////////////////////////////////////////////////////
-    let colorSelectData = ["Select one", "Solarized Dark", "Solarized Light", "Carbon"]
+    let colorSelectData = ["Select one", "Solarized Dark", "Solarized Light", "Carbon", "Showroom"]
     // The data for the picker.
     
     // Data Sources
@@ -46,8 +46,9 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
         switch colorSelectData[row]{
             case "Solarized Dark": currentlySelectedColorScheme = SolarizedDark
             case "Solarized Light": currentlySelectedColorScheme = solarizedLight
-            case "Carbon":currentlySelectedColorScheme = carbonColors
-        default: print("ERROR, failed to change color scheme to \(colorSelectData[row])")
+            case "Carbon": currentlySelectedColorScheme = carbonColors
+            case "Showroom": currentlySelectedColorScheme = showroomColors
+        default: logdata(infoText: "Failed to change color scheme", fileOccured: "PreferenceViewController.swift", objectRunIn: "func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)", otherInfo: ["Attempted to select color scheme \(colorSelectData[row])"])
             // Changes the color scheme to whatever is selected.
         }
         updateValuesInView()
@@ -77,11 +78,7 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
         
         view.backgroundColor = currentlySelectedColorScheme.backgroundColor
         
-        if let title = self.title {
-            print("Updated values for \(title)")
-        } else {
-            print("Updated values for view with nil title (name it!)")
-        } // Print updated values for debugging.
+        logdata(infoText: "Updated values for view.", fileOccured: "PreferenceViewController.swift", objectRunIn: title, otherInfo: nil)
         
     } // Updates all of the colors in the view. Pretty damn swanky if I do say so myself.
     
@@ -94,6 +91,7 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
         ColorSelectView.dataSource = self
         ColorSelectView.delegate = self
         updateValuesInView()
+        loginfo(infoText: "View loaded successfully", fileOccured: "PreferenceViewController.swift", objectRunIn: title, otherInfo: nil)
     }
     
     /////////////////////////////////////////////////

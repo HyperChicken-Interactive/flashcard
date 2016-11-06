@@ -10,6 +10,8 @@
 
 import Foundation
 
+/*
+
 func logdata(infoText t: String, fileOccured f: String?, objectRunIn r: String?, otherInfo o: [String]?){
     // I did this the quickest way I can. This should be refactored at all costs before beta or release.
     
@@ -55,7 +57,7 @@ func logdata(infoText t: String, fileOccured f: String?, objectRunIn r: String?,
 
 logdata(infoText: "Tested function", fileOccured: "seeWhatSticks.playground", objectRunIn: nil, otherInfo: ["I like trains", "Foo"])
 
-/*
+
 
 func iterateArrayValues(arrayToBeIteratedOver ar: [Any]) {
     
