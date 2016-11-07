@@ -36,6 +36,12 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
  
  */
     func updateValuesInView() {
+        
+        saveFlashySets(flashySetArray)
+        logdata(infoText: "saved flashcard set for good measure", fileOccured: nil, objectRunIn: nil, otherInfo: ["There are currently \(flashySetArray.count) cards.", "At index value, that means there are \(flashySetArray.count-1) cards."])
+        unarchiveFlashySets(&flashySetArray)
+        logdata(infoText: "unarchived flashcard set", fileOccured: nil, objectRunIn: nil, otherInfo: ["There are currently \(flashySetArray.count) cards.", "At index value, that means there are \(flashySetArray.count-1) cards."])
+        
         // Any changes that need to be made to the text
         if let cardsetName = currentlySelectedFlashyCardset.name {
             cardsetNameOutlet.text = cardsetName
@@ -84,7 +90,8 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         view.backgroundColor = currentlySelectedColorScheme.backgroundColor
         cardsetPickerOutlet.tintColor = currentlySelectedColorScheme.textColor
         
-        loginfo(infoText: "Updated values in view", fileOccured: "MenuViewController.swift", objectRunIn: title, otherInfo: ["There are currently \(flashcardList.count) cards. (flashcardList.count)", "Meaning, there are currently \(flashySetArray.count) cards. (flashySetArray.count)", "and \(allFlashySetArrays.count) cards. (allFlashySetArrays.count)"])
+        loginfo(infoText: "Updated values in view", fileOccured: "MenuViewController.swift", objectRunIn: title, otherInfo: ["There are currently \(flashcardList.count) cards. (flashcardList.count)",
+            "Meaning, there are currently \(flashySetArray.count) cards. (flashySetArray.count)"])
 
         
     }
@@ -112,15 +119,14 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     } // Colors the text. Avenir won't work but fine.
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-<<<<<<< HEAD
-        loginfo(infoText: "Attemtpting to select flashcard.", fileOccured: "MenuViewController.swift", objectRunIn: "pickerView (Line 112)", otherInfo: ["Title of selected card: \(allFlashySetArrays[row].shortName)", "synonymis with \(flashcardList[row])", "Index I.D. is \(row)"])
-=======
-        print(allFlashySetArrays)
-        loginfo(infoText: "Attemtpting to select flashcard.", fileOccured: "MenuViewController.swift", objectRunIn: "pickerView (Line 112)", otherInfo: ["Title of selected card: \(allFlashySetArrays[row].shortName)", "synonymas with \(flashcardList[row])", "Index I.D. is \(row)"])
->>>>>>> 2b5f0725504f4df8c063cc2a8c50b186b5be986e
         
-        currentlySelectedFlashyCardset = allFlashySetArrays[(row)]
-        
+        if row == 0 {
+            loginfo(infoText: "Attemtpting to select superset flashcard.", fileOccured: "MenuViewController.swift", objectRunIn: "pickerView (Line 112)", otherInfo: nil)
+            currentlySelectedFlashyCardset = flashySuper
+        } else {
+            loginfo(infoText: "Attemtpting to select flashcard \(row-1).", fileOccured: "MenuViewController.swift", objectRunIn: "pickerView (Line 112)", otherInfo: ["The current count of flashySetArray is: \(flashySetArray.count)", "At index value, that means there are \(flashySetArray.count-1) cards."])
+            currentlySelectedFlashyCardset = flashySetArray[(row-1)]
+        }
         updateValuesInView()
     } // Preforms an action when an items is selected.
     

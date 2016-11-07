@@ -1,31 +1,10 @@
-//
-//  FlashcardModel.swift
-//  Flashy
-//
-//  Created by Whitman Huntley on 8/1/16.
-//  Copyright © 2016 HyperChicken Interactive. All rights reserved.
-//
-
-// The structs and god knows what for modeling the flashcards.
-
 import Foundation
 
+func loginfo(infoText: String?, fileOccured: String?, objectRunIn: String?, otherInfo: [String]?){  }
+func logdata(infoText: String?, fileOccured: String?, objectRunIn: String?, otherInfo: [String]?){  }
 
-/** 
- # Flashcards!
- 
- The one-and-only flashcard! It's cool, hip, magical, and a massive pain-in-the-arse!
- 
- ## Contents:
- 
- 1 (one) sideOne of type string. When the user "flashes" their cardset, this is the first side of the card that will show.
- 1 (one) sideTwo of type string. This is the opposite side to sideOne.
- 1 (one) currentlySelectedSide of type string. It "points" to either sideOne or sideTwo.
- 1 (one) mutating flipCard function. Sets the value of currentlySelectedSide to sideTwo if it's sideOne or sideOne if it's sideTwo
- 1 (one) custom init method.
- 
- 2 (two) NSCoding/NSKeyed​Archiver methods that I shamelessly stole from NSHipster.
- */
+var idMarker = 0
+
 class FlashyCard: NSObject, NSCoding {
     var sideOne: String
     var sideTwo: String
@@ -73,21 +52,21 @@ class FlashyCard: NSObject, NSCoding {
  This was in theory, meant to be an array of [FlashyCard], but we can't have nice things so I've made it into an absurd, structy, thing. I've tried to document all of the important bits, but please open an issue on Git if you don't understand something.
  */
 class FlashySet: NSObject, NSCoding {
-        
+    
     /** Name of Flashy set.
      
-Don't worry, the optional is handeled properly.
+     Don't worry, the optional is handeled properly.
      */
     var name: String?
     
     /// Short name to be used on the picker.
     var shortName: String = "Blank"
-     
+    
     /** I can't think of a better name for this.
      This is a value to indicate wether the set this vale is a member of is either the edit set or the superset.
      
      Usage: This instance is used in the menu to see if the selected set is the default superset. When the default set is selected and an attempt to move to the preference view is made, a new cardset is appended to
-    */
+     */
     let isIgnored: Bool
     
     /// A unique identifying integer, used primarily in saving the files.
@@ -139,7 +118,7 @@ Don't worry, the optional is handeled properly.
         } else {
             self.cardsetArray = csa!
             self.cardsContained = cardsetArray
-            self.uniqueID = uid
+            self.uniqueID = uid!
         }
     }
     
@@ -157,7 +136,7 @@ Don't worry, the optional is handeled properly.
         self.cardsContained = tbr.cardsContained
         loginfo(infoText: "Forced equivilency succeded.", fileOccured: frf, objectRunIn: "forceEquivilency", otherInfo: nil)
     }
-
+    
     func randomizeCardSets() -> [FlashyCard]{
         
         var shuffledSetOfFlashyCards: [FlashyCard] = []
@@ -241,5 +220,94 @@ var editSet: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashca
  This is the array of all **custom-made** cardsets. Meaning the editset and original cardset are not included. This cardset will be what is stored when the app closes.
  */
 var flashySetArray: [FlashySet] = []
+
+func saveFlashySets(_ tba: [FlashySet]){
+    if let docs = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
+        
+        // Append your file name to the directory path
+        let path = (docs as NSString).appendingPathComponent("flashysets.plist")
+        
+        // Archive your object to a file at that path
+        NSKeyedArchiver.archiveRootObject(tba, toFile: path)
+        
+    } else {
+        logdata(infoText: "CRITICAL: Failed to archive data for Set", fileOccured: nil, objectRunIn: "saveFlashySets(...)", otherInfo: nil)
+    }
+}
+
+/**
+ # Unarchive Cardsets from flashycards.plist
+ 
+ This function unarchives a flashyset from the file flashysets.plist.
+ 
+ - parameter fls: The flashyset to be written to from archive. This should probably be flashySetArray
+ */
+func unarchiveFlashySets(_ fls: inout [FlashySet]) {
+    
+    if let docs = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
+        
+        // Append your file name to the directory path
+        let path = (docs as NSString).appendingPathComponent("flashysets.plist")
+        
+        // Unarchive your object from the file
+        if let result = NSKeyedUnarchiver.unarchiveObject(withFile: path) as? [FlashySet] {
+            loginfo(infoText: "Unarchived data for FlashySet array", fileOccured: nil, objectRunIn: nil, otherInfo: ["File was found. Restoring from archive."])
+            fls = result
+        } else {
+            print ("Bloody hell! We're going to need more power to turn this around!")
+            loginfo(infoText: "CRITICAL: Unarchived data for FlashySet array", fileOccured: nil, objectRunIn: nil, otherInfo: ["There was no archive availible. Creating empty array."])
+            fls = []
+        }
+    }
+}
+
+// Code goes here now:
+
+var set01 = FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: "Hello", shortNameOfSet: "World", isIgnored: false, cardsInSet: nil, uniqueIdentifier: nil)
+var set02 = FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: "Goodbye", shortNameOfSet: "Or something", isIgnored: false, cardsInSet: nil, uniqueIdentifier: nil)
+flashySetArray = [set01, set02]
+
+saveFlashySets(flashySetArray)
+
+flashySetArray = []
+
+unarchiveFlashySets(&flashySetArray)
+
+flashySetArray.count
+
+
+// Now using a modified method from book:
+
+flashySetArray = [set01, set02]
+
+if let docs = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
+    
+    // Append your file name to the directory path
+    let path = (docs as NSString).appendingPathComponent("flashysets.plist")
+    
+    // Archive your object to a file at that path
+    NSKeyedArchiver.archiveRootObject(flashySetArray, toFile: path)
+}
+
+flashySetArray = []
+
+if let docs = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
+    
+    // Append your file name to the directory path
+    let path = (docs as NSString).appendingPathComponent("flashysets.plist")
+    
+    // Unarchive your object from the file
+    if let result = NSKeyedUnarchiver.unarchiveObject(withFile: path) as? [FlashySet] {
+        print("Yeahhh, now it's reyn time!")
+        print(result.count)
+    } else {
+        print ("Bloody hell! We're going to need more power to turn this around!")
+    }
+    
+    // do whatever with yourObject
+}
+
+flashySetArray.count
+
 
 
