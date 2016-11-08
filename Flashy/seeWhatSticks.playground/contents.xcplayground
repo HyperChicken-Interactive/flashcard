@@ -4,5 +4,6 @@
         <page name='Book'/>
         <page name='My crap'/>
         <page name='My crap 2'/>
+        <page name='Something else?'/>
     </pages>
 </playground>

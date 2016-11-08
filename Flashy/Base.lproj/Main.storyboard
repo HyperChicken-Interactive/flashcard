@@ -500,9 +500,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Side 2" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hzs-ib-xe4">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Side 2" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hzs-ib-xe4">
                                 <rect key="frame" x="36" y="219" width="303" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.027450980390000001" green="0.21176470589999999" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.57647058819999997" green="0.63137254899999995" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="30"/>
@@ -513,9 +512,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cardset Name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Xmi-rx-TvH">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Cardset Name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Xmi-rx-TvH">
                                 <rect key="frame" x="36" y="40" width="303" height="62"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.027450980390000001" green="0.21176470589999999" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.57647058819999997" green="0.63137254899999995" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="45"/>
@@ -526,9 +524,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Short name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="EL1-eK-IFi">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Short name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="EL1-eK-IFi">
                                 <rect key="frame" x="36" y="112" width="303" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.027450980390000001" green="0.21176470589999999" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.57647058819999997" green="0.63137254899999995" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="30"/>
@@ -539,9 +536,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Side 1" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="JXS-xo-Tfh">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Side 1" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="JXS-xo-Tfh">
                                 <rect key="frame" x="36" y="168" width="303" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.027450980392156862" green="0.21176470588235294" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.57647058823529407" green="0.63137254901960782" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="30"/>
@@ -553,12 +549,10 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9iQ-vy-JMK">
-                                <rect key="frame" x="26" y="602" width="100" height="45"/>
+                                <rect key="frame" x="26" y="600" width="104.5" height="47"/>
                                 <color key="backgroundColor" red="0.027450980390000001" green="0.21176470589999999" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="9iQ-vy-JMK" secondAttribute="height" multiplier="20:9" id="2E8-Jw-U1u"/>
-                                    <constraint firstAttribute="width" constant="100" id="XQt-6C-2f2"/>
-                                    <constraint firstAttribute="height" constant="45" id="n3s-nQ-9dZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="25"/>
                                 <color key="tintColor" red="0.57647058819999997" green="0.63137254899999995" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -573,12 +567,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hIA-6K-XOq">
-                                <rect key="frame" x="137.5" y="602" width="100" height="45"/>
+                                <rect key="frame" x="135.5" y="600" width="104" height="47"/>
                                 <color key="backgroundColor" red="0.027450980390000001" green="0.21176470589999999" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="hIA-6K-XOq" secondAttribute="height" multiplier="20:9" id="DjF-jU-5Qx"/>
-                                    <constraint firstAttribute="height" constant="45" id="QOO-g2-TvA"/>
-                                    <constraint firstAttribute="width" constant="100" id="VJ1-tq-vhc"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="25"/>
                                 <color key="tintColor" red="0.57647058819999997" green="0.63137254899999995" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -594,12 +586,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CvU-8h-mKP">
-                                <rect key="frame" x="249" y="602" width="100" height="45"/>
+                                <rect key="frame" x="244.5" y="600" width="104.5" height="47"/>
                                 <color key="backgroundColor" red="0.027450980390000001" green="0.21176470589999999" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="2x5-WL-W4q"/>
                                     <constraint firstAttribute="width" secondItem="CvU-8h-mKP" secondAttribute="height" multiplier="20:9" id="aRw-tU-f32"/>
-                                    <constraint firstAttribute="height" constant="45" id="dAy-Nz-QFi"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="25"/>
                                 <color key="tintColor" red="0.57647058819999997" green="0.63137254899999995" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -614,12 +604,10 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card ##" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="wnk-d3-2Je">
-                                <rect key="frame" x="137" y="537" width="100" height="40"/>
+                                <rect key="frame" x="142" y="539" width="90.5" height="36"/>
                                 <color key="backgroundColor" red="0.027450980390000001" green="0.21176470589999999" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="YAG-Ev-nrM"/>
                                     <constraint firstAttribute="width" secondItem="wnk-d3-2Je" secondAttribute="height" multiplier="5:2" id="kce-hi-s9r"/>
-                                    <constraint firstAttribute="width" constant="100" id="oxV-D0-rMC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="25"/>
                                 <color key="textColor" red="0.14901960780000001" green="0.5450980392" blue="0.82352941180000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -633,12 +621,28 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.16862745098039217" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="hzs-ib-xe4" firstAttribute="centerX" secondItem="lnk-fT-0P0" secondAttribute="centerX" id="7j6-Zy-FBp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="JXS-xo-Tfh" secondAttribute="trailing" constant="20" id="8TU-XR-BQK"/>
+                            <constraint firstItem="hzs-ib-xe4" firstAttribute="top" secondItem="JXS-xo-Tfh" secondAttribute="bottom" constant="10" id="EUv-M4-lEo"/>
                             <constraint firstItem="hIA-6K-XOq" firstAttribute="top" secondItem="wnk-d3-2Je" secondAttribute="bottom" constant="25" id="G8C-CA-z3z"/>
+                            <constraint firstItem="Xmi-rx-TvH" firstAttribute="centerX" secondItem="lnk-fT-0P0" secondAttribute="centerX" id="I6z-JC-qAx"/>
+                            <constraint firstItem="JXS-xo-Tfh" firstAttribute="top" secondItem="EL1-eK-IFi" secondAttribute="bottom" constant="15" id="Jtd-6I-hf5"/>
                             <constraint firstItem="wnk-d3-2Je" firstAttribute="centerX" secondItem="lnk-fT-0P0" secondAttribute="centerX" id="LuK-TW-9uJ"/>
+                            <constraint firstItem="Xmi-rx-TvH" firstAttribute="top" secondItem="q14-de-5Cs" secondAttribute="bottom" constant="20" id="SmR-s8-X0H"/>
+                            <constraint firstItem="JXS-xo-Tfh" firstAttribute="leading" secondItem="lnk-fT-0P0" secondAttribute="leadingMargin" constant="20" id="TTl-nZ-vns"/>
+                            <constraint firstItem="EL1-eK-IFi" firstAttribute="top" secondItem="Xmi-rx-TvH" secondAttribute="bottom" constant="10" id="Vze-1c-egQ"/>
                             <constraint firstItem="9iQ-vy-JMK" firstAttribute="leading" secondItem="lnk-fT-0P0" secondAttribute="leadingMargin" constant="10" id="Xck-DM-hgR"/>
+                            <constraint firstItem="EL1-eK-IFi" firstAttribute="centerX" secondItem="lnk-fT-0P0" secondAttribute="centerX" id="Yeu-LR-Rzh"/>
+                            <constraint firstItem="JXS-xo-Tfh" firstAttribute="centerX" secondItem="lnk-fT-0P0" secondAttribute="centerX" id="Ykf-a7-1ns"/>
+                            <constraint firstItem="EL1-eK-IFi" firstAttribute="leading" secondItem="lnk-fT-0P0" secondAttribute="leadingMargin" constant="20" id="alg-Wb-U50"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CvU-8h-mKP" secondAttribute="trailing" constant="10" id="d5O-sx-BFc"/>
                             <constraint firstItem="KO3-IA-0hy" firstAttribute="top" secondItem="hIA-6K-XOq" secondAttribute="bottom" constant="20" id="dSd-EO-JlF"/>
+                            <constraint firstItem="hzs-ib-xe4" firstAttribute="leading" secondItem="lnk-fT-0P0" secondAttribute="leadingMargin" constant="20" id="fNs-qy-nA8"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EL1-eK-IFi" secondAttribute="trailing" constant="20" id="kHQ-LY-8Qu"/>
                             <constraint firstItem="KO3-IA-0hy" firstAttribute="top" secondItem="CvU-8h-mKP" secondAttribute="bottom" constant="20" id="pYm-DA-mqa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Xmi-rx-TvH" secondAttribute="trailing" constant="20" id="reU-gF-MqU"/>
+                            <constraint firstItem="Xmi-rx-TvH" firstAttribute="leading" secondItem="lnk-fT-0P0" secondAttribute="leadingMargin" constant="20" id="sFr-ol-4sE"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="hzs-ib-xe4" secondAttribute="trailing" constant="20" id="u4i-kD-jm5"/>
                             <constraint firstItem="hIA-6K-XOq" firstAttribute="centerX" secondItem="lnk-fT-0P0" secondAttribute="centerX" id="xpP-Bd-ccQ"/>
                             <constraint firstItem="KO3-IA-0hy" firstAttribute="top" secondItem="9iQ-vy-JMK" secondAttribute="bottom" constant="20" id="yV8-b8-mdz"/>
                         </constraints>

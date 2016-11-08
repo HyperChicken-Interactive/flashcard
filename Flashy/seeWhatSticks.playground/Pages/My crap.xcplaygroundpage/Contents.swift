@@ -168,18 +168,18 @@ class FlashySet: NSObject, NSCoding {
     // MARK: NSCoding
     
     required convenience init?(coder decoder: NSCoder) {
-        guard let name = decoder.decodeObject(forKey: "name") as? String,
-            let shortName = decoder.decodeObject(forKey: "shortName") as? String,
-            let cardsetArray = decoder.decodeObject(forKey: "cardsetArray") as? [FlashyCard],
-            let uid = decoder.decodeObject(forKey: "uniqueID") as? Int!
+        guard let nm = decoder.decodeObject(forKey: "name") as? String,
+            let sName = decoder.decodeObject(forKey: "shortName") as? String,
+            let csetArray = decoder.decodeObject(forKey: "cardsetArray") as? [FlashyCard],
+            let uid = decoder.decodeObject(forKey: "uniqueID") as? Int
             else { return nil }
         
         self.init(
             isInitializedViaEncoder: true,
-            nameOfFlashcardSet: name,
-            shortNameOfSet: shortName,
+            nameOfFlashcardSet: nm,
+            shortNameOfSet: sName,
             isIgnored: decoder.decodeBool(forKey: "isIgnored"),
-            cardsInSet: cardsetArray,
+            cardsInSet: csetArray,
             uniqueIdentifier: uid
         )
     }

@@ -84,7 +84,7 @@ if let docs = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomai
     // Unarchive your object from the file
     if let result = NSKeyedUnarchiver.unarchiveObject(withFile: path) as? [FlashyCard] {
         print("Yeahhh, now it's reyn time!")
-        print(result[0].sideOne)
+        print(result[0].currentlySelectedSide)
     } else {
         print ("Bloody hell! We're going to need more power to turn this around!")
     }
