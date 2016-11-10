@@ -59,11 +59,12 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
  */
     func updateValuesInView() {
         
-        
+        /*
         saveFlashySets(flashySetArray)
         logdata(infoText: "saved flashcard set for good measure", fileOccured: nil, objectRunIn: nil, otherInfo: ["There are currently \(flashySetArray.count) cards.", "At index value, that means there are \(flashySetArray.count-1) cards."])
         unarchiveFlashySets(&flashySetArray)
         logdata(infoText: "unarchived flashcard set", fileOccured: nil, objectRunIn: nil, otherInfo: ["There are currently \(flashySetArray.count) cards.", "At index value, that means there are \(flashySetArray.count-1) cards."])
+         */
         
         // Any changes that need to be made to the text
         cardsetNameOutlet.text = currentlySelectedFlashyCardset.name

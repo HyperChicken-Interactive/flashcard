@@ -28,7 +28,7 @@ func saveFlashySets(_ tba: [FlashySet]){
     if let docs = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
         
         // Append your file name to the directory path
-        let path = (docs as NSString).appendingPathComponent("flashysets")
+        let path = (docs as NSString).appendingPathComponent("flashysets.plist")
         
         // Archive your object to a file at that path
         let result = NSKeyedArchiver.archiveRootObject(tba, toFile: path)
@@ -56,7 +56,7 @@ func unarchiveFlashySets(_ fls: inout [FlashySet]) {
     if let docs = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
         
         // Append your file name to the directory path
-        let path = (docs as NSString).appendingPathComponent("flashysets")
+        let path = (docs as NSString).appendingPathComponent("flashysets.plist")
         
         // Unarchive your object from the file
         if let result = NSKeyedUnarchiver.unarchiveObject(withFile: path) as? [FlashySet] {
