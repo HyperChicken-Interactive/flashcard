@@ -10,6 +10,10 @@
 
 import Foundation
 
+
+
+
+
 /**
  # Saves flashy sets!
  
@@ -24,13 +28,19 @@ func saveFlashySets(_ tba: [FlashySet]){
     if let docs = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
         
         // Append your file name to the directory path
-        let path = (docs as NSString).appendingPathComponent("flashysets.plist")
+        let path = (docs as NSString).appendingPathComponent("flashysets")
         
         // Archive your object to a file at that path
-        NSKeyedArchiver.archiveRootObject(tba, toFile: path)
+        let result = NSKeyedArchiver.archiveRootObject(tba, toFile: path)
+        
+        if result == true {
+            logdata(infoText: "Successfully archived flashyset", fileOccured: nil, objectRunIn: "saveFlashySets(...)", otherInfo: ["There were \(tba.count) cards at archive time.", "Saved to file \(path)", "docs value of \(docs as NSString)", "Return value of call to NSKeyedArchiver.archiveRootObject was \(result)."])
+        } else {
+            logdata(infoText: "CRITICAL: Failed to archive flashyset", fileOccured: nil, objectRunIn: "saveFlashySets(...)", otherInfo: ["There were \(tba.count) cards at archive time.", "Saved to file \(path)", "docs value of \(docs as NSString)", "Return value of call to NSKeyedArchiver.archiveRootObject was \(result)."])
+        }
     
     } else {
-        logdata(infoText: "CRITICAL: Failed to archive data for Set", fileOccured: nil, objectRunIn: "saveFlashySets(...)", otherInfo: nil)
+        logdata(infoText: "CRITICAL: Failed to archive data for flashyset", fileOccured: nil, objectRunIn: "saveFlashySets(...)", otherInfo: ["temp constant `docs` resolved to a nil value"])
     }
 }
 
@@ -46,17 +56,19 @@ func unarchiveFlashySets(_ fls: inout [FlashySet]) {
     if let docs = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
         
         // Append your file name to the directory path
-        let path = (docs as NSString).appendingPathComponent("flashysets.plist")
+        let path = (docs as NSString).appendingPathComponent("flashysets")
         
         // Unarchive your object from the file
         if let result = NSKeyedUnarchiver.unarchiveObject(withFile: path) as? [FlashySet] {
-            loginfo(infoText: "Unarchived data for FlashySet array", fileOccured: nil, objectRunIn: nil, otherInfo: ["File was found. Restoring from archive."])
+            loginfo(infoText: "Unarchived data for FlashySet array", fileOccured: nil, objectRunIn: nil, otherInfo: ["File was found. Restoring from archive.", "Contains \(result.count) cards.", "Read from file \(path)"])
             fls = result
         } else {
-            print ("Bloody hell! We're going to need more power to turn this around!")
-            loginfo(infoText: "CRITICAL: Unarchived data for FlashySet array", fileOccured: nil, objectRunIn: nil, otherInfo: ["There was no archive availible. Creating empty array."])
+            loginfo(infoText: "CRITICAL: Failed to unarchive data for FlashySet array", fileOccured: nil, objectRunIn: nil, otherInfo: ["There was no archive availible. Creating empty array.", "temp constant `result` returned a nil value.", "Read from file \(path)", "docs value of \(docs as NSString)"])
             fls = []
         }
+    } else {
+        loginfo(infoText: "CRITICAL: Failed Unarchive data for FlashySet array", fileOccured: nil, objectRunIn: nil, otherInfo: ["There was no archive availible. Creating empty array.", "temp constant `docs` returned a nil value."])
+        fls = []
     }
 }
 

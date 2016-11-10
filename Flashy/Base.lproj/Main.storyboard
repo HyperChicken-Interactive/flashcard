@@ -65,7 +65,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="3gY-gZ-Mij" kind="presentation" modalTransitionStyle="crossDissolve" id="isW-dj-C4u"/>
+                                    <action selector="editAction" destination="xfv-tj-feU" eventType="touchUpInside" id="Tkf-Xo-DNP"/>
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAY-pf-peO">
@@ -158,6 +158,7 @@
                         <outlet property="numberOfCardsOutlet" destination="4z4-fG-7vF" id="BHK-UJ-g6P"/>
                         <outlet property="settingsOutlet" destination="u8O-HZ-0ZK" id="HUp-Yt-9EO"/>
                         <outlet property="welcomeOutlet" destination="hZg-LL-fR6" id="xrw-6U-kdo"/>
+                        <segue destination="3gY-gZ-Mij" kind="presentation" identifier="mainToEditorSegue" modalTransitionStyle="crossDissolve" id="wOl-ZU-Gzd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WOB-yA-ktd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -501,7 +502,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Side 2" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hzs-ib-xe4">
-                                <rect key="frame" x="36" y="219" width="303" height="41"/>
+                                <rect key="frame" x="36" y="203" width="303" height="41"/>
                                 <color key="backgroundColor" red="0.027450980390000001" green="0.21176470589999999" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.57647058819999997" green="0.63137254899999995" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="30"/>
@@ -524,20 +525,8 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Short name" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="EL1-eK-IFi">
-                                <rect key="frame" x="36" y="112" width="303" height="41"/>
-                                <color key="backgroundColor" red="0.027450980390000001" green="0.21176470589999999" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="textColor" red="0.57647058819999997" green="0.63137254899999995" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="30"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" spellCheckingType="yes" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Side 1" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="JXS-xo-Tfh">
-                                <rect key="frame" x="36" y="168" width="303" height="41"/>
+                                <rect key="frame" x="36" y="152" width="303" height="41"/>
                                 <color key="backgroundColor" red="0.027450980392156862" green="0.21176470588235294" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="0.57647058823529407" green="0.63137254901960782" blue="0.63137254901960782" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="30"/>
@@ -626,22 +615,18 @@
                             <constraint firstItem="hzs-ib-xe4" firstAttribute="top" secondItem="JXS-xo-Tfh" secondAttribute="bottom" constant="10" id="EUv-M4-lEo"/>
                             <constraint firstItem="hIA-6K-XOq" firstAttribute="top" secondItem="wnk-d3-2Je" secondAttribute="bottom" constant="25" id="G8C-CA-z3z"/>
                             <constraint firstItem="Xmi-rx-TvH" firstAttribute="centerX" secondItem="lnk-fT-0P0" secondAttribute="centerX" id="I6z-JC-qAx"/>
-                            <constraint firstItem="JXS-xo-Tfh" firstAttribute="top" secondItem="EL1-eK-IFi" secondAttribute="bottom" constant="15" id="Jtd-6I-hf5"/>
                             <constraint firstItem="wnk-d3-2Je" firstAttribute="centerX" secondItem="lnk-fT-0P0" secondAttribute="centerX" id="LuK-TW-9uJ"/>
                             <constraint firstItem="Xmi-rx-TvH" firstAttribute="top" secondItem="q14-de-5Cs" secondAttribute="bottom" constant="20" id="SmR-s8-X0H"/>
                             <constraint firstItem="JXS-xo-Tfh" firstAttribute="leading" secondItem="lnk-fT-0P0" secondAttribute="leadingMargin" constant="20" id="TTl-nZ-vns"/>
-                            <constraint firstItem="EL1-eK-IFi" firstAttribute="top" secondItem="Xmi-rx-TvH" secondAttribute="bottom" constant="10" id="Vze-1c-egQ"/>
                             <constraint firstItem="9iQ-vy-JMK" firstAttribute="leading" secondItem="lnk-fT-0P0" secondAttribute="leadingMargin" constant="10" id="Xck-DM-hgR"/>
-                            <constraint firstItem="EL1-eK-IFi" firstAttribute="centerX" secondItem="lnk-fT-0P0" secondAttribute="centerX" id="Yeu-LR-Rzh"/>
                             <constraint firstItem="JXS-xo-Tfh" firstAttribute="centerX" secondItem="lnk-fT-0P0" secondAttribute="centerX" id="Ykf-a7-1ns"/>
-                            <constraint firstItem="EL1-eK-IFi" firstAttribute="leading" secondItem="lnk-fT-0P0" secondAttribute="leadingMargin" constant="20" id="alg-Wb-U50"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CvU-8h-mKP" secondAttribute="trailing" constant="10" id="d5O-sx-BFc"/>
                             <constraint firstItem="KO3-IA-0hy" firstAttribute="top" secondItem="hIA-6K-XOq" secondAttribute="bottom" constant="20" id="dSd-EO-JlF"/>
                             <constraint firstItem="hzs-ib-xe4" firstAttribute="leading" secondItem="lnk-fT-0P0" secondAttribute="leadingMargin" constant="20" id="fNs-qy-nA8"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="EL1-eK-IFi" secondAttribute="trailing" constant="20" id="kHQ-LY-8Qu"/>
                             <constraint firstItem="KO3-IA-0hy" firstAttribute="top" secondItem="CvU-8h-mKP" secondAttribute="bottom" constant="20" id="pYm-DA-mqa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Xmi-rx-TvH" secondAttribute="trailing" constant="20" id="reU-gF-MqU"/>
                             <constraint firstItem="Xmi-rx-TvH" firstAttribute="leading" secondItem="lnk-fT-0P0" secondAttribute="leadingMargin" constant="20" id="sFr-ol-4sE"/>
+                            <constraint firstItem="JXS-xo-Tfh" firstAttribute="top" secondItem="Xmi-rx-TvH" secondAttribute="bottom" constant="50" id="tiK-Un-Ft8"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hzs-ib-xe4" secondAttribute="trailing" constant="20" id="u4i-kD-jm5"/>
                             <constraint firstItem="hIA-6K-XOq" firstAttribute="centerX" secondItem="lnk-fT-0P0" secondAttribute="centerX" id="xpP-Bd-ccQ"/>
                             <constraint firstItem="KO3-IA-0hy" firstAttribute="top" secondItem="9iQ-vy-JMK" secondAttribute="bottom" constant="20" id="yV8-b8-mdz"/>
@@ -650,7 +635,6 @@
                     <connections>
                         <outlet property="cardNumberOutlet" destination="wnk-d3-2Je" id="SYU-5c-GCZ"/>
                         <outlet property="cardsetNameOutlet" destination="Xmi-rx-TvH" id="LsI-QW-2fQ"/>
-                        <outlet property="cardsetShortOutlet" destination="EL1-eK-IFi" id="D7M-CL-lp3"/>
                         <outlet property="doneOutlet" destination="hIA-6K-XOq" id="Qer-4X-d80"/>
                         <outlet property="nextOutlet" destination="CvU-8h-mKP" id="7gY-JP-g9Z"/>
                         <outlet property="previousOutlet" destination="9iQ-vy-JMK" id="noM-ib-8oT"/>

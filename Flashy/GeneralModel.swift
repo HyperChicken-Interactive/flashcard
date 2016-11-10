@@ -13,9 +13,6 @@ var currentlySelectedFlashyCardset: FlashySet = flashySuper
 
 var currentlySelectedColorScheme: ColorScheme = SolarizedDark
 
-/// A unique identifier for FlashySets.
-var idMarker: Int = 1
-
 /**
  ## Log important info for debugging.
  

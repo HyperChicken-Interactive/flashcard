@@ -17,9 +17,6 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
     
     /// A UITextField for modifying the name of the cardset being modified.
     @IBOutlet weak var cardsetNameOutlet: UITextField!
-    
-    /// A UITextField for modifying the short name of the cards.
-    @IBOutlet weak var cardsetShortOutlet: UITextField!
 
     /// A UITextField for generating side one of the cards.
     @IBOutlet weak var sideOneOutlet: UITextField!
@@ -52,11 +49,8 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         // Updating text and visability //
         //////////////////////////////////
         
-        editSet.shortName = cardsetShortOutlet.text!
         editSet.name = cardsetNameOutlet.text!
-        
         cardsetNameOutlet.text = editSet.name
-        cardsetShortOutlet.text = editSet.shortName
         
         // The following if statment handles the next and previous buttons as according to the currently selected card
         if editSet.cardsInSet == 0 /* Handle if unmade cardset */{
@@ -89,12 +83,12 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
             logdata(infoText: "Created new card for \"\(editSet.name)\".", fileOccured: "EditorViewController.swift", objectRunIn: "UpdateValuesInView", otherInfo: nil)
         }
         
-        if editSet.shortName.isEmpty == true {
+        if editSet.name.isEmpty == true {
             doneOutlet.isHidden = true
-            logdata(infoText: "Hid the done button", fileOccured: "EditorViewController.swift", objectRunIn: "updateValuesInView()", otherInfo: ["The done button was hidden because there is no shortname."])
+            logdata(infoText: "Hid the done button", fileOccured: "EditorViewController.swift", objectRunIn: "updateValuesInView()", otherInfo: ["The done button was hidden because there is no name."])
         } else {
             doneOutlet.isHidden = false
-            logdata(infoText: "Showing the done button", fileOccured: "EditorViewController.swift", objectRunIn: "updateValuesInView()", otherInfo: ["The done button is shown because there is a shortname.", "The value of the shortname is \(editSet.shortName)"])
+            logdata(infoText: "Showing the done button", fileOccured: "EditorViewController.swift", objectRunIn: "updateValuesInView()", otherInfo: ["The done button is shown because there is a name.", "The value of the name is \(editSet.name)"])
         }
         
         // The following if statment handles pre-made card text to be put in the UITextFields.
@@ -116,11 +110,6 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         cardsetNameOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
         // delt with the cardset name
         
-        cardsetShortOutlet.attributedPlaceholder = NSAttributedString(string: "Enter shortname", attributes: [NSForegroundColorAttributeName: currentlySelectedColorScheme.highlightColor])
-        cardsetShortOutlet.textColor = currentlySelectedColorScheme.highlightColor
-        cardsetShortOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
-        // Sets the shortname to whatever the currently selected set's sn is (non optional)
-            
         sideOneOutlet.attributedPlaceholder = NSAttributedString(string: "Side 1", attributes: [NSForegroundColorAttributeName: currentlySelectedColorScheme.textColor])
         // Updating side one to say "Enter side one"
             
@@ -160,26 +149,12 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
     override func viewDidLoad() {
         // Do any additional setup after loading the view, typically from a nib.
         
-        // Handle if a "new" cardset is being "created"
-        /*
-         If this view loads when the superset (flashySuper) is selected, make a new cardset and set the value of currentlySel...Cardset to the new member. It will be appended to flashySetArray
-         */
-        if currentlySelectedFlashyCardset == flashySuper {
-            flashySetArray.append(FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: nil, shortNameOfSet: nil, isIgnored: false, cardsInSet: nil, uniqueIdentifier: nil))
-            currentlySelectedFlashyCardset = flashySetArray[((flashySetArray.count)-1)]
-            loginfo(infoText: "Changed currently selected cardset.", fileOccured: "EditorViewController.swift", objectRunIn: "viewDidLoad()", otherInfo: ["Appended one cardset to the flashySetArray.", "Meaning there are \(flashySetArray.count) cardsets."])
-        }
-        
         editSet.forceEquivilency(setToBeRead: currentlySelectedFlashyCardset, fileRunFrom: "EditorViewController.swift")
         cardsetNameOutlet.delegate = self
-        cardsetShortOutlet.delegate = self
         sideOneOutlet.delegate = self
         sideTwoOutlet.delegate = self
         
-        // Set the shortname.
-        cardsetShortOutlet.text = editSet.shortName
-        
-        // Set the Long-name
+        // Set the name
         cardsetNameOutlet.text = editSet.name
         
         //Looks for single or multiple taps.
@@ -226,41 +201,22 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
     */
     @IBAction func doneAction() {
         
-        if let titleUnwrapped = currentlySelectedFlashyCardset.name {
-            let alert = UIAlertController(title: "Hold on!", message: "Would you like to save and quit the flashcard set? This will override what is currently in \(titleUnwrapped)", preferredStyle: UIAlertControllerStyle.alert)
-            // Makes the body for an alert.
-        
-            // add the actions (buttons)
-            // The "go" button
-            alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.default, handler: { action in
+        let alert = UIAlertController(title: "Hold on!", message: "Would you like to save and quit the flashcard set? This will override what is currently in this set.", preferredStyle: UIAlertControllerStyle.alert)
+        // Makes the body for an alert.
             
-                currentlySelectedFlashyCardset.forceEquivilency(setToBeRead: editSet, fileRunFrom: "editorViewController.swift")
-                self.performSegue(withIdentifier: "editorToMainSegue", sender: nil)
-            }))
-        
-            // The cancel button
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
-        
-            // show the alert
-            self.present(alert, animated: true, completion: nil)
-        } else {
-            let alert = UIAlertController(title: "Hold on!", message: "Would you like to save and quit the flashcard set? This will override what is currently in this set.", preferredStyle: UIAlertControllerStyle.alert)
-            // Makes the body for an alert.
-            
-            // add the actions (buttons)
-            // The "go" button
-            alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.default, handler: { action in
+        // add the actions (buttons)
+        // The "go" button
+        alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.default, handler: { action in
                 
-                currentlySelectedFlashyCardset.forceEquivilency(setToBeRead: editSet, fileRunFrom: "editorViewController.swift")
-                self.performSegue(withIdentifier: "editorToMainSegue", sender: nil)
-            }))
+            currentlySelectedFlashyCardset.forceEquivilency(setToBeRead: editSet, fileRunFrom: "editorViewController.swift")
+            self.performSegue(withIdentifier: "editorToMainSegue", sender: nil)
+        }))
             
-            // The cancel button
-            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        // The cancel button
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
             
-            // show the alert
-            self.present(alert, animated: true, completion: nil)
-        }
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
     }
     
     @IBAction func previousAction() {

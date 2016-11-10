@@ -13,25 +13,30 @@ class FlashViewController: UIViewController {
     ////////////////
     // IB Outlets //
     ////////////////
+    
+    /// The label at the top of the view that displays the cardset name
     @IBOutlet weak var cardsetLabel: UILabel!
-    // The label at the top of the view that has the default text of  "Cardset Name"
+    
+    /// The Label below the card itself that says by default "Card ##/##"
     @IBOutlet weak var cardNumberLabel: UILabel!
-    // The Label below the card itself that says by default "Card ##/##"
+    
+    /// The actual card.
     @IBOutlet weak var flashyCardText: UILabel!
-    // The actual card.
     
+    /// The flip button
     @IBOutlet weak var flipOutlet: UIButton!
-    // The flip button
+    
+    /// The quit button
     @IBOutlet weak var quitOutlet: UIButton!
-    // The quit button
+    
+    /// The random button
     @IBOutlet weak var randomOutlet: UIButton!
-    // The random button
     
-    
+    /// An outlet for the "next" button. See nextFlashyButton() for the method that is triggered on press.
     @IBOutlet weak var nextFlashyOutlet: UIButton!
-    // An outlet for the "next" button. See nextFlashyButton() for the method that is triggered on press.
+    
+    /// An outlet for the "previous" button. See previousFlashyButton() for the method that is triggered on press.
     @IBOutlet weak var previousFlashyOutlet: UIButton!
-    // An outlet for the "previous" button. See previousFlashyButton() for the method that is triggered on press.
     
     ///////////////////////////////
     // Homemade methods and vars //
@@ -69,11 +74,7 @@ class FlashViewController: UIViewController {
         
         cardNumberLabel.text = "Card \(currentlySelectedFlashyCardset.currentlySelectedFlashyCard+1)/\(currentlySelectedFlashyCardset.cardsInSet)"
         
-        if let cardsetName = currentlySelectedFlashyCardset.name {
-            cardsetLabel.text = cardsetName
-        } else {
-            cardsetLabel.text = "You really should name this set!"
-        }
+        cardsetLabel.text = currentlySelectedFlashyCardset.name
         
         flashyCardText.text = currentlySelectedFlashyCardset.cardsContained[currentlySelectedFlashyCardset.currentlySelectedFlashyCard].currentlySelectedSide
         

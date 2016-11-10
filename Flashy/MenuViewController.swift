@@ -14,12 +14,34 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     // And now, some wonderful IBOutlets: //
     ////////////////////////////////////////
     
+    /// An outlet that says "Welcome to flashy"
     @IBOutlet weak var welcomeOutlet: UILabel!
+    
+    /// The outlet that displays the name of the currently selected set.
     @IBOutlet weak var cardsetNameOutlet: UILabel!
+    
+    /// The outlet that displays the number of cards in the selected set.
     @IBOutlet weak var numberOfCardsOutlet: UILabel!
+    
+    /** The outlet for the "flash" button.
+     This is not what is used for moving from the `menu` to the `flash` view. That is hard coded on the main.storyboard somewhere. This outlet is used for changing text, font, hidden values as needed.
+     */
     @IBOutlet weak var flashOutlet: UIButton!
+    
+    /** The outlet for the "edit" (or "new") button.
+     This is not what is used for moving from the `menu` to the `edit` view. See editAction() function for that. This outlet is used for changing text, font, hidden values as needed.
+     */
     @IBOutlet weak var editOutlet: UIButton!
+    
+    /** The outlet for the "settings" button.
+     This is not what is used for moving from the `menu` to the `preferences` view. That is hard coded on the main.storyboard somewhere. This outlet is used for changing text, font, hidden values as needed.
+     */
     @IBOutlet weak var settingsOutlet: UIButton!
+    
+    /** The outlet for the selector.
+     I don't even know. It has functions I guess.
+     Don't ask.
+     */
     @IBOutlet weak var cardsetPickerOutlet: UIPickerView!
     
     ///////////////////////////////////////////////////////
@@ -37,17 +59,15 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
  */
     func updateValuesInView() {
         
+        
         saveFlashySets(flashySetArray)
         logdata(infoText: "saved flashcard set for good measure", fileOccured: nil, objectRunIn: nil, otherInfo: ["There are currently \(flashySetArray.count) cards.", "At index value, that means there are \(flashySetArray.count-1) cards."])
         unarchiveFlashySets(&flashySetArray)
         logdata(infoText: "unarchived flashcard set", fileOccured: nil, objectRunIn: nil, otherInfo: ["There are currently \(flashySetArray.count) cards.", "At index value, that means there are \(flashySetArray.count-1) cards."])
         
         // Any changes that need to be made to the text
-        if let cardsetName = currentlySelectedFlashyCardset.name {
-            cardsetNameOutlet.text = cardsetName
-        } else {
-            cardsetNameOutlet.text = "Select a cardset from the picker"
-        }
+        cardsetNameOutlet.text = currentlySelectedFlashyCardset.name
+        
         // Sets the cardset title to the name of the selected set, if that fails, it tells you to select a cardset.
         
         numberOfCardsOutlet.text = "\(currentlySelectedFlashyCardset.cardsInSet) cards"
@@ -98,7 +118,9 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     
     // Now we deal with the picker
     
-    let flashcardList = iterateCardsetShortnames()
+    var flashcardList: [String] {
+        return iterateCardsetShortnames()
+    }
     // The data for the picker.
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -130,22 +152,22 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         updateValuesInView()
     } // Preforms an action when an items is selected.
     
+    func appendNewCardsetIfNeeded() {
+        
+        // Checks to see if the currently selected card is the card used in creating new cardset arrays. If it is, then append an emtpty cardset to the list.
+        if currentlySelectedFlashyCardset == flashySuper {
+            flashySetArray.append(FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: nil, isIgnored: false, cardsInSet: nil))
+            currentlySelectedFlashyCardset = flashySetArray[((flashySetArray.count)-1)]
+            loginfo(infoText: "IMPORTANT: Changed currently selected cardset.", fileOccured: "EditorViewController.swift", objectRunIn: "viewDidLoad()", otherInfo: ["Appended one cardset to the flashySetArray.", "Meaning there are \(flashySetArray.count) cardsets."])
+        }
+    }
+    
     //////////////////////////
     // The viewDidLoad func //
     //////////////////////////
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        // This is here purely because this will be the most visited view. I need to think of a more-clever way to do this (mass refactor)
-        
-        /*
-        for time in allFlashySetArrays{
-            if time.isIgnored == false {
-                
-            }
-        }
-        */
         
         cardsetPickerOutlet.dataSource = self
         cardsetPickerOutlet.delegate = self
@@ -158,4 +180,14 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     /////////////////////////////////////////////////
     // Get your brand new IBAction functions here! //
     /////////////////////////////////////////////////
+    
+    @IBAction func editAction() {
+        logdata(infoText: "Edit button pressed.", fileOccured: "MenuViewController.swift", objectRunIn: "MenuViewController -> appendNewCardset", otherInfo: nil)
+        appendNewCardsetIfNeeded()
+        logdata(infoText: "Preparing to segue from Main >>> Editor.", fileOccured: "MenuViewController.swift", objectRunIn: "MenuViewController -> appendNewCardset", otherInfo: nil)
+        self.performSegue(withIdentifier: "mainToEditorSegue", sender: nil)
+        logdata(infoText: "Successfully segued from Main >>> Editor.", fileOccured: "MenuViewController.swift", objectRunIn: "MenuViewController -> appendNewCardset", otherInfo: nil)
+    }
+    
+    
 }

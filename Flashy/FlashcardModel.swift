@@ -75,13 +75,12 @@ class FlashyCard: NSObject, NSCoding {
 class FlashySet: NSObject, NSCoding {
         
     /** Name of Flashy set.
+     Very important and whatnot. As of v4.0-alpha, build 14, this replaces the shortname field.
+     If you're not Whitman and reading this. All logic has been updated accordingly and tested as much as can be done.
      
-Don't worry, the optional is handeled properly.
+     **TODO:** Update when fully reformed.
      */
-    var name: String?
-    
-    /// Short name to be used on the picker.
-    var shortName: String = "Blank"
+    var name: String
      
     /** I can't think of a better name for this.
      This is a value to indicate wether the set this vale is a member of is either the edit set or the superset.
@@ -89,9 +88,6 @@ Don't worry, the optional is handeled properly.
      Usage: This instance is used in the menu to see if the selected set is the default superset. When the default set is selected and an attempt to move to the preference view is made, a new cardset is appended to
     */
     let isIgnored: Bool
-    
-    /// A unique identifying integer, used primarily in saving the files.
-    let uniqueID: Int?
     
     /// The variable name explains this quite well.
     var currentlySelectedFlashyCard = 0
@@ -108,19 +104,14 @@ Don't worry, the optional is handeled properly.
     }
     /// Number of cards in set for the Next and Prev buttons.
     
-    init(isInitializedViaEncoder ive: Bool, nameOfFlashcardSet n: String?, shortNameOfSet s: String?, isIgnored su: Bool, cardsInSet csa: [FlashyCard]?, uniqueIdentifier uid: Int?){
-        if let name = n {
-            self.name = name
-            loginfo(infoText: "NAME property initialized", fileOccured: nil, objectRunIn: "FlashySet.init()", otherInfo: ["Given property: \(name)"])
+    init(isInitializedViaEncoder ive: Bool, nameOfFlashcardSet n: String?, isIgnored su: Bool, cardsInSet csa: [FlashyCard]?){
+        
+        if let nm = n {
+            self.name = nm
+            loginfo(infoText: "Name property initialized", fileOccured: nil, objectRunIn: "FlashySet.init()", otherInfo: ["Given property: \(name)"])
         } else {
-            loginfo(infoText: "NAME property failed to initialize", fileOccured: nil, objectRunIn: "FlashySet.init()", otherInfo: nil)
-        }
-        if let sn = s {
-            self.shortName = sn
-            loginfo(infoText: "ShortName property initialized", fileOccured: nil, objectRunIn: "FlashySet.init()", otherInfo: ["Given property: \(shortName)"])
-        } else {
-            loginfo(infoText: "CRITICAL: ShortName property failed to initialize", fileOccured: nil, objectRunIn: "FlashySet.init()", otherInfo: ["For safty precautions, the shortname has been changed to an empty string."])
-            self.shortName = ""
+            loginfo(infoText: "CRITICAL: Name property failed to initialize", fileOccured: nil, objectRunIn: "FlashySet.init()", otherInfo: ["For safty precautions, the shortname has been changed to an empty string."])
+            self.name = ""
         }
         
         self.isIgnored = su
@@ -130,16 +121,9 @@ Don't worry, the optional is handeled properly.
             cardsetArray = []
             cardsContained = cardsetArray
             
-            if su == false {
-                self.uniqueID = idMarker
-                idMarker += 1
-            } else {
-                self.uniqueID = nil
-            }
         } else {
             self.cardsetArray = csa!
             self.cardsContained = cardsetArray
-            self.uniqueID = uid
         }
     }
     
@@ -150,9 +134,8 @@ Don't worry, the optional is handeled properly.
     
     /// Forces equivilency between "tbr", which is the set to be cloned, and self. Used when "saving" edit set.
     func forceEquivilency(setToBeRead tbr: FlashySet, fileRunFrom frf: String?) {
-        loginfo(infoText: "Attempting to force equivilency between \(tbr.shortName) and \(self.shortName)", fileOccured: frf, objectRunIn: "forceEquivilency", otherInfo: nil)
+        loginfo(infoText: "Attempting to force equivilency between \(tbr.name) and \(self.name)", fileOccured: frf, objectRunIn: "forceEquivilency", otherInfo: nil)
         self.name = tbr.name
-        self.shortName = tbr.shortName
         self.cardsetArray = tbr.cardsetArray
         self.cardsContained = tbr.cardsContained
         loginfo(infoText: "Forced equivilency succeded.", fileOccured: frf, objectRunIn: "forceEquivilency", otherInfo: nil)
@@ -190,26 +173,20 @@ Don't worry, the optional is handeled properly.
     
     required convenience init?(coder decoder: NSCoder) {
         guard let name = decoder.decodeObject(forKey: "name") as? String,
-            let shortName = decoder.decodeObject(forKey: "shortName") as? String,
-            let cardsetArray = decoder.decodeObject(forKey: "cardsetArray") as? [FlashyCard],
-            let uid = decoder.decodeObject(forKey: "uniqueID") as? Int!
+            let cardsetArray = decoder.decodeObject(forKey: "cardsetArray") as? [FlashyCard]
             else { return nil }
         
         self.init(
             isInitializedViaEncoder: true,
             nameOfFlashcardSet: name,
-            shortNameOfSet: shortName,
             isIgnored: decoder.decodeBool(forKey: "isIgnored"),
-            cardsInSet: cardsetArray,
-            uniqueIdentifier: uid
+            cardsInSet: cardsetArray
         )
     }
     
     func encode(with coder: NSCoder) {
         coder.encode(self.name, forKey: "name")
-        coder.encode(true, forKey: "isInitializedViaEncoder")
-        coder.encode(self.shortName, forKey: "shortname")
-        coder.encodeCInt(Int32(self.uniqueID!), forKey: "uniqueID")
+        coder.encode(true, forKey: "initializedViaEncoder")
         coder.encode(self.cardsetArray, forKey: "cardsetArray")
         coder.encode(self.isIgnored, forKey: "isIgnored")
     }
@@ -219,21 +196,21 @@ Don't worry, the optional is handeled properly.
  ## Iterates Values in Flashcard array
  
  I'll be honest, I haven't the faintest on how to make this generic. I should, but I'm trash.
+ - returns: Array of all names in the set.
  */
-
 func iterateCardsetShortnames() -> [String] {
     var returnedArray: [String] = []
     for card in ([flashySuper] + flashySetArray){
-        returnedArray.append(card.shortName)
+        returnedArray.append(card.name)
     }
     return returnedArray
 }
 
 // Creating child classes for the actual sets.
 
-var flashySuper: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: "Click edit to create a new set", shortNameOfSet: "New set", isIgnored: true, cardsInSet: [], uniqueIdentifier: nil)
+var flashySuper: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: "Click edit to create a new set", isIgnored: true, cardsInSet: nil)
 
-var editSet: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: nil, shortNameOfSet: nil, isIgnored: true, cardsInSet: nil, uniqueIdentifier: nil)
+var editSet: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: nil, isIgnored: true, cardsInSet: nil)
 
 /**
  ## The array of ALL custom-made flashysets.
