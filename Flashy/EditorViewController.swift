@@ -92,7 +92,7 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         }
         
         // The following if statment handles pre-made card text to be put in the UITextFields.
-        if editSet.cardsInSet > 0 && editSet.currentlySelectedFlashyCard < editSet.cardsInSet /*Makes sure that the card selected is not new and has already been made before but is just here for editing*/ {
+        if editSet.currentlySelectedFlashyCard < editSet.cardsInSet /*Makes sure that the card selected is not new and has already been made before but is just here for editing*/ {
             sideOneOutlet.text = editSet.cardsetArray[editSet.currentlySelectedFlashyCard].sideOne
             sideTwoOutlet.text = editSet.cardsetArray[editSet.currentlySelectedFlashyCard].sideTwo
         }
@@ -104,16 +104,16 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         // Updating color scheme //
         ///////////////////////////
         
-        cardsetNameOutlet.attributedPlaceholder = NSAttributedString(string: "Cardset Name",attributes: [NSForegroundColorAttributeName: currentlySelectedColorScheme.headerColor])
+        cardsetNameOutlet.attributedPlaceholder = NSAttributedString(string: "[Name]", attributes: [NSForegroundColorAttributeName: currentlySelectedColorScheme.headerColor])
         //
         cardsetNameOutlet.textColor = currentlySelectedColorScheme.headerColor
         cardsetNameOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
         // delt with the cardset name
         
-        sideOneOutlet.attributedPlaceholder = NSAttributedString(string: "Side 1", attributes: [NSForegroundColorAttributeName: currentlySelectedColorScheme.textColor])
+        sideOneOutlet.attributedPlaceholder = NSAttributedString(string: "[Side 1]", attributes: [NSForegroundColorAttributeName: currentlySelectedColorScheme.textColor])
         // Updating side one to say "Enter side one"
             
-        sideTwoOutlet.attributedPlaceholder = NSAttributedString(string: "Side 2", attributes: [NSForegroundColorAttributeName: currentlySelectedColorScheme.textColor])
+        sideTwoOutlet.attributedPlaceholder = NSAttributedString(string: "[Side 2]", attributes: [NSForegroundColorAttributeName: currentlySelectedColorScheme.textColor])
         // see above
         
         // Set all placeholders.
@@ -162,6 +162,8 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         view.addGestureRecognizer(tap)
         updateValuesInView()
         
+        editSet.currentlySelectedFlashyCard = 0
+        
         loginfo(infoText: "View loaded successfully", fileOccured: "EditorViewController.swift", objectRunIn: title, otherInfo: nil)
     }
     
@@ -207,7 +209,8 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         // add the actions (buttons)
         // The "go" button
         alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.default, handler: { action in
-                
+            
+            editSet.currentlySelectedFlashyCard = 0
             currentlySelectedFlashyCardset.forceEquivilency(setToBeRead: editSet, fileRunFrom: "editorViewController.swift")
             self.performSegue(withIdentifier: "editorToMainSegue", sender: nil)
         }))
@@ -239,9 +242,5 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         logdata(infoText: "Next Button Pressed", fileOccured: "EditorViewController.swift", objectRunIn: "nextAction()", otherInfo: ["Moving from \(editSet.currentlySelectedFlashyCard-1) to \(editSet.currentlySelectedFlashyCard)."])
         updateValuesInView()
     }
-    
-    
-    
-    
 }
 

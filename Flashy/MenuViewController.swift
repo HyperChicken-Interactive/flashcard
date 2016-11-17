@@ -59,12 +59,11 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
  */
     func updateValuesInView() {
         
-        /*
         saveFlashySets(flashySetArray)
         logdata(infoText: "saved flashcard set for good measure", fileOccured: nil, objectRunIn: nil, otherInfo: ["There are currently \(flashySetArray.count) cards.", "At index value, that means there are \(flashySetArray.count-1) cards."])
         unarchiveFlashySets(&flashySetArray)
         logdata(infoText: "unarchived flashcard set", fileOccured: nil, objectRunIn: nil, otherInfo: ["There are currently \(flashySetArray.count) cards.", "At index value, that means there are \(flashySetArray.count-1) cards."])
-         */
+ 
         
         // Any changes that need to be made to the text
         cardsetNameOutlet.text = currentlySelectedFlashyCardset.name
@@ -157,7 +156,7 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         
         // Checks to see if the currently selected card is the card used in creating new cardset arrays. If it is, then append an emtpty cardset to the list.
         if currentlySelectedFlashyCardset == flashySuper {
-            flashySetArray.append(FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: nil, isIgnored: false, cardsInSet: nil))
+            flashySetArray.append(FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: "", isIgnored: false, cardsInSet: nil))
             currentlySelectedFlashyCardset = flashySetArray[((flashySetArray.count)-1)]
             loginfo(infoText: "IMPORTANT: Changed currently selected cardset.", fileOccured: "EditorViewController.swift", objectRunIn: "viewDidLoad()", otherInfo: ["Appended one cardset to the flashySetArray.", "Meaning there are \(flashySetArray.count) cardsets."])
         }
@@ -183,12 +182,12 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     /////////////////////////////////////////////////
     
     @IBAction func editAction() {
-        logdata(infoText: "Edit button pressed.", fileOccured: "MenuViewController.swift", objectRunIn: "MenuViewController -> appendNewCardset", otherInfo: nil)
+        logdata(infoText: "[ Edit | New ] button pressed.", fileOccured: "MenuViewController.swift", objectRunIn: "MenuViewController -> appendNewCardset", otherInfo: nil)
         appendNewCardsetIfNeeded()
-        logdata(infoText: "Preparing to segue from Main >>> Editor.", fileOccured: "MenuViewController.swift", objectRunIn: "MenuViewController -> appendNewCardset", otherInfo: nil)
         self.performSegue(withIdentifier: "mainToEditorSegue", sender: nil)
         logdata(infoText: "Successfully segued from Main >>> Editor.", fileOccured: "MenuViewController.swift", objectRunIn: "MenuViewController -> appendNewCardset", otherInfo: nil)
     }
+    
     
     
 }

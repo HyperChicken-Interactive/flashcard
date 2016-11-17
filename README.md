@@ -4,6 +4,19 @@ A flashcard application for iOS in Swift 3.0
 
 ---
 
+## Join our discord I guess?
+
+Due to our belief in as much transparency as possible, we have opened
+up our development discord for questions (seeing as Git doesn't allow
+for direct messages)
+
+[Use this link to join](https://discord.gg/XSyBjAX)
+
+Mind you, we reserve the right to redact it at any time and without
+warning.
+
+---
+
 ## TL;DR
 
 With flashy, you will be able to:

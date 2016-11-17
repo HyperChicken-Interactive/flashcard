@@ -8,9 +8,10 @@
 
 import UIKit
 
+/// The currently selected card, Right now it will be static but in ver 1.0 or beta it will be a dynamic function probably.
 var currentlySelectedFlashyCardset: FlashySet = flashySuper
-// The currently selected card, Right now it will be static but in ver 1.0 or beta it will be a dynamic function probably.
 
+/// The currently selected color scheme, Right now it will be static but in ver 1.0 or beta it will be a dynamic function probably.
 var currentlySelectedColorScheme: ColorScheme = SolarizedDark
 
 /**

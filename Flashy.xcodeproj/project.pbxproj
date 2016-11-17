@@ -75,10 +75,10 @@
 			children = (
 				CBA56CA41DCFF3DD004E6406 /* flashycards.plist */,
 				CB80343D1D49A0F200CBBC79 /* AppDelegate.swift */,
-				CB80343F1D49A0F200CBBC79 /* FlashViewController.swift */,
-				CBFF9B3C1D6B2A5F00975E9F /* PreferenceViewController.swift */,
 				CBFF9B381D6B1EF300975E9F /* MenuViewController.swift */,
 				CB876EC71D6C6A2700C31E39 /* EditorViewController.swift */,
+				CB80343F1D49A0F200CBBC79 /* FlashViewController.swift */,
+				CBFF9B3C1D6B2A5F00975E9F /* PreferenceViewController.swift */,
 				CB8034411D49A0F200CBBC79 /* Main.storyboard */,
 				CB8034441D49A0F200CBBC79 /* Assets.xcassets */,
 				CBBFA8581D7EEC560070CDB5 /* SaveModel.swift */,

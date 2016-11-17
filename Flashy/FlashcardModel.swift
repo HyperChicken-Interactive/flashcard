@@ -89,7 +89,7 @@ class FlashySet: NSObject, NSCoding {
     */
     let isIgnored: Bool
     
-    /// The variable name explains this quite well.
+    /// The currently selected card. This value can be changes but will always be 0 by default. It's value is not archived.
     var currentlySelectedFlashyCard = 0
     
     /// cardsetArray is an array of FlashyCard custom data type. It is the sequential list of cards in the set.
@@ -132,33 +132,47 @@ class FlashySet: NSObject, NSCoding {
         // Will take in card strings provided by user and cast them into FlashyCards.
     }
     
-    /// Forces equivilency between "tbr", which is the set to be cloned, and self. Used when "saving" edit set.
+    /** ## Forces equivilency between two sets
+     
+ This function attempts to force equivilency between "tbr", which is the set to be cloned, and self. Used when "saving" (**NOT** ARCHIVING) edit set to the original.
+     
+ - parameter tbr: The cardset that will be cloned and written to self.
+ - parameter frf: The file this function is run from. Use for debugging.
+     */
     func forceEquivilency(setToBeRead tbr: FlashySet, fileRunFrom frf: String?) {
         loginfo(infoText: "Attempting to force equivilency between \(tbr.name) and \(self.name)", fileOccured: frf, objectRunIn: "forceEquivilency", otherInfo: nil)
         self.name = tbr.name
         self.cardsetArray = tbr.cardsetArray
-        self.cardsContained = tbr.cardsContained
+        self.cardsContained = tbr.cardsetArray
         loginfo(infoText: "Forced equivilency succeded.", fileOccured: frf, objectRunIn: "forceEquivilency", otherInfo: nil)
     }
-
+    
+    /** ## Ransomizes cards within set.
+ This function randomizes the cards in `self`'s set for flashing (//TODO: find a better word than "flashing"). This is usually assosiated with cardsContained, which is the actual array displayed when flashing.
+ - returns: The reorganized array.
+    */
     func randomizeCardSets() -> [FlashyCard]{
         
+        /// The array that will be inevitably returned.
         var shuffledSetOfFlashyCards: [FlashyCard] = []
-        // This array, while currently empty will be returned.
         
+        /// The list of cards already in `shuffledSetOfFlashyCards`. This prevents duplicates.
         var arrayOfAlreadyUsedCards: [Int] = []
-        // I will use this array in the while loop to determine cards already in the shuffled set.
         
         while shuffledSetOfFlashyCards.count != cardsInSet {
-            // Under no circumstances are you to change the above line. It pains me to say this but "It just works don't touch it"
-            let randomNumber = Int(arc4random_uniform(UInt32(cardsInSet)))
-            // Gen random number to be used in this braket level
-            // Error was "cardsInSet+1" should have just been "cardsInSet"
             
+            /**
+             Generates a random number between 0...cardsInSet (A.K.A. the .count value of cardsetArray)
+             
+             PREVIOUS KNOWN ERRORS:
+             - Undated, nonissued, error regarding a problem wherin the integer generated was between 0...(cardsInSet+1), causing out-of-range crashes. This was fixed by making it cardsInSet. (NOTE: This code and the comment this bug notice was based on is extremly old (pre v1.0-alpha). I do not know why I may have commented that down, but it seemed to be important. I trust my previous self.)
+             */
+            let randomNumber = Int(arc4random_uniform(UInt32(cardsInSet)))
+            
+            // If randomNumber is indeed in arrayOfAlreadyUsedCards and hence, in shuffledSetOfFlashyCards, ignore it and try again. There is probably some .shuffle method Apple uses for this particular reson but where's the fun in that?
             if arrayOfAlreadyUsedCards.contains(randomNumber) != true {
                 shuffledSetOfFlashyCards.append(self.cardsetArray[randomNumber])
                 arrayOfAlreadyUsedCards.append(randomNumber)
-                // If randomNumber is indeed in arrayOfAlreadyUsedCards and hence, in shuffledSetOfFlashyCards, ignore it and try again. There is probably some .shuffle method Apple uses for this particular reson but where's the fun in that?
             }
             
         }
@@ -199,8 +213,8 @@ class FlashySet: NSObject, NSCoding {
  - returns: Array of all names in the set.
  */
 func iterateCardsetShortnames() -> [String] {
-    var returnedArray: [String] = []
-    for card in ([flashySuper] + flashySetArray){
+    var returnedArray: [String] = ["New Set"]
+    for card in (flashySetArray){
         returnedArray.append(card.name)
     }
     return returnedArray
@@ -218,5 +232,3 @@ var editSet: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashca
  This is the array of all **custom-made** cardsets. Meaning the editset and original cardset are not included. This cardset will be what is stored when the app closes.
  */
 var flashySetArray: [FlashySet] = []
-
-
