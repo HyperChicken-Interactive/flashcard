@@ -571,7 +571,6 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="doneAction" destination="3gY-gZ-Mij" eventType="touchUpInside" id="kUv-Kp-ZUr"/>
-                                    <action selector="nextAction" destination="3gY-gZ-Mij" eventType="touchUpInside" id="YBf-z1-m9Z"/>
                                 </connections>
                             </button>
                             <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CvU-8h-mKP">
