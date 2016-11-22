@@ -214,6 +214,38 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
             currentlySelectedFlashyCardset.forceEquivilency(setToBeRead: editSet, fileRunFrom: "editorViewController.swift")
             self.performSegue(withIdentifier: "editorToMainSegue", sender: nil)
         }))
+        
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive, handler: { action in
+            editSet.currentlySelectedFlashyCard = 0
+            
+            // Now we create a "Are you sure?" alert so people don't acidentally press the big red button
+            
+            let alert = UIAlertController(title: "Whoah there buck-o!", message: "Are you sure you want to delete this? Once deleted, the set cannot be recovered.", preferredStyle: UIAlertControllerStyle.alert)
+            
+            alert.addAction(UIAlertAction(title: "Destroy set", style: UIAlertActionStyle.destructive, handler: { action in
+                
+                editSet.currentlySelectedFlashyCard = 0
+                if let indexID = flashySetArray.index(of: currentlySelectedFlashyCardset){
+                    flashySetArray.remove(at: indexID)
+                } else {
+                    logdata(infoText: "CRITICAL: Index out of range.", fileOccured: "EditorViewController.swift", objectRunIn: "doneAction()",
+                        otherInfo: ["When trying to find cardset \"\(currentlySelectedFlashyCardset.name)\" in range of flashySetArray, a value of \"nil\" (or simmilar) was found. Which does not comply with flashySetArray.",
+                            "Due to this error being encapsulated within an if-let optional unwrapper, it is impossible to check the actual result that was returned.",
+                            "The error was caught successfully, but due to this being a major logical issue. Even so, the app might be more volitile. This will be reported to the user."])
+                    
+                    let alert = UIAlertController(title: "CRITICAL.", message: "The set that is currently attempting to be removed was not found do to god-knows-what. Please contact the head of development (whitman.colm@gmail.com) as soon as possible. Thank you.", preferredStyle: UIAlertControllerStyle.alert)
+                     alert.addAction(UIAlertAction(title: "Understood.", style: UIAlertActionStyle.destructive, handler: { action in
+                    }))
+                    
+                    self.present(alert, animated: true, completion: nil)
+                }
+                self.performSegue(withIdentifier: "editorToMainSegue", sender: nil)
+            }))
+            
+            alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+        }))
             
         // The cancel button
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
@@ -227,8 +259,7 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         
         sideOneOutlet.text = ""
         sideTwoOutlet.text = ""
-        
-        print("Previous button pressed")
+    
         updateValuesInView()
         logdata(infoText: "Next Button Pressed", fileOccured: "EditorViewController.swift", objectRunIn: "previousAction()", otherInfo: ["Moving from \(editSet.currentlySelectedFlashyCard+1) to \(editSet.currentlySelectedFlashyCard)."])
     }
