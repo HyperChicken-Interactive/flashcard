@@ -231,4 +231,4 @@ var editSet: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashca
  
  This is the array of all **custom-made** cardsets. Meaning the editset and original cardset are not included. This cardset will be what is stored when the app closes.
  */
-var flashySetArray: [FlashySet] = []
+var flashySetArray: [FlashySet] = returnFlashySets()

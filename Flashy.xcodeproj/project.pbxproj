@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB6F31B61DE4A6EF00B9703C /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB6F31B51DE4A6EF00B9703C /* CreditsViewController.swift */; };
 		CB80343E1D49A0F200CBBC79 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80343D1D49A0F200CBBC79 /* AppDelegate.swift */; };
 		CB8034401D49A0F200CBBC79 /* FlashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB80343F1D49A0F200CBBC79 /* FlashViewController.swift */; };
 		CB8034431D49A0F200CBBC79 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8034411D49A0F200CBBC79 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		CB6D95131D5152F8009F504B /* seeWhatSticks.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = seeWhatSticks.playground; sourceTree = "<group>"; };
+		CB6F31B51DE4A6EF00B9703C /* CreditsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
 		CB80343A1D49A0F200CBBC79 /* Flashy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flashy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB80343D1D49A0F200CBBC79 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB80343F1D49A0F200CBBC79 /* FlashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				CB876EC71D6C6A2700C31E39 /* EditorViewController.swift */,
 				CB80343F1D49A0F200CBBC79 /* FlashViewController.swift */,
 				CBFF9B3C1D6B2A5F00975E9F /* PreferenceViewController.swift */,
+				CB6F31B51DE4A6EF00B9703C /* CreditsViewController.swift */,
 				CB8034411D49A0F200CBBC79 /* Main.storyboard */,
 				CB8034441D49A0F200CBBC79 /* Assets.xcassets */,
 				CBBFA8581D7EEC560070CDB5 /* SaveModel.swift */,
@@ -170,6 +173,7 @@
 				CB93F26D1D5907BB003A4122 /* GUIColorModel.swift in Sources */,
 				CB876EC81D6C6A2700C31E39 /* EditorViewController.swift in Sources */,
 				CBFF9B391D6B1EF300975E9F /* MenuViewController.swift in Sources */,
+				CB6F31B61DE4A6EF00B9703C /* CreditsViewController.swift in Sources */,
 				CBBD352B1D4FFFDF001F9F16 /* FlashcardModel.swift in Sources */,
 				CBBFA8591D7EEC560070CDB5 /* SaveModel.swift in Sources */,
 				CB8034401D49A0F200CBBC79 /* FlashViewController.swift in Sources */,

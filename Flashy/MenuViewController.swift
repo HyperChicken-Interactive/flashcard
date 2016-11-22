@@ -59,12 +59,16 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
  */
     func updateValuesInView() {
         
+        // AN IMPORTANT THING ABOUT THIS CODE:
+        // For some reason, I cannot archive this code every millisecond in this function without a weird-ass bug. But what I can do, is slap it in viewDidLoad(), which is run once when this view loads.
+        // TODO: Solve the mystery of why exactly this happens. For now sadly, "it just works."
+        /*
         saveFlashySets(flashySetArray)
         logdata(infoText: "saved flashcard set for good measure", fileOccured: nil, objectRunIn: nil, otherInfo: ["There are currently \(flashySetArray.count) cards.", "At index value, that means there are \(flashySetArray.count-1) cards."])
         unarchiveFlashySets(&flashySetArray)
         logdata(infoText: "unarchived flashcard set", fileOccured: nil, objectRunIn: nil, otherInfo: ["There are currently \(flashySetArray.count) cards.", "At index value, that means there are \(flashySetArray.count-1) cards."])
+        */
  
-        
         // Any changes that need to be made to the text
         cardsetNameOutlet.text = currentlySelectedFlashyCardset.name
         
@@ -168,6 +172,12 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+         saveFlashySets(flashySetArray)
+         logdata(infoText: "saved flashcard set for good measure", fileOccured: nil, objectRunIn: nil, otherInfo: ["There are currently \(flashySetArray.count) cards.", "At index value, that means there are \(flashySetArray.count-1) cards."])
+         unarchiveFlashySets(&flashySetArray)
+         logdata(infoText: "unarchived flashcard set", fileOccured: nil, objectRunIn: nil, otherInfo: ["There are currently \(flashySetArray.count) cards.", "At index value, that means there are \(flashySetArray.count-1) cards."])
         
         cardsetPickerOutlet.dataSource = self
         cardsetPickerOutlet.delegate = self

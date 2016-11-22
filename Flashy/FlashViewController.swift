@@ -132,7 +132,7 @@ class FlashViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-        loginfo(infoText: "A memory warning was recived", fileOccured: "FlashViewController.swift", objectRunIn: nil, otherInfo: nil)
+        loginfo(infoText: "CRITICAL: A memory warning was recived", fileOccured: "FlashViewController.swift", objectRunIn: nil, otherInfo: nil)
     }
 
     @IBAction func generateRandomized() {

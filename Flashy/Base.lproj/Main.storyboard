@@ -487,7 +487,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8rG-4y-CXE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-495" y="1110"/>
+            <point key="canvasLocation" x="-1223" y="1110"/>
         </scene>
         <!--editorView-->
         <scene sceneID="nz0-NR-2nY">
@@ -646,8 +646,28 @@
             </objects>
             <point key="canvasLocation" x="-1223.2" y="374.66266866566718"/>
         </scene>
+        <!--MenuSelect-->
+        <scene sceneID="tcw-JF-kV9">
+            <objects>
+                <viewController storyboardIdentifier="CreditsView" title="MenuSelect" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vW4-Ym-QmR" customClass="CreditsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6Z6-NM-nbn"/>
+                        <viewControllerLayoutGuide type="bottom" id="gb3-L3-uhx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Qw1-GF-eZQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.0" green="0.16862745100000001" blue="0.21176470589999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.86274509799999999" green="0.1960784314" blue="0.1843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="b8q-0B-19y"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VSZ-LY-3dB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="201" y="1110"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="pEv-pm-gOD"/>
+        <segue reference="MLE-09-Uoj"/>
     </inferredMetricsTieBreakers>
 </document>

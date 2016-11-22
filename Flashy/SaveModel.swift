@@ -72,16 +72,8 @@ func unarchiveFlashySets(_ fls: inout [FlashySet]) {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+func returnFlashySets() -> [FlashySet] {
+    var tempArray: [FlashySet] = []
+    unarchiveFlashySets(&tempArray)
+    return tempArray
+}
