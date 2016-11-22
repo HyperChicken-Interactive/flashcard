@@ -646,10 +646,10 @@
             </objects>
             <point key="canvasLocation" x="-1223.2" y="374.66266866566718"/>
         </scene>
-        <!--MenuSelect-->
+        <!--Credits-->
         <scene sceneID="tcw-JF-kV9">
             <objects>
-                <viewController storyboardIdentifier="CreditsView" title="MenuSelect" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vW4-Ym-QmR" customClass="CreditsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CreditsView" title="Credits" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vW4-Ym-QmR" customClass="CreditsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6Z6-NM-nbn"/>
                         <viewControllerLayoutGuide type="bottom" id="gb3-L3-uhx"/>
