@@ -8,24 +8,29 @@
 
 import UIKit
 
+/**
+ # Ooh! Pretty colours!
+ 
+ This is a basic struct for color scheme. Should it be a protocol? yes. But that's beside the point. This structure containes values of `UIColour(r,g,b)` that can be passed to view objects like `UIButton`. These are all pre-defined and can be changed in the PreferenceViewController.
+ */
 struct ColorScheme {
+    /// The most explanitory, the color for the background of the app.
     let backgroundColor: UIColor
-    // The most explanitory, the color for the background of the app.
     
+    ///Color of flashcards.
     let flashcardColor: UIColor
-    //Color of flashcards.
     
+    /// Color for label boxes or button boxes.
     let boxColor: UIColor
-    // Color for label boxes or button boxes.
     
+    /// Color for default label text.
     let textColor: UIColor
-    // Color for default label text.
     
+    /// Highlight for buttons and not label items.
     let highlightColor: UIColor
-    // Highlight for buttons and not label items.
     
+    /// Highlight for labels like headers.
     let headerColor: UIColor
-    // Highlight for labels like headers.
     
     
     init(backgroundColor bc: UIColor, flashcardColor fc: UIColor, boxColor bx: UIColor?, textColor tc: UIColor, highlightColor hc: UIColor, headerColor hd: UIColor?) {
@@ -80,4 +85,52 @@ let showroomColors: ColorScheme = ColorScheme(
     textColor: UIColor(red: 166.0/255.0, green: 23.0/255.0, blue: 2.0/255.0, alpha: 1.0),
     highlightColor: UIColor(red: 83.0/255.0, green: 83.0/255.0, blue: 83.0/255.0, alpha: 1.0),
     headerColor: nil)
+
+
+/**
+ # Switches and saves colour scheme
+ 
+ This function handles changing from one colour scheme to another, and how the `currentlySelectedColorScheme` is saved.
+ - parameter OPscheme: an optional parameter that defines what the new colour scheme is. It will be written to NSUserDefaults (Now UserDefaults in Swift 3.0.*). If nil, the function wil try to get one from UserDefaults. Failing that, will default to CarbonColors.
+ */
+func swapColorScheme(to OPscheme: String?){
+    
+    // Call and get instance of standard user defaults.
+    let prefs = UserDefaults.standard
+    
+    if let scheme = OPscheme {
+        
+        // Set & saves the new colour scheme.
+        prefs.set(scheme, forKey: "cscs")
+        
+        switch scheme{
+            case "Solarized Dark": currentlySelectedColorScheme = SolarizedDark
+            case "Solarized Light": currentlySelectedColorScheme = solarizedLight
+            case "Carbon": currentlySelectedColorScheme = carbonColors
+            case "Showroom": currentlySelectedColorScheme = showroomColors
+            default: logdata(infoText: "Failed to change color scheme", fileOccured: nil, objectRunIn: nil, otherInfo: ["Attempted to select color scheme \(scheme)"])
+        }
+        
+    } else {
+        let scheme = prefs.object(forKey: "cscs") as? String
+        
+        if let unColorscheme = scheme {
+            
+            switch unColorscheme{
+            case "Solarized Dark": currentlySelectedColorScheme = SolarizedDark
+            case "Solarized Light": currentlySelectedColorScheme = solarizedLight
+            case "Carbon": currentlySelectedColorScheme = carbonColors
+            case "Showroom": currentlySelectedColorScheme = showroomColors
+            default: logdata(infoText: "Failed to change color scheme", fileOccured: nil, objectRunIn: "else clause from swapcolorscheme()", otherInfo: ["Attempted to select color scheme \(scheme)"])
+            }
+        } else {
+            currentlySelectedColorScheme = carbonColors
+            logdata(infoText: "CRITICAL: There was no saved colour scheme", fileOccured: nil, objectRunIn: nil, otherInfo: ["Defaulting to carbon colours"])
+        }
+    }
+}
+
+
+
+
 

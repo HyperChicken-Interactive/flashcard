@@ -70,6 +70,9 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         */
  
         // Any changes that need to be made to the text
+        
+        swapColorScheme(to: nil)
+        
         cardsetNameOutlet.text = currentlySelectedFlashyCardset.name
         
         // Sets the cardset title to the name of the selected set, if that fails, it tells you to select a cardset.

@@ -25,7 +25,7 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
     ///////////////////////////////////////////////////////
     // Fresh home-made functions and variables! By hand! //
     ///////////////////////////////////////////////////////
-    let colorSelectData = ["Select one", "Solarized Dark", "Solarized Light", "Carbon", "Showroom"]
+    let colorSelectData = ["Select one", "Carbon", "Showroom", "Solarized Dark", "Solarized Light"]
     // The data for the picker.
     
     // Data Sources
@@ -43,14 +43,8 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         print("Changed color scheme to \(colorSelectData[row])")
-        switch colorSelectData[row]{
-            case "Solarized Dark": currentlySelectedColorScheme = SolarizedDark
-            case "Solarized Light": currentlySelectedColorScheme = solarizedLight
-            case "Carbon": currentlySelectedColorScheme = carbonColors
-            case "Showroom": currentlySelectedColorScheme = showroomColors
-        default: logdata(infoText: "Failed to change color scheme", fileOccured: "PreferenceViewController.swift", objectRunIn: "func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)", otherInfo: ["Attempted to select color scheme \(colorSelectData[row])"])
+        swapColorScheme(to: colorSelectData[row])
             // Changes the color scheme to whatever is selected.
-        }
         updateValuesInView()
     } // Preforms an action when an items is selected.
     
