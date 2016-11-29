@@ -98,8 +98,10 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib
         
-        AutosaveSwitchView.isOn = cardEditsWillAutoSave
+        // The only reason the viewDidLoad func doesn't contain all the code needed to format the text boxes and whatnot is becasue we need the color scheme to update so the user can see what the different varients look like.
         
+        // This bit is weird, it's both a get and a set so I can swap sides to write to cardEditsWillAutoSave. As can be seen in the updateValuesInView().
+        AutosaveSwitchView.isOn = cardEditsWillAutoSave
         AutosaveLabelOutlet.text = "Enable automatic saving when editing cardests?"
         
         ColorSelectView.dataSource = self

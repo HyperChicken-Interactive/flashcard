@@ -72,6 +72,13 @@ func unarchiveFlashySets(_ fls: inout [FlashySet]) {
     }
 }
 
+/**
+ # Returns all flashy sets for picker.
+ 
+ This function helps get all flashysetarrays for the MenuView picker. It will need to be refactored as other refinments to the code has made it obsolete.
+
+ - returns: An array of FlashySets that have just been unarchived.
+*/
 func returnFlashySets() -> [FlashySet] {
     var tempArray: [FlashySet] = []
     unarchiveFlashySets(&tempArray)
