@@ -54,7 +54,6 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
         
         // The following if statment handles the next and previous buttons as according to the currently selected card
         if editSet.cardsInSet == 0 /* Handle if unmade cardset */{
-            
             previousOutlet.isHidden = true
             nextOutlet.isHidden = true
         } else if editSet.cardsInSet == editSet.currentlySelectedFlashyCard /*If the currently selected card is out of range of the count*/ {
@@ -115,29 +114,10 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
             
         sideTwoOutlet.attributedPlaceholder = NSAttributedString(string: "[Side 2]", attributes: [NSForegroundColorAttributeName: currentlySelectedColorScheme.textColor])
         // see above
-        
-        // Set all placeholders.
-        
-        
-        sideOneOutlet.textColor = currentlySelectedColorScheme.textColor
-        sideOneOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
-        
-        sideTwoOutlet.textColor = currentlySelectedColorScheme.textColor
-        sideTwoOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
-        
-        cardNumberOutlet.textColor = currentlySelectedColorScheme.textColor
-        cardNumberOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
-        
-        doneOutlet.tintColor = currentlySelectedColorScheme.highlightColor
-        doneOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
-        
-        previousOutlet.tintColor = currentlySelectedColorScheme.highlightColor
-        previousOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
-        
-        nextOutlet.tintColor = currentlySelectedColorScheme.highlightColor
-        nextOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
-        
-        view.backgroundColor = currentlySelectedColorScheme.backgroundColor
+		
+		if cardEditsWillAutoSave == true {
+			currentlySelectedFlashyCardset.forceEquivilency(setToBeRead: editSet, fileRunFrom: "EditorViewController.swift")
+		}
         
         loginfo(infoText: "Updated view values", fileOccured: "EditorViewController.swift", objectRunIn: title, otherInfo: ["Remember this could be a cause of Issue Git:2", "There are currently \(editSet.cardsInSet) cards."])
     }
@@ -148,7 +128,31 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
     
     override func viewDidLoad() {
         // Do any additional setup after loading the view, typically from a nib.
-        
+		
+		// Blank editSet for memory managment.
+		editSet.forceEquivilency(setToBeRead: blankSet, fileRunFrom: "editorViewController.swift")
+		
+		// Here we format the screen to conform to whatever the currently selected colour scheme is:
+		sideOneOutlet.textColor = currentlySelectedColorScheme.textColor
+		sideOneOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
+		
+		sideTwoOutlet.textColor = currentlySelectedColorScheme.textColor
+		sideTwoOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
+		
+		cardNumberOutlet.textColor = currentlySelectedColorScheme.textColor
+		cardNumberOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
+		
+		doneOutlet.tintColor = currentlySelectedColorScheme.highlightColor
+		doneOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
+		
+		previousOutlet.tintColor = currentlySelectedColorScheme.highlightColor
+		previousOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
+		
+		nextOutlet.tintColor = currentlySelectedColorScheme.highlightColor
+		nextOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
+		
+		view.backgroundColor = currentlySelectedColorScheme.backgroundColor
+		
         editSet.forceEquivilency(setToBeRead: currentlySelectedFlashyCardset, fileRunFrom: "EditorViewController.swift")
         cardsetNameOutlet.delegate = self
         sideOneOutlet.delegate = self
@@ -202,20 +206,62 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
      
     */
     @IBAction func doneAction() {
-        
-        let alert = UIAlertController(title: "Hold on!", message: "Would you like to save and quit the flashcard set? This will override what is currently in this set.", preferredStyle: UIAlertControllerStyle.alert)
+		
+		var message: String
+		
+		if cardEditsWillAutoSave == false {
+			message = "If you save the set, you will override what is currently in set \(cardsetNameOutlet.text!)."
+		} else {
+			message = "You are leaving the editor. Are you done editing \(cardsetNameOutlet.text!)?"
+		}
+		
+        let alert = UIAlertController(title: "Hold on!", message: message, preferredStyle: UIAlertControllerStyle.alert)
         // Makes the body for an alert.
             
         // add the actions (buttons)
         // The "go" button
-        alert.addAction(UIAlertAction(title: "Save", style: UIAlertActionStyle.default, handler: { action in
-            
-            editSet.currentlySelectedFlashyCard = 0
-            currentlySelectedFlashyCardset.forceEquivilency(setToBeRead: editSet, fileRunFrom: "editorViewController.swift")
-            self.performSegue(withIdentifier: "editorToMainSegue", sender: nil)
-        }))
+		if cardEditsWillAutoSave == false {
+			alert.addAction(UIAlertAction(title: "Save and quit", style: UIAlertActionStyle.default, handler: { action in
+				editSet.currentlySelectedFlashyCard = 0
+				
+				// If the card edits don't autosave, **NOW** we create a new set.
+				
+				if currentlySelectedFlashyCardset == editSet {
+					flashySetArray.append(FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: "", isIgnored: false, cardsInSet: nil))
+					currentlySelectedFlashyCardset = flashySetArray[((flashySetArray.count)-1)]
+					loginfo(infoText: "IMPORTANT: Changed currently selected cardset.", fileOccured: "EditorViewController.swift", objectRunIn: "viewDidLoad()", otherInfo: ["Appended one cardset to the flashySetArray.", "Meaning there are \(flashySetArray.count) cardsets."])
+				}
+				
+				currentlySelectedFlashyCardset.forceEquivilency(setToBeRead: editSet, fileRunFrom: "editorViewController.swift")
+				self.performSegue(withIdentifier: "editorToMainSegue", sender: nil)
+			}))
+			alert.addAction(UIAlertAction(title: "Save and continue", style: UIAlertActionStyle.default, handler: { action in
+				
+				if currentlySelectedFlashyCardset == editSet {
+					flashySetArray.append(FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: "", isIgnored: false, cardsInSet: nil))
+					currentlySelectedFlashyCardset = flashySetArray[((flashySetArray.count)-1)]
+					loginfo(infoText: "IMPORTANT: Changed currently selected cardset.", fileOccured: "EditorViewController.swift", objectRunIn: "viewDidLoad()", otherInfo: ["Appended one cardset to the flashySetArray.", "Meaning there are \(flashySetArray.count) cardsets."])
+				}
+				
+				currentlySelectedFlashyCardset.forceEquivilency(setToBeRead: editSet, fileRunFrom: "editorViewController.swift")
+				
+				self.viewDidLoad()
+				
+			}))
+			alert.addAction(UIAlertAction(title: "Quit without saving", style: UIAlertActionStyle.default, handler: { action in
+				editSet.currentlySelectedFlashyCard = 0
+				self.performSegue(withIdentifier: "editorToMainSegue", sender: nil)
+			}))
+		} else {
+			alert.addAction(UIAlertAction(title: "Yes. I am done.", style: UIAlertActionStyle.default, handler: { action in
+				editSet.currentlySelectedFlashyCard = 0
+				currentlySelectedFlashyCardset.forceEquivilency(setToBeRead: editSet, fileRunFrom: "editorViewController.swift")
+				
+				self.performSegue(withIdentifier: "editorToMainSegue", sender: nil)
+			}))
+		}
         
-        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive, handler: { action in
+        alert.addAction(UIAlertAction(title: "Delete Set", style: UIAlertActionStyle.destructive, handler: { action in
             editSet.currentlySelectedFlashyCard = 0
             
             // Now we create a "Are you sure?" alert so people don't acidentally press the big red button
@@ -228,7 +274,7 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
                 if let indexID = flashySetArray.index(of: currentlySelectedFlashyCardset){
                     flashySetArray.remove(at: indexID)
                 } else {
-                    logdata(infoText: "CRITICAL: Index out of range.", fileOccured: "EditorViewController.swift", objectRunIn: "doneAction()",
+                    logdata(infoText: "ABSOLUTE CRITICAL: Index out of range.", fileOccured: "EditorViewController.swift", objectRunIn: "doneAction()",
                         otherInfo: ["When trying to find cardset \"\(currentlySelectedFlashyCardset.name)\" in range of flashySetArray, a value of \"nil\" (or simmilar) was found. Which does not comply with flashySetArray.",
                             "Due to this error being encapsulated within an if-let optional unwrapper, it is impossible to check the actual result that was returned.",
                             "The error was caught successfully, but due to this being a major logical issue. Even so, the app might be more volitile. This will be reported to the user."])

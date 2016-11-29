@@ -43,7 +43,9 @@ class FlashViewController: UIViewController {
     ///////////////////////////////
     
     func updateValuesInView(){
-        // This function updates all of the values in the view, like making sure the buttons are hidden if they need to be or the text is proper
+        // This function updates all of the values in the view, like making sure the buttons are hidden if they need to be or the text is proper.
+        
+        // Updating if the buttons need to show.
         if currentlySelectedFlashyCardset.currentlySelectedFlashyCard == (currentlySelectedFlashyCardset.cardsInSet-1) && currentlySelectedFlashyCardset.currentlySelectedFlashyCard == 0 {
             // Check if new set (Card selected is both card 0 and the highest card.)
             nextFlashyOutlet.isHidden = true
@@ -70,15 +72,29 @@ class FlashViewController: UIViewController {
                 "When calculated, it shows there are \(currentlySelectedFlashyCardset.cardsInSet-1) cards.",
                 "The currently selected card is \(currentlySelectedFlashyCardset.currentlySelectedFlashyCard)."])
         }
-        // Makes the next or previous buttons hidden if the currentlySelectedFlashyCard is at the highest index value or the lowest index value of currentlySelectedFlashyCardset.
         
+        
+        //Set text in the cardNumberLabel.        
         cardNumberLabel.text = "Card \(currentlySelectedFlashyCardset.currentlySelectedFlashyCard+1)/\(currentlySelectedFlashyCardset.cardsInSet)"
         
         cardsetLabel.text = currentlySelectedFlashyCardset.name
         
         flashyCardText.text = currentlySelectedFlashyCardset.cardsContained[currentlySelectedFlashyCardset.currentlySelectedFlashyCard].currentlySelectedSide
+
+        loginfo(infoText: "Updated values in view", fileOccured: "FlashyViewController.swift", objectRunIn: "updateValuesInView()", otherInfo: nil)
+
+    }
+    
+    ///////////////////
+    // viewDidLoad() //
+    ///////////////////
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
         
-        // Now to do massive updates on the color scheme!
+        // It is at this point where I format all the pretty colours to conform to the currentlySelectedColorScheme. This needs to be run only once and optimizes updateValuesInView()
+        
         cardsetLabel.textColor = currentlySelectedColorScheme.headerColor
         cardsetLabel.backgroundColor = currentlySelectedColorScheme.boxColor
         
@@ -105,18 +121,6 @@ class FlashViewController: UIViewController {
         
         
         view.backgroundColor = currentlySelectedColorScheme.backgroundColor
-        
-        loginfo(infoText: "Updated values in view", fileOccured: "FlashyViewController.swift", objectRunIn: "updateValuesInView()", otherInfo: nil)
-
-    }
-    
-    ///////////////////
-    // viewDidLoad() //
-    ///////////////////
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         currentlySelectedFlashyCardset.cardsContained = currentlySelectedFlashyCardset.cardsetArray
         // This is poor code and I know it, will be rectified along with other, simmilar problems during the mass refactoring.

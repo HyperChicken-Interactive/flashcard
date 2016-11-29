@@ -77,3 +77,52 @@ func returnFlashySets() -> [FlashySet] {
     unarchiveFlashySets(&tempArray)
     return tempArray
 }
+
+func archiveUserDefaults(CurentlySelectedColorScheme OPcscs: String?, AutoSaveFlashcards OPasf: Bool?) {
+    let prefs = UserDefaults.standard
+    
+    if let cscs = OPcscs {
+        prefs.set(cscs, forKey: "cscs")
+        loginfo(infoText: "IMPORTANT: Archived currently selected colour scheme.", fileOccured: nil, objectRunIn: "archiveUserDefaults(...)", otherInfo: ["Value saved was \"\(cscs)\""])
+    } else {
+        loginfo(infoText: "IMPORTANT: Failed to archive currently selected colour scheme.", fileOccured: nil, objectRunIn: "archiveUserDefaults(...)", otherInfo: ["Found nil or equivilant.",
+            "Exact passed value: \"\(OPcscs)\"."])
+    }
+    
+    if let asf = OPasf {
+        prefs.set(asf, forKey: "asf")
+        loginfo(infoText: "IMPORTANT: Archived boolian of AutoSaveFlashcard.", fileOccured: nil, objectRunIn: "archiveUserDefaults(...)", otherInfo: ["Value saved was \"\(asf)\""])
+    } else {
+        loginfo(infoText: "IMPORTANT: Failed to archive preference AutoSaveFlashcards.", fileOccured: nil, objectRunIn: "archiveUserDefaults(...)", otherInfo: ["Found nil or equivilant.",
+            "Exact passed value: \"\(OPasf)\"."])
+    }
+}
+
+func unarchiveUserDefaults() -> (String, Bool) {
+    let prefs = UserDefaults.standard
+    var returnedTuple: (String, Bool)
+    
+    if let colorScheme = prefs.string(forKey: "cscs") {
+        returnedTuple.0 = colorScheme
+    } else {
+        returnedTuple.0 = "Carbon"
+        logdata(infoText: "CRITICAL: Found nil or equivilent while attempting to unwrap optional value.", fileOccured: nil, objectRunIn: "unarchiveUserDefaults()", otherInfo: ["Attempted to unwarp \"autoSaveCards\".",
+            "Found value: \"\(prefs.object(forKey: "cscs"))\".",
+            "In an attempt to prevent critical issues, the value has been set to \"Carbon\""])
+    }
+    
+    
+    if let autoSaveCards = prefs.object(forKey: "asf") as? Bool {
+        returnedTuple.1 = autoSaveCards
+    } else {
+        returnedTuple.1 = true
+        logdata(infoText: "CRITICAL: Found nil or equivilent while attempting to unwrap optional value.", fileOccured: nil, objectRunIn: "unarchiveUserDefaults()", otherInfo: ["Attempted to unwarp \"autoSaveCards\".",
+                "Found value: \"\(prefs.object(forKey: "asf"))\".",
+                "In an attempt to prevent critical issues, the value has been set to TRUE"])
+    }
+    
+    return returnedTuple
+}
+
+
+

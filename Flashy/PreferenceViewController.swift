@@ -18,8 +18,10 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
     @IBOutlet weak var TextOutlet: UILabel!
     @IBOutlet weak var ButtonOutlet: UIButton!
     @IBOutlet weak var FlashcardOutlet: UILabel!
+    @IBOutlet weak var AutosaveLabelOutlet: UILabel!
     
     
+    @IBOutlet weak var AutosaveSwitchView: UISwitch!
     @IBOutlet weak var ColorSelectView: UIPickerView!
     @IBOutlet weak var BackButtonOutlet: UIButton!
     ///////////////////////////////////////////////////////
@@ -70,7 +72,20 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
         BackButtonOutlet.tintColor = currentlySelectedColorScheme.highlightColor
         BackButtonOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
         
+        AutosaveLabelOutlet.tintColor = currentlySelectedColorScheme.textColor
+        AutosaveLabelOutlet.backgroundColor = currentlySelectedColorScheme.boxColor
+        
         view.backgroundColor = currentlySelectedColorScheme.backgroundColor
+        
+        if AutosaveSwitchView.isOn == true {
+            cardEditsWillAutoSave = true
+            archiveUserDefaults(CurentlySelectedColorScheme: nil, AutoSaveFlashcards: cardEditsWillAutoSave)
+        } else {
+            cardEditsWillAutoSave = false
+            archiveUserDefaults(CurentlySelectedColorScheme: nil, AutoSaveFlashcards: cardEditsWillAutoSave)
+        }
+        
+        
         
         logdata(infoText: "Updated values for view.", fileOccured: "PreferenceViewController.swift", objectRunIn: title, otherInfo: nil)
         
@@ -81,7 +96,12 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
     //////////////////////////
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // Do any additional setup after loading the view, typically from a nib
+        
+        AutosaveSwitchView.isOn = cardEditsWillAutoSave
+        
+        AutosaveLabelOutlet.text = "Enable automatic saving when editing cardests?"
+        
         ColorSelectView.dataSource = self
         ColorSelectView.delegate = self
         updateValuesInView()
@@ -92,7 +112,10 @@ class PreferenceViewController: UIViewController,UIPickerViewDataSource,UIPicker
     // Get your brand new IBAction functions here! //
     /////////////////////////////////////////////////
     
-    // But nobody came.
+    @IBAction func switchValueHasChanged() {
+        updateValuesInView()
+    }
+    
     
     
 }

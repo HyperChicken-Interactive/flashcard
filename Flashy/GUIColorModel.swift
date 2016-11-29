@@ -96,12 +96,11 @@ let showroomColors: ColorScheme = ColorScheme(
 func swapColorScheme(to OPscheme: String?){
     
     // Call and get instance of standard user defaults.
-    let prefs = UserDefaults.standard
     
     if let scheme = OPscheme {
         
         // Set & saves the new colour scheme.
-        prefs.set(scheme, forKey: "cscs")
+        archiveUserDefaults(CurentlySelectedColorScheme: scheme, AutoSaveFlashcards: nil)
         
         switch scheme{
             case "Solarized Dark": currentlySelectedColorScheme = SolarizedDark
@@ -112,20 +111,14 @@ func swapColorScheme(to OPscheme: String?){
         }
         
     } else {
-        let scheme = prefs.object(forKey: "cscs") as? String
+        let scheme = unarchiveUserDefaults().0
         
-        if let unColorscheme = scheme {
-            
-            switch unColorscheme{
-            case "Solarized Dark": currentlySelectedColorScheme = SolarizedDark
-            case "Solarized Light": currentlySelectedColorScheme = solarizedLight
-            case "Carbon": currentlySelectedColorScheme = carbonColors
-            case "Showroom": currentlySelectedColorScheme = showroomColors
-            default: logdata(infoText: "Failed to change color scheme", fileOccured: nil, objectRunIn: "else clause from swapcolorscheme()", otherInfo: ["Attempted to select color scheme \(scheme)"])
-            }
-        } else {
-            currentlySelectedColorScheme = carbonColors
-            logdata(infoText: "CRITICAL: There was no saved colour scheme", fileOccured: nil, objectRunIn: nil, otherInfo: ["Defaulting to carbon colours"])
+        switch scheme{
+        case "Solarized Dark": currentlySelectedColorScheme = SolarizedDark
+        case "Solarized Light": currentlySelectedColorScheme = solarizedLight
+        case "Carbon": currentlySelectedColorScheme = carbonColors
+        case "Showroom": currentlySelectedColorScheme = showroomColors
+        default: logdata(infoText: "Failed to change color scheme", fileOccured: nil, objectRunIn: "else clause from swapcolorscheme()", otherInfo: ["Attempted to select color scheme \(scheme)"])
         }
     }
 }

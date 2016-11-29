@@ -222,9 +222,11 @@ func iterateCardsetShortnames() -> [String] {
 
 // Creating child classes for the actual sets.
 
-var flashySuper: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: "Click edit to create a new set", isIgnored: true, cardsInSet: nil)
+let flashySuper: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: "Click \"new\" to create a new set", isIgnored: true, cardsInSet: nil)
 
 var editSet: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: nil, isIgnored: true, cardsInSet: nil)
+
+let blankSet: FlashySet = FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: "", isIgnored: true, cardsInSet: nil)
 
 /**
  ## The array of ALL custom-made flashysets.

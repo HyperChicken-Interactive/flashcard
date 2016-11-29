@@ -14,6 +14,9 @@ var currentlySelectedFlashyCardset: FlashySet = flashySuper
 /// The currently selected color scheme, Right now it will be static but in ver 1.0 or beta it will be a dynamic function probably.
 var currentlySelectedColorScheme: ColorScheme = SolarizedDark
 
+/// A value that indicates wether edited cardsets should be commited to the currentlySelectedFlashyCardset automatically, or only when pressing the "done" button
+var cardEditsWillAutoSave: Bool = unarchiveUserDefaults().1
+
 /**
  ## Log important info for debugging.
  

@@ -39,7 +39,7 @@
 		CBA486781D6361FF00DF2147 /* IncoherentBabbling.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = IncoherentBabbling.md; sourceTree = "<group>"; };
 		CBA56CA41DCFF3DD004E6406 /* flashycards.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = flashycards.plist; sourceTree = "<group>"; };
 		CBBD352A1D4FFFDF001F9F16 /* FlashcardModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlashcardModel.swift; sourceTree = "<group>"; };
-		CBBFA8581D7EEC560070CDB5 /* SaveModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveModel.swift; sourceTree = "<group>"; };
+		CBBFA8581D7EEC560070CDB5 /* SaveModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaveModel.swift; sourceTree = "<group>"; usesTabs = 1; };
 		CBFF9B381D6B1EF300975E9F /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		CBFF9B3A1D6B1F7300975E9F /* GeneralModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralModel.swift; sourceTree = "<group>"; };
 		CBFF9B3C1D6B2A5F00975E9F /* PreferenceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceViewController.swift; sourceTree = "<group>"; };

@@ -452,6 +452,28 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OWN-bg-8NH">
+                                <rect key="frame" x="163" y="410" width="51" height="31"/>
+                                <connections>
+                                    <action selector="switchValueHasChanged" destination="ufM-dO-z2Y" eventType="valueChanged" id="m4A-Om-ouV"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lfU-hy-0Rf">
+                                <rect key="frame" x="46" y="355" width="283" height="45"/>
+                                <color key="backgroundColor" red="0.93333333330000001" green="0.90980392160000001" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" red="0.34509803919999998" green="0.43137254899999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="kdH-jT-GQZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="30"/>
+                                <color key="textColor" red="0.34509803919999998" green="0.43137254899999999" blue="0.45882352939999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.99215686270000003" green="0.96470588239999999" blue="0.89019607840000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -461,6 +483,9 @@
                             <constraint firstItem="bQr-dw-Xkb" firstAttribute="centerX" secondItem="0Zb-3j-bok" secondAttribute="centerX" id="FGR-Ry-MVJ"/>
                             <constraint firstItem="dYU-F3-T5c" firstAttribute="leading" secondItem="0Zb-3j-bok" secondAttribute="leadingMargin" id="Fr0-R0-VTE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bQr-dw-Xkb" secondAttribute="trailing" constant="30" id="GNf-HP-f5x"/>
+                            <constraint firstItem="OWN-bg-8NH" firstAttribute="leading" secondItem="0Zb-3j-bok" secondAttribute="leadingMargin" constant="147" id="JXY-8l-fbZ"/>
+                            <constraint firstItem="lfU-hy-0Rf" firstAttribute="leading" secondItem="0Zb-3j-bok" secondAttribute="leadingMargin" constant="30" id="Kck-HE-z8r"/>
+                            <constraint firstItem="dYU-F3-T5c" firstAttribute="top" secondItem="OWN-bg-8NH" secondAttribute="bottom" constant="10" id="NKT-qD-BdH"/>
                             <constraint firstItem="8EE-yT-cQJ" firstAttribute="top" secondItem="9US-w7-a4L" secondAttribute="bottom" constant="10" id="NrH-M0-dqm"/>
                             <constraint firstItem="9US-w7-a4L" firstAttribute="top" secondItem="bQr-dw-Xkb" secondAttribute="bottom" constant="10" id="RRh-Ht-ari"/>
                             <constraint firstItem="poO-NS-dGd" firstAttribute="top" secondItem="NdR-uh-UTz" secondAttribute="bottom" constant="5" id="TDJ-z4-CWZ"/>
@@ -471,18 +496,25 @@
                             <constraint firstItem="poO-NS-dGd" firstAttribute="top" secondItem="NdR-uh-UTz" secondAttribute="bottom" constant="5" id="bDf-Fc-OTH"/>
                             <constraint firstItem="Wpo-gD-4mI" firstAttribute="leading" secondItem="0Zb-3j-bok" secondAttribute="leadingMargin" constant="30" id="evF-bW-uWT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="dYU-F3-T5c" secondAttribute="trailing" id="iTV-Ji-kKx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lfU-hy-0Rf" secondAttribute="trailing" constant="30" id="ncm-O5-N1N"/>
+                            <constraint firstItem="OWN-bg-8NH" firstAttribute="top" secondItem="lfU-hy-0Rf" secondAttribute="bottom" constant="10" id="q8A-Tx-Bwe"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Wpo-gD-4mI" secondAttribute="trailing" constant="30" id="rvb-nd-I7g"/>
+                            <constraint firstItem="lfU-hy-0Rf" firstAttribute="top" secondItem="Wpo-gD-4mI" secondAttribute="bottom" constant="55" id="tyX-SS-SAw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OWN-bg-8NH" secondAttribute="trailing" constant="147" id="usb-5L-wlp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="8EE-yT-cQJ" secondAttribute="trailing" constant="30" id="xt3-5y-2YR"/>
                             <constraint firstItem="poO-NS-dGd" firstAttribute="leading" secondItem="0Zb-3j-bok" secondAttribute="leadingMargin" constant="30" id="xuV-TW-NZs"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="AutosaveLabelOutlet" destination="lfU-hy-0Rf" id="ooG-SC-aCP"/>
+                        <outlet property="AutosaveSwitchView" destination="OWN-bg-8NH" id="v1u-m8-BiC"/>
                         <outlet property="BackButtonOutlet" destination="poO-NS-dGd" id="BD6-aT-U1D"/>
                         <outlet property="ButtonOutlet" destination="8EE-yT-cQJ" id="RRL-Lk-5kW"/>
                         <outlet property="ColorSelectView" destination="dYU-F3-T5c" id="28V-CK-RiT"/>
                         <outlet property="FlashcardOutlet" destination="Wpo-gD-4mI" id="mV8-N4-N4g"/>
                         <outlet property="HeaderOutlet" destination="bQr-dw-Xkb" id="ZKh-vh-93p"/>
                         <outlet property="TextOutlet" destination="9US-w7-a4L" id="iYN-7P-84e"/>
+                        <outlet property="autosaveSwitchView" destination="OWN-bg-8NH" id="ztB-5e-t5T"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8rG-4y-CXE" userLabel="First Responder" sceneMemberID="firstResponder"/>

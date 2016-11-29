@@ -163,9 +163,15 @@ class MenuViewController: UIViewController,UIPickerViewDataSource,UIPickerViewDe
         
         // Checks to see if the currently selected card is the card used in creating new cardset arrays. If it is, then append an emtpty cardset to the list.
         if currentlySelectedFlashyCardset == flashySuper {
-            flashySetArray.append(FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: "", isIgnored: false, cardsInSet: nil))
-            currentlySelectedFlashyCardset = flashySetArray[((flashySetArray.count)-1)]
-            loginfo(infoText: "IMPORTANT: Changed currently selected cardset.", fileOccured: "EditorViewController.swift", objectRunIn: "viewDidLoad()", otherInfo: ["Appended one cardset to the flashySetArray.", "Meaning there are \(flashySetArray.count) cardsets."])
+            if cardEditsWillAutoSave == true {
+                // If we're making a new set, and autosave is on, then create a new set. This set will be saved regularly so there's no chance of a glitch set.
+                flashySetArray.append(FlashySet(isInitializedViaEncoder: false, nameOfFlashcardSet: "", isIgnored: false, cardsInSet: nil))
+                currentlySelectedFlashyCardset = flashySetArray[((flashySetArray.count)-1)]
+                loginfo(infoText: "IMPORTANT: Changed currently selected cardset.", fileOccured: "EditorViewController.swift", objectRunIn: "viewDidLoad()", otherInfo: ["Appended one cardset to the flashySetArray.", "Meaning there are \(flashySetArray.count) cardsets."])
+            } else {
+                // If autosave is off, then procrastinate on handling the cardsets.
+                currentlySelectedFlashyCardset = editSet
+            }
         }
     }
     
