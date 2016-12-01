@@ -280,8 +280,7 @@ class EditorViewController: UIViewController, UITextFieldDelegate{
                             "The error was caught successfully, but due to this being a major logical issue. Even so, the app might be more volitile. This will be reported to the user."])
                     
                     let alert = UIAlertController(title: "CRITICAL.", message: "The set that is currently attempting to be removed was not found do to god-knows-what. Please contact the head of development (whitman.colm@gmail.com) as soon as possible. Thank you.", preferredStyle: UIAlertControllerStyle.alert)
-                     alert.addAction(UIAlertAction(title: "Understood.", style: UIAlertActionStyle.destructive, handler: { action in
-                    }))
+                     alert.addAction(UIAlertAction(title: "Understood.", style: UIAlertActionStyle.destructive, handler: nil))
                     
                     self.present(alert, animated: true, completion: nil)
                 }

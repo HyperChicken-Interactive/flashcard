@@ -69,16 +69,50 @@ struct Error {
         return ("\(year)-\(month)-\(day)@\(hour):\(minutes):\(seconds).\(nanoseconds)")
     }
     
-    /** 
-     # How data is actually logged
+    /**
+    # How data is actually logged
      
-     This function logs data and handles actions via interactions with scope-private functions.
+    This function logs data and handles actions via interactions with scope-private functions.
      
-    - parameters:
-     - err: The error code that denotes how important the log is.
-     - tm:
+    - parameter err: The error code that denotes how important the log is.
+    - parameter tm: To how many decimals should the time code be generated.
      */
-    func log(Error err: ErrorCodes, AtTime tm: Int?, WithDescription desc: String){
-        var printedString: String = getTime(AtDecimalPlace: tm)
+    func log(Code err: ErrorCodes, AtTime tm: Int?, WithDescription desc: String, FromLocation loc: String?, AndOther o: [String]?) -> String{
+        var returnedString: String = getTime(AtDecimalPlace: tm)
+        
+        if desc.hasSuffix(".") || desc.hasSuffix("!") || desc.hasSuffix("?") {
+            returnedString += ": \(desc) "
+        } else {
+            returnedString += ": \(desc). "
+        }
+        
+        if let file = loc {
+            returnedString += "At location: \"\(file)\". "
+        }
+        
+        returnedString += "\n"
+        
+        if let other = o {
+            returnedString += "Also:\n"
+            for time in other {
+                returnedString += "  - \(time)\n"
+            }
+        }
+
+        
+        return returnedString
+    }
+    
+}
+
+extension UIViewController {
+    func panic(About a: String) {
+        let alert = UIAlertController(title: "CRITICAL", message: "You really shouldn't see this message. There was a critical error about \"\(a)\". Please contact head of development Whitman Huntley (whitman.colm@gmail.com) about this as soon as possible. The app will continue, but some features may not work correctly.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Understood", style: UIAlertActionStyle.destructive, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
+
+
+
+
